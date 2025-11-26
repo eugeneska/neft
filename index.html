@@ -88,8 +88,8 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 10
 }
 .fade-in {
 opacity: 0;
-transform: translateY(30px);
-animation: fadeInUp 0.8s ease-out forwards;
+transform: translateY(40px);
+animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 .fade-in-delay-1 {
 animation-delay: 0.2s;
@@ -100,19 +100,11 @@ animation-delay: 0.4s;
 .larn-image-container {
 margin-bottom: 50px;
 }
-section {
-border-top: 3px solid #d1d5db;
-}
-section:first-of-type {
-border-top: none;
-}
 section.bg-white {
 background-color: #ffffff;
-border-top: 3px solid #9ca3af;
 }
 section.bg-custom-gray {
 background-color: #E4E4E4;
-border-top: 3px solid #6b7280;
 }
 .bg-custom-gray {
 background-color: #E4E4E4 !important;
@@ -122,6 +114,33 @@ background-color: #E4E4E4 !important;
 html, body {
 overflow-x: hidden;
 max-width: 100vw;
+scroll-behavior: smooth;
+}
+
+/* Улучшенные плавные переходы для всех элементов */
+* {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Исключения для элементов, которые не должны иметь переходы */
+*:focus,
+*:focus-visible,
+.swiper-wrapper,
+.swiper-slide,
+img,
+video,
+iframe {
+transition: none;
+}
+
+/* Плавные переходы для интерактивных элементов */
+a, button, input, textarea, select {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Улучшенные переходы для ховера */
+a:hover, button:hover {
+transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -165,9 +184,7 @@ overflow-x: hidden;
 }
 
 /* Fix swiper container */
-.swiper-container, .swiper-wrapper {
-overflow-x: hidden !important;
-}
+/* .swiper-container, .swiper-wrapper - overflow-x убран для корректного отображения */
 
 /* Fix objection cards on mobile */
 .objection-question-content {
@@ -250,9 +267,239 @@ max-width: 100%;
 height: auto;
 }
 
-/* Fix mobile swiper */
-.swiper-slide {
-overflow: hidden;
+
+
+/* Дополнительные стили для мобильного слайдера ЛАРН-решений */
+@media (max-width: 768px) {
+.solutions-swiper {
+padding-left: 0 !important;
+padding-right: 0 !important;
+}
+
+.solutions-swiper .swiper-wrapper {
+display: flex;
+align-items: stretch;
+}
+
+.solutions-swiper .swiper-slide {
+width: 100% !important;
+flex-shrink: 0;
+height: auto;
+display: flex;
+}
+
+.solutions-swiper .swiper-slide > div {
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+}
+
+.solutions-swiper .swiper-button-next,
+.solutions-swiper .swiper-button-prev {
+display: none !important;
+}
+
+.solutions-swiper .swiper-pagination {
+position: relative !important;
+margin-top: 2rem !important;
+}
+}
+
+/* Стили для секции документов на мобильных устройствах */
+@media (max-width: 768px) {
+.documents-sticky-block .grid {
+grid-template-columns: 1fr !important;
+gap: 1rem !important;
+}
+
+.documents-sticky-block .bg-custom-gray {
+padding: 1rem !important;
+}
+
+.documents-sticky-block .flex.items-center.gap-3 {
+gap: 0.5rem !important;
+margin-bottom: 0.5rem !important;
+}
+
+.documents-sticky-block .w-12.h-12 {
+width: 2rem !important;
+height: 2rem !important;
+}
+
+.documents-sticky-block .text-2xl {
+font-size: 1.25rem !important;
+}
+
+.documents-sticky-block p {
+font-size: 0.75rem !important;
+line-height: 1.2 !important;
+}
+
+/* Стили для левой части секции документов на мобильных */
+.fade-in.fade-in-delay-2.lg\\:order-1 .space-y-4 {
+gap: 0.75rem !important;
+}
+
+.fade-in.fade-in-delay-2.lg\\:order-1 .flex.items-start.gap-3 {
+gap: 0.5rem !important;
+align-items: flex-start !important;
+}
+
+.fade-in.fade-in-delay-2.lg\\:order-1 .ri-checkbox-circle-fill {
+font-size: 1rem !important;
+margin-top: 0.125rem !important;
+flex-shrink: 0;
+}
+
+.fade-in.fade-in-delay-2.lg\\:order-1 .font-mulish-semibold.text-lg {
+font-size: 0.875rem !important;
+line-height: 1.3 !important;
+margin-bottom: 0.25rem !important;
+}
+
+.fade-in.fade-in-delay-2.lg\\:order-1 .font-mulish-regular.text-gray-600 {
+font-size: 0.75rem !important;
+line-height: 1.2 !important;
+}
+
+/* Дополнительные стили для секции документов на мобильных */
+.py-20.lg\\:py-32.bg-custom-gray {
+padding-top: 3rem !important;
+padding-bottom: 3rem !important;
+}
+
+.w-full.px-6.lg\\:px-8 {
+padding-left: 1rem !important;
+padding-right: 1rem !important;
+}
+
+/* Стили для блока "Что входит в комплект" */
+.larn-image-container img {
+max-height: 400px !important;
+}
+
+@media (min-width: 768px) {
+.larn-image-container img {
+max-height: 600px !important;
+}
+}
+
+/* Стили для изображений в карточках продуктов */
+.solutions-swiper .swiper-slide img {
+transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.solutions-swiper .swiper-slide:hover img {
+transform: scale(1.05);
+}
+
+/* Плавные переходы для всех элементов карточек */
+.solutions-swiper .swiper-slide .card-hover {
+transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+border-radius: 0.75rem; /* 12px - соответствует rounded-xl */
+overflow: hidden; /* Обеспечиваем, что содержимое не выходит за закругленные углы */
+}
+
+.solutions-swiper .swiper-slide .card-hover * {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Обеспечиваем правильные закругленные углы для изображений */
+.solutions-swiper .swiper-slide .rounded-t-xl {
+border-top-left-radius: 0.75rem;
+border-top-right-radius: 0.75rem;
+overflow: hidden; /* Обрезаем изображение по границам контейнера */
+}
+
+/* Обеспечиваем правильные закругленные углы для нижней части карточек */
+.solutions-swiper .swiper-slide .rounded-b-xl {
+border-bottom-left-radius: 0.75rem;
+border-bottom-right-radius: 0.75rem;
+}
+
+/* Адаптивная высота для карточек продуктов */
+@media (min-width: 768px) {
+.solutions-swiper .swiper-slide .h-48 {
+height: 14rem; /* 224px */
+}
+}
+
+@media (min-width: 1024px) {
+.solutions-swiper .swiper-slide .h-48 {
+height: 16rem; /* 256px */
+}
+}
+
+/* Улучшенные стили для изображений продуктов */
+.solutions-swiper .swiper-slide img {
+padding: 0.5rem;
+background-color: #ffffff;
+}
+
+/* Стили для контейнера изображений */
+.solutions-swiper .swiper-slide .h-48 {
+background-color: #f8f9fa;
+border-bottom: 1px solid #e5e7eb;
+}
+
+/* Улучшенные стили для карточек продуктов */
+.solutions-swiper .swiper-slide .card-hover {
+position: relative;
+}
+
+.solutions-swiper .swiper-slide .card-hover::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(135deg, rgba(255, 51, 51, 0.1) 0%, rgba(255, 51, 51, 0.05) 100%);
+opacity: 0;
+transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+z-index: 1;
+pointer-events: none;
+}
+
+.solutions-swiper .swiper-slide .card-hover:hover::before {
+opacity: 1;
+}
+
+/* Дополнительные стили для плавных переходов слайдера */
+.solutions-swiper .swiper-wrapper {
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.solutions-swiper .swiper-slide {
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.solutions-swiper.swiper-transitioning .swiper-slide {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Улучшенная анимация для кнопок навигации */
+.solutions-swiper .swiper-button-next,
+.solutions-swiper .swiper-button-prev {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 0.7;
+}
+
+.solutions-swiper .swiper-button-next:hover,
+.solutions-swiper .swiper-button-prev:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Плавная анимация для пагинации */
+.solutions-swiper .swiper-pagination-bullet {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.solutions-swiper .swiper-pagination-bullet:hover {
+    transform: scale(1.2);
+}
 }
 
 /* Fix mobile footer */
@@ -308,12 +555,6 @@ padding-left: 0.75rem !important;
 padding-right: 0.75rem !important;
 }
 }
-section.bg-secondary {
-border-top: 4px solid #ffffff;
-}
-section[style*="background-image"] {
-border-top: 3px solid #ffffff;
-}
 .fade-in-delay-3 {
 animation-delay: 0.6s;
 }
@@ -339,16 +580,20 @@ transform: translateY(0);
 }
 }
 .card-hover {
-transition: all 0.3s ease;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+transform: translateY(0);
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 .card-hover:hover {
-transform: translateY(-8px);
-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+transform: translateY(-12px);
+box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 .button-hover {
-transition: all 0.3s ease;
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 position: relative;
 overflow: hidden;
+transform: translateY(0);
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .button-hover::before {
 content: '';
@@ -357,21 +602,86 @@ top: 0;
 left: -100%;
 width: 100%;
 height: 100%;
-background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-transition: left 0.5s;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-hover:hover::before {
 left: 100%;
 }
 .button-hover:hover {
-transform: translateY(-2px);
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+transform: translateY(-3px);
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+.button-hover:active {
+transform: translateY(-1px);
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icon-bounce {
-transition: transform 0.3s ease;
+transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icon-bounce:hover {
-transform: scale(1.1) rotate(5deg);
+transform: scale(1.15) rotate(8deg);
+}
+
+/* Плавные переходы для модальных окон */
+.modal-enter {
+opacity: 0;
+transform: scale(0.95);
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-enter-active {
+opacity: 1;
+transform: scale(1);
+}
+.modal-exit {
+opacity: 1;
+transform: scale(1);
+transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-exit-active {
+opacity: 0;
+transform: scale(0.95);
+}
+
+/* Плавные переходы для мобильного меню */
+.mobile-menu-transition {
+transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Плавные переходы для форм */
+input:focus, textarea:focus, select:focus {
+transform: scale(1.02);
+box-shadow: 0 0 0 3px rgba(255, 51, 51, 0.1);
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Плавные переходы для FAQ */
+.faq-answer {
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+max-height: 0;
+overflow: hidden;
+}
+.faq-answer.show {
+max-height: 500px;
+}
+
+/* Плавные переходы для навигации */
+nav a {
+position: relative;
+}
+nav a::after {
+content: '';
+position: absolute;
+bottom: -2px;
+left: 0;
+width: 0;
+height: 2px;
+background-color: #ff3333;
+transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav a:hover::after {
+width: 100%;
 }
 @font-face {
 font-family: 'remixicon';
@@ -546,7 +856,7 @@ grid-template-columns: repeat(2, 1fr);
 }
 }
 .objection-answer .bg-blue-50 {
-background-color: #eff6ff !important;
+background-color: #E4E4E4 !important;
 }
 .objection-answer .rounded-lg {
 border-radius: 8px !important;
@@ -599,7 +909,7 @@ color: #16a34a !important;
 color: #ef4444 !important;
 }
 .objection-table-wrapper {
-background-color: #eff6ff;
+background-color: #E4E4E4;
 border-radius: 8px;
 padding: 12px 16px;
 }
@@ -895,22 +1205,30 @@ transition: transform 0.15s ease-out;
 will-change: transform;
 }
 }
+
+/* Отключаем sticky поведение для мобильных устройств */
+@media (max-width: 1023px) {
+.documents-sticky-block {
+position: static !important;
+transform: none !important;
+}
+}
 </style>
 </head>
 <body class="bg-white text-black font-mulish-regular overflow-x-hidden">
-<header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-100/50 z-50">
+<header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50">
 <div class="w-full px-6 lg:px-8">
 <div class="flex items-center justify-between h-24 gap-8">
 <div class="flex items-center">
 <img src="https://static.readdy.ai/image/105588dfe4999fd2d8a97366fde711eb/5a4d0c5618dc8e81b97b1ebc74b5127a.webp" alt="ПКФ Логотип" class="h-20 w-auto py-2">
 </div>
 <nav class="hidden lg:flex items-center space-x-6">
-<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Продукция</a>
-<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Решения для отраслей</a>
-<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Документы и сертификация</a>
-<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Кейсы и клиенты</a>
-<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Доставка и обучение</a>
-<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Контакты</a>
+<a href="#products" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Продукция</a>
+<a href="#solutions" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Решения для отраслей</a>
+<a href="#documents" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Документы и сертификация</a>
+<a href="#cases" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Кейсы и клиенты</a>
+<a href="#delivery" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Доставка и обучение</a>
+<a href="#contacts" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Контакты</a>
 </nav>
 <div class="hidden lg:flex items-center gap-6">
 <div class="flex flex-col items-end">
@@ -938,7 +1256,7 @@ will-change: transform;
 </div>
 </div>
 <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden transition-opacity duration-300"></div>
-<div id="mobile-menu" class="fixed top-0 right-0 min-h-screen w-80 bg-white shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 overflow-y-auto">
+<div id="mobile-menu" class="fixed top-0 right-0 min-h-screen w-80 bg-white shadow-2xl z-[70] transform translate-x-full mobile-menu-transition overflow-y-auto">
 <div class="p-6">
 <div class="flex items-center justify-between mb-8">
 <img src="https://static.readdy.ai/image/105588dfe4999fd2d8a97366fde711eb/5a4d0c5618dc8e81b97b1ebc74b5127a.webp" alt="ПКФ Логотип" class="h-16 w-auto">
@@ -961,12 +1279,12 @@ will-change: transform;
 Подбор ЛАРН-набора
 </button>
 <nav class="space-y-4">
-<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Продукция</a>
-<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Решения для отраслей</a>
-<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Документы и сертификация</a>
-<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Кейсы и клиенты</a>
-<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Доставка и обучение</a>
-<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Контакты</a>
+<a href="#products" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Продукция</a>
+<a href="#solutions" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Решения для отраслей</a>
+<a href="#documents" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Документы и сертификация</a>
+<a href="#cases" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Кейсы и клиенты</a>
+<a href="#delivery" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Доставка и обучение</a>
+<a href="#contacts" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Контакты</a>
 </nav>
 </div>
 </div>
@@ -1184,7 +1502,7 @@ will-change: transform;
     </div>
     </div>
     </section>
-    <section class="py-20 lg:py-32 bg-custom-gray">
+    <section id="products" class="py-20 lg:py-32 bg-custom-gray">
     <div class="w-full px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16 fade-in">
@@ -1195,140 +1513,140 @@ will-change: transform;
     Полные комплекты для ликвидации разливов — от сорбентов до биопрепаратов
     </p>
     </div>
-    <div class="relative px-12 lg:px-16">
+    <div class="relative px-4 sm:px-12 lg:px-16">
     <div class="swiper solutions-swiper pb-12">
     <div class="swiper-wrapper">
     <div class="swiper-slide">
-    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
-    <div class="h-32 bg-white flex items-center justify-center relative">
-    <i class="ri-drop-line text-6xl text-gray-400"></i>
+    <div class="bg-white border border-black rounded-xl card-hover h-full flex flex-col">
+    <div class="h-48 bg-white flex items-center justify-center relative rounded-t-xl">
+    <img src="images/products/1prod.webp" alt="Сорбирующие салфетки и материалы" class="w-full h-full object-contain">
     <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
     </div>
-    <div class="p-6 bg-white flex-1 flex flex-col">
+    <div class="p-6 bg-white flex-1 flex flex-col rounded-b-xl">
     <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Сорбирующие салфетки и материалы</h3>
     <div class="space-y-3 mb-4">
     <p class="font-mulish-regular text-sm text-black">Салфетки, полотна, боны, подушки и маты для эффективного сбора нефтепродуктов и химических жидкостей.</p>
     </div>
-    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    <button data-quick-order class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
     Получить спецификацию
     </button>
     </div>
     </div>
     </div>
     <div class="swiper-slide">
-    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
-    <div class="h-32 bg-white flex items-center justify-center relative">
-    <i class="ri-stack-line text-6xl text-gray-400"></i>
+    <div class="bg-white border border-black rounded-xl card-hover h-full flex flex-col">
+    <div class="h-48 bg-white flex items-center justify-center relative rounded-t-xl">
+    <img src="images/products/2prod.webp" alt="Сорбенты" class="w-full h-full object-contain">
     <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
     </div>
-    <div class="p-6 bg-white flex-1 flex flex-col">
+    <div class="p-6 bg-white flex-1 flex flex-col rounded-b-xl">
     <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Сорбенты</h3>
     <div class="space-y-3 mb-4">
     <p class="font-mulish-regular text-sm text-black">Сухие и гранулированные сорбенты для сбора нефти, топлива и химии на воде и твёрдых поверхностях.</p>
     </div>
-    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    <button data-quick-order class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
     Получить спецификацию
     </button>
     </div>
     </div>
     </div>
     <div class="swiper-slide">
-    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full shadow-lg flex flex-col">
-    <div class="h-32 bg-white flex items-center justify-center relative">
-    <i class="ri-tools-line text-6xl text-secondary"></i>
+    <div class="bg-white border border-black rounded-xl card-hover h-full flex flex-col">
+    <div class="h-48 bg-white flex items-center justify-center relative rounded-t-xl">
+    <img src="images/products/3prod.webp" alt="Наборы для ликвидации разливов" class="w-full h-full object-contain">
     <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ПОПУЛЯРНО</div>
     </div>
-    <div class="p-6 bg-white flex-1 flex flex-col">
+    <div class="p-6 bg-white flex-1 flex flex-col rounded-b-xl">
     <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Наборы для ликвидации разливов</h3>
     <div class="space-y-3 mb-4">
     <p class="font-mulish-regular text-sm text-black">Наборы для сбора нефти и химии: ЛАРН, комплекты для разливов ГСМ и реагентов на производстве, складе и транспорте.</p>
     </div>
-    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    <button data-quick-order class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
     Получить спецификацию
     </button>
     </div>
     </div>
     </div>
     <div class="swiper-slide">
-    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
-    <div class="h-32 bg-white flex items-center justify-center relative">
-    <i class="ri-database-2-line text-6xl text-gray-400"></i>
+    <div class="bg-white border border-black rounded-xl card-hover h-full flex flex-col">
+    <div class="h-48 bg-white flex items-center justify-center relative rounded-t-xl">
+    <img src="images/products/4prod.webp" alt="Тара для бочек" class="w-full h-full object-contain">
     <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
     </div>
-    <div class="p-6 bg-white flex-1 flex flex-col">
+    <div class="p-6 bg-white flex-1 flex flex-col rounded-b-xl">
     <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Тара для бочек</h3>
     <div class="space-y-3 mb-4">
     <p class="font-mulish-regular text-sm text-black">Поддоны для безопасного хранения и транспортировки бочек, еврокубов и бутылей — защита от проливов и утечек.</p>
     </div>
-    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    <button data-quick-order class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
     Получить спецификацию
     </button>
     </div>
     </div>
     </div>
     <div class="swiper-slide">
-    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
-    <div class="h-32 bg-white flex items-center justify-center relative">
-    <i class="ri-absorb-line text-6xl text-gray-400"></i>
+    <div class="bg-white border border-black rounded-xl card-hover h-full flex flex-col">
+    <div class="h-48 bg-white flex items-center justify-center relative rounded-t-xl">
+    <img src="images/products/5prod.webp" alt="Абсорбенты" class="w-full h-full object-contain">
     <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
     </div>
-    <div class="p-6 bg-white flex-1 flex flex-col">
+    <div class="p-6 bg-white flex-1 flex flex-col rounded-b-xl">
     <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Абсорбенты</h3>
     <div class="space-y-3 mb-4">
     <p class="font-mulish-regular text-sm text-black">Абсорбенты для оперативного сбора разливов нефти и нефтепродуктов на воде и суше.</p>
     </div>
-    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    <button data-quick-order class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
     Получить спецификацию
     </button>
     </div>
     </div>
     </div>
     <div class="swiper-slide">
-    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
-    <div class="h-32 bg-white flex items-center justify-center relative">
-    <i class="ri-settings-3-line text-6xl text-gray-400"></i>
+    <div class="bg-white border border-black rounded-xl card-hover h-full flex flex-col">
+    <div class="h-48 bg-white flex items-center justify-center relative rounded-t-xl">
+    <img src="images/products/6prod.webp" alt="Аксессуары для бочек нефтепродуктов" class="w-full h-full object-contain">
     <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
     </div>
-    <div class="p-6 bg-white flex-1 flex flex-col">
+    <div class="p-6 bg-white flex-1 flex flex-col rounded-b-xl">
     <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Аксессуары для бочек нефтепродуктов</h3>
     <div class="space-y-3 mb-4">
     <p class="font-mulish-regular text-sm text-black">Блокираторы отверстий бочек — надёжная защита от проливов нефтепродуктов при хранении и транспортировке.</p>
     </div>
-    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    <button data-quick-order class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
     Получить спецификацию
     </button>
     </div>
     </div>
     </div>
     <div class="swiper-slide">
-    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
-    <div class="h-32 bg-white flex items-center justify-center relative">
-    <i class="ri-archive-line text-6xl text-gray-400"></i>
+    <div class="bg-white border border-black rounded-xl card-hover h-full flex flex-col">
+    <div class="h-48 bg-white flex items-center justify-center relative rounded-t-xl">
+    <img src="images/products/7prod.webp" alt="Тара для хранения" class="w-full h-full object-contain">
     <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
     </div>
-    <div class="p-6 bg-white flex-1 flex flex-col">
+    <div class="p-6 bg-white flex-1 flex flex-col rounded-b-xl">
     <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Тара для хранения</h3>
     <div class="space-y-3 mb-4">
     <p class="font-mulish-regular text-sm text-black">Контейнеры, баки, шкафы и аксессуары для надёжного и удобного хранения сорбентов, ЛАРН и промышленных материалов.</p>
     </div>
-    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    <button data-quick-order class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
     Получить спецификацию
     </button>
     </div>
     </div>
     </div>
     <div class="swiper-slide">
-    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
-    <div class="h-32 bg-white flex items-center justify-center relative">
-    <i class="ri-leaf-line text-6xl text-gray-400"></i>
+    <div class="bg-white border border-black rounded-xl card-hover h-full flex flex-col">
+    <div class="h-48 bg-white flex items-center justify-center relative rounded-t-xl">
+    <img src="images/products/8prod.webp" alt="Биопрепараты для ликвидации утечек" class="w-full h-full object-contain">
     <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
     </div>
-    <div class="p-6 bg-white flex-1 flex flex-col">
+    <div class="p-6 bg-white flex-1 flex flex-col rounded-b-xl">
     <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Биопрепараты для ликвидации утечек</h3>
     <div class="space-y-3 mb-4">
     <p class="font-mulish-regular text-sm text-black">Биопрепараты для эффективной и экологичной ликвидации разливов нефти и нефтепродуктов на воде и суше.</p>
     </div>
-    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    <button data-quick-order class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
     Получить спецификацию
     </button>
     </div>
@@ -1337,8 +1655,8 @@ will-change: transform;
     </div>
     <div class="swiper-pagination !relative !mt-8"></div>
     </div>
-    <div class="swiper-button-prev !text-secondary !absolute !left-0 !top-1/2 !-translate-y-1/2"></div>
-    <div class="swiper-button-next !text-secondary !absolute !right-0 !top-1/2 !-translate-y-1/2"></div>
+    <div class="swiper-button-prev !text-secondary  !left-65 !top-1/2 !translate-y-1/2"></div>
+    <div class="swiper-button-next !text-secondary  !right-65 !top-1/2 !translate-y-1/2"></div>
     </div>
     </div>
     </div>
@@ -1347,30 +1665,91 @@ will-change: transform;
     document.addEventListener('DOMContentLoaded', function() {
     const solutionsSwiper = new Swiper('.solutions-swiper', {
     slidesPerView: 1,
-    spaceBetween: 24,
+    spaceBetween: 16,
     autoHeight: false,
+    centeredSlides: false,
+    loop: false,
+    watchOverflow: true,
+    
+    // Плавные переходы
+    speed: 800, // Увеличиваем скорость перехода до 800ms
+    effect: 'slide', // Используем slide эффект
+    
+    // Настройки для плавности
+    resistance: true,
+    resistanceRatio: 0.85,
+    
+    // Настройки свайпа
+    touchRatio: 1,
+    touchAngle: 45,
+    grabCursor: true,
+    
+    // Настройки автопрокрутки (опционально)
+    freeMode: false,
+    freeModeSticky: true,
+    
     pagination: {
     el: '.swiper-pagination',
     clickable: true,
+    dynamicBullets: true,
     },
     navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
     },
     breakpoints: {
+    480: {
+    slidesPerView: 1,
+    spaceBetween: 16,
+    speed: 700,
+    },
     640: {
     slidesPerView: 2,
+    spaceBetween: 20,
+    speed: 750,
     },
     1024: {
     slidesPerView: 3,
+    spaceBetween: 24,
+    speed: 800,
     },
     1280: {
     slidesPerView: 4,
+    spaceBetween: 24,
+    speed: 850,
     },
     },
+    on: {
+    init: function() {
+    console.log('Swiper initialized with smooth transitions');
+    },
+    slideChange: function() {
+    console.log('Slide changed to:', this.activeIndex);
+    },
+    transitionStart: function() {
+    // Добавляем класс во время перехода
+    this.el.classList.add('swiper-transitioning');
+    },
+    transitionEnd: function() {
+    // Убираем класс после перехода
+    this.el.classList.remove('swiper-transitioning');
+    }
+    }
     });
     
     function equalizeCardHeights() {
+    // На мобильных устройствах не выравниваем высоту карточек
+    if (window.innerWidth <= 768) {
+    const slides = document.querySelectorAll('.solutions-swiper .swiper-slide');
+    slides.forEach(slide => {
+    const card = slide.querySelector('div[class*="bg-white"]');
+    if (card) {
+    card.style.height = 'auto';
+    }
+    });
+    return;
+    }
+    
     const slides = document.querySelectorAll('.solutions-swiper .swiper-slide');
     let maxHeight = 0;
     slides.forEach(slide => {
@@ -1392,11 +1771,19 @@ will-change: transform;
     }
     
     setTimeout(equalizeCardHeights, 100);
-    window.addEventListener('resize', equalizeCardHeights);
+    window.addEventListener('resize', function() {
+    setTimeout(equalizeCardHeights, 100);
+    });
     solutionsSwiper.on('slideChange', equalizeCardHeights);
+    
+    // Дополнительная инициализация для мобильных устройств
+    setTimeout(function() {
+    solutionsSwiper.update();
+    equalizeCardHeights();
+    }, 300);
     });
     </script>
-    <section class="py-20 lg:py-32 bg-white">
+    <section id="solutions" class="py-20 lg:py-32 bg-white">
     <div class="w-full px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16 fade-in">
@@ -1508,57 +1895,57 @@ will-change: transform;
     </div>
     </div>
     </section>
-    <section class="py-20 lg:py-32 bg-custom-gray">
+    <section id="documents" class="py-20 lg:py-32 bg-custom-gray">
     <div class="w-full px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16 fade-in">
-    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-black mb-4">
+    <h2 class="font-mulish-extrabold text-2xl sm:text-3xl lg:text-5xl text-black mb-4">
     Документы и <span class="text-secondary">нормативы</span>
     </h2>
-    <p class="font-mulish-semibold text-xl text-gray-700 max-w-3xl mx-auto">
+    <p class="font-mulish-semibold text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto">
     Вся необходимая документация для прохождения проверок
     </p>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12 mb-8 sm:mb-12">
     <div class="fade-in fade-in-delay-1 lg:order-2">
     <div class="documents-sticky-container" style="position: relative;">
     <div class="documents-sticky-block">
     <div class="relative">
-    <div class="bg-white rounded-2xl p-8 shadow-2xl border-2 border-gray-200">
+    <div class="bg-white rounded-2xl p-4 sm:p-8 shadow-2xl border-2 border-gray-200">
     <div class="grid grid-cols-2 gap-6">
-    <div class="bg-custom-gray rounded-xl p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="bg-custom-gray rounded-xl p-3 sm:p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
     <div class="flex items-center gap-3 mb-3">
     <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
     <i class="ri-file-paper-2-line text-secondary text-2xl"></i>
     </div>
-    <h4 class="font-mulish-extrabold text-lg text-black">ГОСТ</h4>
+    <h4 class="font-mulish-extrabold text-sm sm:text-lg text-black">ГОСТ</h4>
     </div>
     <p class="font-mulish-regular text-sm text-gray-600">Соответствие государственным стандартам</p>
     </div>
-    <div class="bg-custom-gray rounded-xl p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="bg-custom-gray rounded-xl p-3 sm:p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
     <div class="flex items-center gap-3 mb-3">
     <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
     <i class="ri-file-shield-line text-secondary text-2xl"></i>
     </div>
-    <h4 class="font-mulish-extrabold text-lg text-black">СГР</h4>
+    <h4 class="font-mulish-extrabold text-sm sm:text-lg text-black">СГР</h4>
     </div>
     <p class="font-mulish-regular text-sm text-gray-600">Свидетельство о госрегистрации</p>
     </div>
-    <div class="bg-custom-gray rounded-xl p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="bg-custom-gray rounded-xl p-3 sm:p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
     <div class="flex items-center gap-3 mb-3">
     <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
     <i class="ri-award-line text-secondary text-2xl"></i>
     </div>
-    <h4 class="font-mulish-extrabold text-lg text-black">Сертификаты</h4>
+    <h4 class="font-mulish-extrabold text-sm sm:text-lg text-black">Сертификаты</h4>
     </div>
     <p class="font-mulish-regular text-sm text-gray-600">Сертификаты соответствия</p>
     </div>
-    <div class="bg-custom-gray rounded-xl p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="bg-custom-gray rounded-xl p-3 sm:p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
     <div class="flex items-center gap-3 mb-3">
     <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
     <i class="ri-file-list-3-line text-secondary text-2xl"></i>
     </div>
-    <h4 class="font-mulish-extrabold text-lg text-black">Паспорт безопасности</h4>
+    <h4 class="font-mulish-extrabold text-sm sm:text-lg text-black">Паспорт безопасности</h4>
     </div>
     <p class="font-mulish-regular text-sm text-gray-600">Полный пакет документов</p>
     </div>
@@ -1571,7 +1958,7 @@ will-change: transform;
     </div>
     </div>
     <div class="fade-in fade-in-delay-2 lg:order-1">
-    <h3 class="font-mulish-extrabold text-2xl text-black mb-6">Соответствие нормативным требованиям</h3>
+    <h3 class="font-mulish-extrabold text-xl sm:text-2xl text-black mb-4 sm:mb-6">Соответствие нормативным требованиям</h3>
     <div class="space-y-4 mb-8">
     <div class="flex items-start gap-3">
     <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
@@ -1911,6 +2298,11 @@ will-change: transform;
   </section>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+    // Проверяем, что мы на десктопе (ширина экрана больше 1023px)
+    if (window.innerWidth <= 1023) {
+        return; // Не выполняем sticky логику на мобильных устройствах
+    }
+    
     const stickyBlock = document.querySelector('.documents-sticky-block');
     const downloadBtn = document.getElementById('download-docs-btn');
     
@@ -1977,6 +2369,12 @@ will-change: transform;
     // Обработчики событий
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', function() {
+        // Проверяем размер экрана при изменении размера окна
+        if (window.innerWidth <= 1023) {
+            // Сбрасываем transform на мобильных устройствах
+            stickyBlock.style.transform = '';
+            return;
+        }
         setTimeout(function() {
             init();
             handleScroll();
@@ -1992,17 +2390,33 @@ will-change: transform;
     const answer = button.nextElementSibling;
     const icon = button.querySelector('i:last-child');
     const isOpen = !answer.classList.contains('hidden');
+    
+    // Добавляем плавный переход для иконки
+    icon.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    
     document.querySelectorAll('.objection-answer').forEach(item => {
     if (item !== answer) {
+    item.style.maxHeight = '0';
+    item.style.opacity = '0';
+    setTimeout(() => {
     item.classList.add('hidden');
+    }, 300);
     item.previousElementSibling.querySelector('i:last-child').style.transform = 'rotate(0deg)';
     }
     });
+    
     if (isOpen) {
+    answer.style.maxHeight = '0';
+    answer.style.opacity = '0';
+    setTimeout(() => {
     answer.classList.add('hidden');
+    }, 300);
     icon.style.transform = 'rotate(0deg)';
     } else {
     answer.classList.remove('hidden');
+    answer.style.maxHeight = '1000px';
+    answer.style.opacity = '1';
+    answer.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
     icon.style.transform = 'rotate(180deg)';
     }
     }
@@ -2019,101 +2433,14 @@ will-change: transform;
     </p>
     </div>
     <div class="fade-in fade-in-delay-1 larn-image-container">
-    <div class="bg-white rounded-2xl p-8 shadow-2xl border-2 border-gray-200">
+    <div class="bg-white rounded-2xl p-4 lg:p-8 shadow-2xl border-2 border-gray-200">
     <div class="rounded-xl overflow-hidden">
-    <img src="images/products/larn1.png" alt="ЛАРН-комплект" class="w-full rounded-xl" style="max-height: 300px; object-fit: contain; object-position: center;">
+    <img src="images/products/larn1.png" alt="ЛАРН-комплект" class="w-full rounded-xl" style="max-height: 600px; object-fit: contain; object-position: center;">
     </div>
     </div>
     </div>
-    <div class="fade-in fade-in-delay-2">
-
-    <div class="space-y-4 mb-8">
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">1</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Передвижной пластмассовый контейнер на 2-х колесах с крышкой - 1 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">2</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Сорбент нефтепродуктов (в упаковке 12 кг) - 1 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">3</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Сорбирующий бон - 2 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">4</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Сорбирующая подушка - 4 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">5</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Сорбирующая салфетка - 40 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">6</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Метла складная - 1 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">7</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Лопата-совок - 1 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">8</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Мешок для сбора использованного абсорбента - 5 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">9</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Защитные маслобензостойкие перчатки - 1 пар</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">10</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Респиратор - 1 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">11</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Совок насыпной - 1 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">12</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Наклейка «Набор ЛАРН» - 1 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">13</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Наклейка «Инструкция по эксплуатации» - 1 шт.</p>
-    </div>
-    </div>
-    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
-    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">14</div>
-    <div class="flex-1">
-    <p class="font-mulish-regular text-gray-800">Инструкция по эксплуатации - 1 шт.</p>
-    </div>
-    </div>
-    </div>
-    <button class="w-full bg-secondary text-white font-mulish-semibold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover flex items-center justify-center gap-3">
+    <div class="fade-in fade-in-delay-2 text-center">
+    <button data-quick-order class="bg-secondary text-white font-mulish-semibold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover flex items-center justify-center gap-3 mx-auto">
     <i class="ri-file-list-3-line text-xl"></i>
     <span>Получить полный состав комплекта</span>
     </button>
@@ -2205,7 +2532,7 @@ will-change: transform;
     document.getElementById('daily-revenue').addEventListener('input', calculateDowntime);
     document.getElementById('working-days').addEventListener('input', calculateDowntime);
     </script>
-    <section class="py-20 lg:py-32 bg-white">
+    <section id="cases" class="py-20 lg:py-32 bg-white">
     <div class="w-full px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16 fade-in">
@@ -2355,7 +2682,7 @@ will-change: transform;
     </div>
     </div>
     </section>
-    <section class="py-20 lg:py-32 bg-custom-gray">
+    <section class="py-20 lg:py-32 bg-white">
     <div class="w-full px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
     <div class="text-center mb-16 fade-in">
@@ -2453,22 +2780,38 @@ will-change: transform;
     const answer = button.nextElementSibling;
     const icon = button.querySelector('i');
     const isOpen = !answer.classList.contains('hidden');
+    
+    // Добавляем плавный переход для иконки
+    icon.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    
     document.querySelectorAll('.faq-answer').forEach(item => {
     if (item !== answer) {
+    item.style.maxHeight = '0';
+    item.style.opacity = '0';
+    setTimeout(() => {
     item.classList.add('hidden');
+    }, 300);
     item.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
     }
     });
+    
     if (isOpen) {
+    answer.style.maxHeight = '0';
+    answer.style.opacity = '0';
+    setTimeout(() => {
     answer.classList.add('hidden');
+    }, 300);
     icon.style.transform = 'rotate(0deg)';
     } else {
     answer.classList.remove('hidden');
+    answer.style.maxHeight = '500px';
+    answer.style.opacity = '1';
+    answer.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
     icon.style.transform = 'rotate(180deg)';
     }
     }
     </script>
-    <section class="py-20 lg:py-32 bg-secondary relative overflow-hidden">
+    <section id="delivery" class="py-20 lg:py-32 bg-secondary relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
     <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -2535,7 +2878,7 @@ will-change: transform;
     </div>
     </div>
     </section>
-    <footer class="bg-black text-white">
+    <footer id="contacts" class="bg-black text-white">
     <div class="w-full px-6 lg:px-8 py-16">
     <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
@@ -2731,6 +3074,12 @@ document.body.style.overflow = '';
 mobileMenuButton.addEventListener('click', openMenu);
 mobileMenuClose.addEventListener('click', closeMenu);
 mobileMenuOverlay.addEventListener('click', closeMenu);
+
+// Закрываем мобильное меню при клике на ссылки навигации
+const mobileNavLinks = document.querySelectorAll('#mobile-menu nav a');
+mobileNavLinks.forEach(link => {
+link.addEventListener('click', closeMenu);
+});
 });
 </script>
 <script id="cookie-banner-script">
@@ -2843,9 +3192,32 @@ downloadDocsForm.addEventListener('submit', function(e) {
 e.preventDefault();
 const formData = new FormData(downloadDocsForm);
 console.log('Скачать документы (модальное):', Object.fromEntries(formData));
-alert('Спасибо! Документы будут отправлены на указанный email.');
-downloadDocsForm.reset();
-closeDownloadDocsModal();
+
+// Показываем благодарность и кнопку скачивания
+const modalContent = downloadDocsForm.parentElement;
+modalContent.innerHTML = `
+<button id="download-docs-close-success" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors">
+<i class="ri-close-line text-2xl text-gray-600"></i>
+</button>
+<div class="text-center">
+<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-check-line text-3xl text-green-600"></i>
+</div>
+<h3 class="font-mulish-extrabold text-2xl text-black mb-4">Спасибо!</h3>
+<p class="font-mulish-regular text-gray-600 mb-6">Ссылку на документы отправили на ваш email</p>
+<button onclick="window.open('#', '_blank')" class="w-full bg-secondary text-white font-mulish-semibold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover flex items-center justify-center gap-3 mb-4">
+<i class="ri-download-line text-xl"></i>
+<span>Скачать архив документов</span>
+</button>
+<button id="download-docs-close-final" class="text-gray-500 hover:text-gray-700 font-mulish-regular">Закрыть</button>
+</div>
+`;
+
+// Добавляем обработчики для новых кнопок закрытия
+const closeSuccessBtn = document.getElementById('download-docs-close-success');
+const closeFinalBtn = document.getElementById('download-docs-close-final');
+if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeDownloadDocsModal);
+if (closeFinalBtn) closeFinalBtn.addEventListener('click', closeDownloadDocsModal);
 });
 
 // Обработка главной формы (Форма №1)
@@ -2870,6 +3242,15 @@ openQuickOrderModal();
 });
 });
 
+// Добавляем обработчик для кнопки "Скачать пакет документов"
+const downloadDocsBtn = document.getElementById('download-docs-btn');
+if (downloadDocsBtn) {
+downloadDocsBtn.addEventListener('click', function(e) {
+e.preventDefault();
+openDownloadDocsModal();
+});
+}
+
 // Добавляем классы для открытия модального окна "Скачать документы" к ссылкам в футере
 const downloadLinks = document.querySelectorAll('[data-download-docs]');
 downloadLinks.forEach(link => {
@@ -2893,4 +3274,5 @@ closeDownloadDocsModal();
 });
 </script>
 </body>
+</html>
 </html>
