@@ -1,0 +1,2896 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ЛАРН Комплекты - Остановите разлив нефти</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0';
+link.onerror = function() {
+console.log('RemixIcon fallback loaded');
+};
+document.head.appendChild(link);
+});
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#ff3333',
+secondary: '#ff3333'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+.font-mulish-regular {
+font-family: 'Mulish', sans-serif;
+font-weight: 400;
+}
+.font-mulish-semibold {
+font-family: 'Mulish', sans-serif;
+font-weight: 600;
+}
+.font-mulish-extrabold {
+font-family: 'Mulish', sans-serif;
+font-weight: 800;
+}
+.text-4x {
+font-size: 4rem;
+line-height: 0.7;
+}
+.text-2x {
+font-size: 2rem;
+line-height: 1.2;
+}
+.text-x {
+font-size: 1rem;
+line-height: 1.5;
+}
+.hero-bg {
+background-image: url('images/backgrounds/mainbg.png');
+background-size: cover;
+background-position: left center;
+background-repeat: no-repeat;
+}
+.overlay {
+background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+.fade-in {
+opacity: 0;
+transform: translateY(30px);
+animation: fadeInUp 0.8s ease-out forwards;
+}
+.fade-in-delay-1 {
+animation-delay: 0.2s;
+}
+.fade-in-delay-2 {
+animation-delay: 0.4s;
+}
+.larn-image-container {
+margin-bottom: 50px;
+}
+section {
+border-top: 3px solid #d1d5db;
+}
+section:first-of-type {
+border-top: none;
+}
+section.bg-white {
+background-color: #ffffff;
+border-top: 3px solid #9ca3af;
+}
+section.bg-custom-gray {
+background-color: #E4E4E4;
+border-top: 3px solid #6b7280;
+}
+.bg-custom-gray {
+background-color: #E4E4E4 !important;
+}
+
+/* Mobile optimization and horizontal scroll fix */
+html, body {
+overflow-x: hidden;
+max-width: 100vw;
+}
+
+* {
+box-sizing: border-box;
+}
+
+/* Fix container widths on mobile */
+@media (max-width: 768px) {
+.container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl {
+max-width: 100% !important;
+padding-left: 1rem !important;
+padding-right: 1rem !important;
+}
+
+/* Fix hero section on mobile */
+.hero-bg {
+min-height: 100vh;
+background-attachment: scroll !important;
+}
+
+/* Fix text sizes on mobile */
+.text-4x {
+font-size: 2.5rem !important;
+line-height: 1.1 !important;
+}
+
+.text-2x {
+font-size: 1.5rem !important;
+line-height: 1.3 !important;
+}
+
+/* Fix button overflow */
+.whitespace-nowrap {
+white-space: normal !important;
+text-align: center !important;
+}
+
+/* Fix grid layouts */
+.grid {
+overflow-x: hidden;
+}
+
+/* Fix swiper container */
+.swiper-container, .swiper-wrapper {
+overflow-x: hidden !important;
+}
+
+/* Fix objection cards on mobile */
+.objection-question-content {
+flex-wrap: wrap;
+gap: 0.75rem;
+}
+
+.objection-question-text {
+font-size: 1rem !important;
+line-height: 1.4 !important;
+}
+
+/* Fix table overflow */
+.objection-table-scroll {
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+max-width: 100vw;
+}
+
+@media (max-width: 768px) {
+.objection-table {
+min-width: 300px;
+font-size: 0.875rem;
+}
+
+.objection-table th,
+.objection-table td {
+padding: 0.5rem !important;
+white-space: nowrap;
+}
+}
+
+/* Fix form elements */
+input, select, textarea {
+max-width: 100% !important;
+}
+
+/* Fix hero section mobile layout */
+.hero-bg h1 {
+word-break: break-word;
+hyphens: auto;
+}
+
+/* Fix mobile padding and margins */
+.px-6, .px-8 {
+padding-left: 1rem !important;
+padding-right: 1rem !important;
+}
+
+.py-20 {
+padding-top: 3rem !important;
+padding-bottom: 3rem !important;
+}
+
+/* Fix mobile cards */
+.card-hover {
+margin-bottom: 1rem;
+}
+
+/* Fix mobile navigation */
+.lg\\:px-8 {
+padding-left: 1rem !important;
+padding-right: 1rem !important;
+}
+
+/* Fix mobile sections spacing */
+section {
+overflow-x: hidden;
+}
+
+/* Fix mobile buttons */
+button {
+word-wrap: break-word;
+hyphens: auto;
+}
+
+/* Fix mobile images */
+img {
+max-width: 100%;
+height: auto;
+}
+
+/* Fix mobile swiper */
+.swiper-slide {
+overflow: hidden;
+}
+
+/* Fix mobile footer */
+footer {
+overflow-x: hidden;
+}
+
+/* Additional mobile fixes */
+.flex-col.sm\\:flex-row {
+gap: 0.75rem !important;
+}
+
+/* Fix mobile grid gaps */
+.gap-8 {
+gap: 1rem !important;
+}
+
+.gap-6 {
+gap: 0.75rem !important;
+}
+
+/* Fix mobile text alignment */
+.text-center.lg\\:text-left {
+text-align: center !important;
+}
+
+/* Fix mobile button sizing */
+.h-14 {
+height: auto !important;
+min-height: 3.5rem;
+padding: 0.75rem 1rem !important;
+}
+}
+
+/* Additional global mobile fixes */
+@media (max-width: 640px) {
+/* Extra small screens */
+.text-4x {
+font-size: 2rem !important;
+}
+
+.text-2x {
+font-size: 1.25rem !important;
+}
+
+.py-20 {
+padding-top: 2rem !important;
+padding-bottom: 2rem !important;
+}
+
+.px-8 {
+padding-left: 0.75rem !important;
+padding-right: 0.75rem !important;
+}
+}
+section.bg-secondary {
+border-top: 4px solid #ffffff;
+}
+section[style*="background-image"] {
+border-top: 3px solid #ffffff;
+}
+.fade-in-delay-3 {
+animation-delay: 0.6s;
+}
+.fade-in-delay-4 {
+animation-delay: 0.8s;
+}
+.fade-in-delay-5 {
+animation-delay: 1s;
+}
+.fade-in-delay-6 {
+animation-delay: 1.2s;
+}
+.fade-in-delay-7 {
+animation-delay: 1.4s;
+}
+.fade-in-delay-8 {
+animation-delay: 1.6s;
+}
+@keyframes fadeInUp {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.card-hover {
+transition: all 0.3s ease;
+}
+.card-hover:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+.button-hover {
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+.button-hover::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: left 0.5s;
+}
+.button-hover:hover::before {
+left: 100%;
+}
+.button-hover:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+.icon-bounce {
+transition: transform 0.3s ease;
+}
+.icon-bounce:hover {
+transform: scale(1.1) rotate(5deg);
+}
+@font-face {
+font-family: 'remixicon';
+src: url('https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.woff2') format('woff2'),
+url('https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.woff') format('woff'),
+url('https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
+}
+[class^="ri-"], [class*=" ri-"] {
+font-family: 'remixicon' !important;
+font-style: normal;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+display: inline-block;
+font-variant: normal;
+text-transform: none;
+line-height: 1;
+}
+@media (max-width: 768px) {
+.text-4x {
+font-size: 2rem;
+}
+.text-2x {
+font-size: 1.25rem;
+}
+}
+.solutions-swiper .swiper-wrapper {
+display: flex;
+align-items: stretch;
+}
+.solutions-swiper .swiper-slide {
+height: auto;
+display: flex;
+align-items: stretch;
+}
+.solutions-swiper .swiper-slide > div {
+width: 100%;
+display: flex;
+flex-direction: column;
+min-height: 100%;
+}
+.solutions-swiper .swiper-pagination-bullet {
+background-color: #ff3333 !important;
+opacity: 0.3;
+}
+.solutions-swiper .swiper-pagination-bullet-active {
+background-color: #ff3333 !important;
+opacity: 1;
+}
+.objections-container {
+display: flex;
+flex-direction: column;
+}
+.objection-item-1 {
+margin-bottom: 32px;
+}
+.objection-item-2 {
+margin-bottom: 32px;
+}
+.objection-item-3 {
+margin-bottom: 32px;
+}
+.objection-item-4 {
+margin-bottom: 32px;
+}
+.objection-item-5 {
+margin-bottom: 32px;
+}
+.objection-item-1,
+.objection-item-2,
+.objection-item-3,
+.objection-item-4,
+.objection-item-5 {
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+.objection-question {
+min-height: 80px;
+height: 80px;
+display: flex !important;
+align-items: center !important;
+justify-content: space-between !important;
+padding: 24px !important;
+}
+.objection-answer {
+padding: 0 !important;
+margin: 0 !important;
+}
+.objection-answer.hidden {
+display: none !important;
+padding: 0 !important;
+margin: 0 !important;
+}
+.objection-answer:not(.hidden) {
+padding: 12px 16px !important;
+}
+.objection-answer:not(.hidden) > div {
+padding: 12px 16px !important;
+}
+.objection-answer .bg-green-50,
+.objection-answer .bg-blue-50,
+.objection-answer .bg-red-50,
+.objection-answer .bg-gray-200 {
+padding: 12px 16px !important;
+margin: 0 !important;
+}
+.objection-answer .p-6 {
+padding: 12px 16px !important;
+}
+.objection-answer .mb-2 {
+margin-bottom: 8px !important;
+}
+.objection-answer .mb-3 {
+margin-bottom: 8px !important;
+}
+.objection-answer .mb-4 {
+margin-bottom: 12px !important;
+}
+.objection-answer .gap-4 {
+gap: 12px !important;
+}
+.objection-answer .gap-6 {
+gap: 12px !important;
+}
+.objection-answer .space-y-2 > * + * {
+margin-top: 6px !important;
+}
+.objection-answer .space-y-3 > * + * {
+margin-top: 8px !important;
+}
+.objection-answer ul {
+margin: 8px 0 !important;
+padding-left: 20px !important;
+}
+.objection-answer ul li {
+margin: 4px 0 !important;
+}
+.objection-answer .grid {
+gap: 12px !important;
+}
+.objection-answer table {
+margin: 8px 0 !important;
+}
+.objection-answer table th,
+.objection-answer table td {
+padding: 8px 12px !important;
+}
+.objection-answer p {
+margin: 8px 0 !important;
+}
+.objection-answer .mt-4 {
+margin-top: 8px !important;
+}
+.objection-answer .flex.items-start {
+gap: 8px;
+}
+.objection-answer .flex.items-center {
+gap: 8px;
+}
+.objection-answer .grid {
+display: grid;
+}
+.objection-answer .grid.grid-cols-1 {
+grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+.objection-answer .grid.md\\:grid-cols-2 {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+.objection-answer .bg-blue-50 {
+background-color: #eff6ff !important;
+}
+.objection-answer .rounded-lg {
+border-radius: 8px !important;
+}
+.objection-answer .overflow-x-auto {
+overflow-x: auto !important;
+}
+.objection-answer .w-full {
+width: 100% !important;
+}
+.objection-answer .text-left {
+text-align: left !important;
+}
+.objection-answer table .border-b-2 {
+border-bottom-width: 2px !important;
+}
+.objection-answer table .border-b {
+border-bottom-width: 1px !important;
+}
+.objection-answer table .border-gray-300 {
+border-color: #d1d5db !important;
+}
+.objection-answer table .border-gray-200 {
+border-color: #e5e7eb !important;
+}
+.objection-answer table .bg-custom-gray {
+background-color: #E4E4E4 !important;
+}
+.objection-answer table .py-3 {
+padding-top: 8px !important;
+padding-bottom: 8px !important;
+}
+.objection-answer table .px-4 {
+padding-left: 12px !important;
+padding-right: 12px !important;
+}
+.objection-answer .text-sm {
+font-size: 0.875rem !important;
+}
+.objection-answer .text-lg {
+font-size: 1.125rem !important;
+}
+.objection-answer .text-gray-700 {
+color: #374151 !important;
+}
+.objection-answer .text-green-600 {
+color: #16a34a !important;
+}
+.objection-answer .text-red-500 {
+color: #ef4444 !important;
+}
+.objection-table-wrapper {
+background-color: #eff6ff;
+border-radius: 8px;
+padding: 12px 16px;
+}
+.objection-table-title {
+font-family: 'Mulish', sans-serif;
+font-weight: 800;
+font-size: 1.125rem;
+color: #000;
+margin: 0 0 12px 0;
+}
+.objection-table-scroll {
+overflow-x: auto;
+}
+.objection-table {
+width: 100%;
+text-align: left;
+border-collapse: collapse;
+margin: 8px 0;
+}
+.objection-table-header {
+border-bottom: 2px solid #d1d5db;
+}
+.objection-table-header th {
+font-family: 'Mulish', sans-serif;
+font-weight: 800;
+font-size: 0.875rem;
+color: #374151;
+padding: 8px 12px;
+}
+.objection-table-row {
+border-bottom: 1px solid #e5e7eb;
+}
+.objection-table-row-alt {
+background-color: #f9fafb;
+}
+.objection-table-row td {
+padding: 8px 12px;
+}
+.objection-table-cell-bold {
+font-family: 'Mulish', sans-serif;
+font-weight: 600;
+}
+.objection-icon-green {
+color: #16a34a;
+}
+.objection-icon-red {
+color: #ef4444;
+}
+.objection-table-note {
+font-family: 'Mulish', sans-serif;
+font-weight: 400;
+font-size: 0.875rem;
+color: #4b5563;
+margin: 8px 0 0 0;
+}
+.objection-card {
+background-color: #fff;
+border: 2px solid #e5e7eb;
+border-radius: 16px;
+overflow: hidden;
+width: 100%;
+display: flex;
+flex-direction: column;
+}
+.objection-card-gray {
+background-color: #f3f4f6;
+border-radius: 16px;
+}
+.objection-question-btn {
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 24px;
+text-align: left;
+background: transparent;
+border: none;
+cursor: pointer;
+transition: background-color 0.2s;
+min-height: 80px;
+height: 80px;
+box-sizing: border-box;
+}
+.objection-question-btn:hover {
+background-color: #f9fafb;
+}
+.objection-question-btn-gray:hover {
+background-color: #e5e7eb;
+}
+.objection-question-content {
+display: flex;
+align-items: center;
+gap: 8px;
+flex: 1;
+}
+.objection-question-icon-wrapper {
+width: 64px;
+height: 64px;
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+.objection-question-icon-wrapper-red {
+background-color: #dc2626;
+}
+.objection-question-icon-wrapper-blue {
+background-color: #dc2626;
+}
+.objection-question-icon-wrapper-yellow {
+background-color: #dc2626;
+}
+.objection-question-icon-wrapper-purple {
+background-color: #dc2626;
+}
+.objection-question-icon-wrapper-indigo {
+background-color: #dc2626;
+}
+.objection-question-text {
+font-family: 'Mulish', sans-serif;
+font-weight: 800;
+font-size: 1.25rem;
+color: #000;
+flex: 1;
+}
+.objection-arrow-icon {
+color: #fff;
+font-size: 1.5rem;
+transition: transform 0.3s;
+}
+.objection-question-btn > .objection-arrow-icon {
+color: #000 !important;
+}
+.objection-answer-box {
+background-color: #f0fdf4;
+border-left: 4px solid #22c55e;
+border-radius: 8px;
+padding: 12px 16px;
+}
+.objection-answer-content {
+display: flex;
+align-items: flex-start;
+gap: 8px;
+}
+.objection-answer-icon {
+color: #16a34a;
+font-size: 1.5rem;
+margin-top: 4px;
+flex-shrink: 0;
+}
+.objection-answer-title {
+font-family: 'Mulish', sans-serif;
+font-weight: 800;
+font-size: 1.25rem;
+color: #15803d;
+margin: 0 0 8px 0;
+}
+.objection-answer-text {
+font-family: 'Mulish', sans-serif;
+font-weight: 400;
+color: #374151;
+margin: 0;
+}
+.objection-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 12px;
+}
+@media (min-width: 768px) {
+.objection-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+.objection-comparison-card {
+border-radius: 12px;
+padding: 12px 16px;
+border: 2px solid;
+}
+.objection-comparison-card-red {
+background-color: #fef2f2;
+border-color: #fecaca;
+}
+.objection-comparison-card-green {
+background-color: #f0fdf4;
+border-color: #bbf7d0;
+}
+.objection-comparison-header {
+display: flex;
+align-items: center;
+gap: 8px;
+margin-bottom: 8px;
+}
+.objection-comparison-icon {
+font-size: 1.5rem;
+}
+.objection-comparison-icon-red {
+color: #dc2626;
+}
+.objection-comparison-icon-green {
+color: #16a34a;
+}
+.objection-comparison-title {
+font-family: 'Mulish', sans-serif;
+font-weight: 800;
+font-size: 1.125rem;
+color: #000;
+margin: 0;
+}
+.objection-comparison-list {
+list-style: none;
+padding: 0;
+margin: 8px 0 0 0;
+}
+.objection-comparison-list li {
+display: flex;
+align-items: flex-start;
+gap: 8px;
+margin: 4px 0;
+}
+.objection-comparison-list-icon {
+margin-top: 4px;
+}
+.objection-comparison-list-icon-red {
+color: #dc2626;
+}
+.objection-comparison-list-icon-green {
+color: #16a34a;
+}
+.objection-comparison-text {
+font-family: 'Mulish', sans-serif;
+font-weight: 400;
+color: #374151;
+}
+.objection-comparison-text-bold {
+font-family: 'Mulish', sans-serif;
+font-weight: 800;
+}
+.objection-comparison-text-red {
+color: #dc2626;
+}
+.objection-comparison-text-green {
+color: #16a34a;
+}
+.objection-feature-card {
+background-color: transparent;
+border-radius: 8px;
+padding: 12px 16px;
+}
+.objection-feature-header {
+display: flex;
+align-items: center;
+gap: 8px;
+margin-bottom: 8px;
+}
+.objection-feature-icon {
+color: #ff3333;
+font-size: 1.5rem;
+}
+.objection-feature-title {
+font-family: 'Mulish', sans-serif;
+font-weight: 800;
+font-size: 1.125rem;
+color: #000;
+margin: 0;
+}
+.objection-feature-list {
+list-style: none;
+padding: 0;
+margin: 8px 0 0 0;
+}
+.objection-feature-list li {
+display: flex;
+align-items: flex-start;
+gap: 8px;
+margin: 4px 0;
+}
+.objection-feature-list-icon {
+color: #ff3333;
+margin-top: 4px;
+}
+.objection-feature-text {
+font-family: 'Mulish', sans-serif;
+font-weight: 400;
+color: #000;
+}
+
+/* Стили для плавного скролла блока документов */
+@media (min-width: 1024px) {
+.documents-sticky-block {
+position: relative;
+transition: transform 0.15s ease-out;
+will-change: transform;
+}
+}
+</style>
+</head>
+<body class="bg-white text-black font-mulish-regular overflow-x-hidden">
+<header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-100/50 z-50">
+<div class="w-full px-6 lg:px-8">
+<div class="flex items-center justify-between h-24 gap-8">
+<div class="flex items-center">
+<img src="https://static.readdy.ai/image/105588dfe4999fd2d8a97366fde711eb/5a4d0c5618dc8e81b97b1ebc74b5127a.webp" alt="ПКФ Логотип" class="h-20 w-auto py-2">
+</div>
+<nav class="hidden lg:flex items-center space-x-6">
+<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Продукция</a>
+<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Решения для отраслей</a>
+<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Документы и сертификация</a>
+<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Кейсы и клиенты</a>
+<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Доставка и обучение</a>
+<a href="#" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Контакты</a>
+</nav>
+<div class="hidden lg:flex items-center gap-6">
+<div class="flex flex-col items-end">
+<a href="tel:+74959027759" class="font-mulish-extrabold text-lg text-black hover:text-primary transition-colors duration-200">+7 (495) 902-77-59</a>
+<div class="flex items-center gap-2 text-xs text-gray-700 mt-2">
+<i class="ri-time-line text-primary"></i>
+<span>24/7 реагирование на запросы клиентов</span>
+</div>
+</div>
+<div class="flex flex-col">
+<button data-quick-order class="bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover">
+Подбор ЛАРН-набора
+</button>
+<div class="flex items-center gap-2 text-xs text-gray-700 mt-2">
+<i class="ri-truck-line text-primary"></i>
+<span>Поставка за 1–3 дня по РФ</span>
+</div>
+</div>
+</div>
+<div class="lg:hidden">
+<button id="mobile-menu-button" class="w-6 h-6 flex items-center justify-center">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</div>
+</div>
+<div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden transition-opacity duration-300"></div>
+<div id="mobile-menu" class="fixed top-0 right-0 min-h-screen w-80 bg-white shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 overflow-y-auto">
+<div class="p-6">
+<div class="flex items-center justify-between mb-8">
+<img src="https://static.readdy.ai/image/105588dfe4999fd2d8a97366fde711eb/5a4d0c5618dc8e81b97b1ebc74b5127a.webp" alt="ПКФ Логотип" class="h-16 w-auto">
+<button id="mobile-menu-close" class="w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-button transition-colors">
+<i class="ri-close-line text-2xl"></i>
+</button>
+</div>
+<div class="mb-8">
+<a href="tel:+74959027759" class="font-mulish-extrabold text-xl text-black hover:text-primary transition-colors duration-200 block mb-2">+7 (495) 902-77-59</a>
+<div class="flex items-center gap-2 text-sm text-gray-700 mb-2">
+<i class="ri-time-line text-primary"></i>
+<span>24/7 реагирование на запросы клиентов</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-gray-700">
+<i class="ri-truck-line text-primary"></i>
+<span>Поставка за 1–3 дня по РФ</span>
+</div>
+</div>
+<button data-quick-order class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-4 !rounded-button hover:bg-gray-800 transition-colors duration-200 mb-8 button-hover">
+Подбор ЛАРН-набора
+</button>
+<nav class="space-y-4">
+<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Продукция</a>
+<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Решения для отраслей</a>
+<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Документы и сертификация</a>
+<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Кейсы и клиенты</a>
+<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Доставка и обучение</a>
+<a href="#" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Контакты</a>
+</nav>
+</div>
+</div>
+</header>
+<div id="main-content">
+<section class="hero-bg min-h-screen flex items-center relative pt-32 lg:pt-24">
+<div class="overlay absolute inset-0"></div>
+<div class="relative z-10 w-full px-6 lg:px-8">
+<div class="w-full">
+<div class="max-w-3xl">
+<h1 class="font-mulish-extrabold text-4x text-white mb-4 leading-tight fade-in text-center lg:text-left uppercase break-words">
+Остановите разлив, пока он не <span class="text-secondary">остановил ваше производство</span>
+</h1>
+<p class="font-mulish-semibold text-2x text-white mb-6 fade-in fade-in-delay-1 text-center lg:text-left">
+Сертифицированные ЛАРН-наборы для мгновенной ликвидации разливов нефти и химии.
+</p>
+<ul class="mb-8 space-y-3 fade-in fade-in-delay-2">
+<li class="flex items-start lg:items-start items-center justify-center lg:justify-start text-white font-mulish-regular text-x">
+<i class="ri-checkbox-circle-fill text-secondary text-xl mr-3 mt-0.5 lg:mt-0.5 mt-0"></i>
+<span>Соответствие ГОСТ, СГР, требованиям МЧС</span>
+</li>
+<li class="flex items-start lg:items-start items-center justify-center lg:justify-start text-white font-mulish-regular text-x">
+<i class="ri-checkbox-circle-fill text-secondary text-xl mr-3 mt-0.5 lg:mt-0.5 mt-0"></i>
+<span>Полная комплектация + пакет документов</span>
+</li>
+<li class="flex items-start lg:items-start items-center justify-center lg:justify-start text-white font-mulish-regular text-x">
+<i class="ri-checkbox-circle-fill text-secondary text-xl mr-3 mt-0.5 lg:mt-0.5 mt-0"></i>
+<span>Поставка за 1–3 дня по России и обучение персонала</span>
+</li>
+</ul>
+<div class="flex flex-col sm:flex-row items-center lg:items-start gap-6 fade-in fade-in-delay-3">
+<div class="flex flex-col items-center lg:items-start">
+    <button data-quick-order class="bg-secondary text-white font-mulish-semibold text-x px-4 lg:px-8 py-4 h-14 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover flex items-center justify-center text-center">
+    Получить подбор ЛАРН-набора
+    </button>
+<p class="text-white/80 font-mulish-regular text-sm mt-2 text-center lg:text-left">Бесплатно. Без обязательств и спама.</p>
+</div>
+<button class="bg-transparent border-2 border-secondary text-secondary font-mulish-semibold text-x px-4 lg:px-8 py-4 h-14 !rounded-button hover:bg-secondary hover:text-white transition-all duration-200 button-hover flex items-center justify-center text-center">
+Смотреть каталог решений
+</button>
+</div>
+</div>
+</div>
+    </div>
+    </section>
+    <section class="py-20 lg:py-32 bg-gradient-to-b from-gray-50 to-white">
+    <div class="w-full px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-black mb-4">
+    Почему это <span class="text-secondary">важно</span>
+    </h2>
+    <p class="font-mulish-semibold text-xl text-gray-700 max-w-3xl mx-auto">
+    Финансовые и операционные риски бездействия
+    </p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+    <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-8 fade-in fade-in-delay-1">
+    <div class="flex items-center gap-4 mb-4">
+    <div class="w-16 h-16 bg-red-500 rounded-xl flex items-center justify-center">
+    <i class="ri-time-line text-white text-3xl"></i>
+    </div>
+    <h3 class="font-mulish-extrabold text-2xl text-black">Простой производства</h3>
+    </div>
+    <p class="font-mulish-extrabold text-4xl lg:text-5xl text-red-600 mb-2">
+    4–12 млн ₽
+    </p>
+    <p class="font-mulish-regular text-lg text-gray-700">
+    Средний простой НПЗ из-за разлива нефти
+    </p>
+    </div>
+    <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-8 fade-in fade-in-delay-2">
+    <div class="flex items-center gap-4 mb-4">
+    <div class="w-16 h-16 bg-red-500 rounded-xl flex items-center justify-center">
+    <i class="ri-file-warning-line text-white text-3xl"></i>
+    </div>
+    <h3 class="font-mulish-extrabold text-2xl text-black">Штрафы МЧС/РПН</h3>
+    </div>
+    <p class="font-mulish-extrabold text-4xl lg:text-5xl text-red-600 mb-2">
+    до 1 500 000 ₽
+    </p>
+    <p class="font-mulish-regular text-lg text-gray-700">
+    За отсутствие ЛАРН: от 300 тыс. до 1,5 млн ₽
+    </p>
+    </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+    <div class="bg-red-600 rounded-xl p-6 text-white card-hover fade-in fade-in-delay-3">
+    <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-4">
+    <i class="ri-money-dollar-circle-line text-white text-2xl"></i>
+    </div>
+    <h3 class="font-mulish-extrabold text-xl mb-3">Финансовые потери</h3>
+    <p class="font-mulish-regular text-base opacity-90">
+    Миллионы рублей уходят впустую из-за простоя оборудования и ликвидации последствий
+    </p>
+    </div>
+    <div class="bg-red-600 rounded-xl p-6 text-white card-hover fade-in fade-in-delay-4">
+    <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-4">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
+    </svg>
+    </div>
+    <h3 class="font-mulish-extrabold text-xl mb-3">Штрафы и санкции</h3>
+    <p class="font-mulish-regular text-base opacity-90">
+    МЧС и РПН выписывают штрафы от 300 тыс. до 1,5 млн ₽ за отсутствие ЛАРН-комплектов
+    </p>
+    </div>
+    <div class="bg-red-600 rounded-xl p-6 text-white card-hover fade-in fade-in-delay-5">
+    <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-4">
+    <i class="ri-user-star-line text-white text-2xl"></i>
+    </div>
+    <h3 class="font-mulish-extrabold text-xl mb-3">Репутация и ответственность</h3>
+    <p class="font-mulish-regular text-base opacity-90">
+    Репутационные потери и персональная ответственность руководителя за экологические нарушения
+    </p>
+    </div>
+    </div>
+    <!-- Реальные случаи из практики - закомментировано
+    <div class="bg-black rounded-2xl p-8 lg:p-12 fade-in fade-in-delay-6">
+    <h3 class="font-mulish-extrabold text-3xl lg:text-4xl text-white mb-12 text-center">
+    Реальные случаи из практики
+    </h3>
+    <div class="max-w-4xl mx-auto space-y-8">
+    <div class="relative pl-12 pb-8 border-l-2 border-red-500">
+    <div class="absolute -left-6 top-0 w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+    <i class="ri-building-line text-white text-xl"></i>
+    </div>
+    <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors duration-300">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
+    <div>
+    <div class="flex items-center gap-3 mb-2">
+    <span class="font-mulish-extrabold text-red-400 text-lg">НПЗ в Поволжье</span>
+    <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs font-mulish-semibold">2023</span>
+    </div>
+    <p class="font-mulish-regular text-gray-300 text-base">
+    Простой производства на 8 дней из-за разлива нефтепродуктов
+    </p>
+    </div>
+    <div class="text-right">
+    <p class="font-mulish-extrabold text-2xl text-white">9,2 млн ₽</p>
+    <p class="font-mulish-regular text-sm text-gray-400">убыток</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="relative pl-12 pb-8 border-l-2 border-red-500">
+    <div class="absolute -left-6 top-0 w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+    <i class="ri-stack-line text-white text-xl"></i>
+    </div>
+    <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors duration-300">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
+    <div>
+    <div class="flex items-center gap-3 mb-2">
+    <span class="font-mulish-extrabold text-red-400 text-lg">Нефтебаза в Сибири</span>
+    <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs font-mulish-semibold">2022</span>
+    </div>
+    <p class="font-mulish-regular text-gray-300 text-base">
+    Штраф РПН за отсутствие ЛАРН-комплектов на объекте
+    </p>
+    </div>
+    <div class="text-right">
+    <p class="font-mulish-extrabold text-2xl text-white">850 000 ₽</p>
+    <p class="font-mulish-regular text-sm text-gray-400">штраф</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="relative pl-12 pb-8 border-l-2 border-red-500">
+    <div class="absolute -left-6 top-0 w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+    <i class="ri-flask-line text-white text-xl"></i>
+    </div>
+    <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors duration-300">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
+    <div>
+    <div class="flex items-center gap-3 mb-2">
+    <span class="font-mulish-extrabold text-red-400 text-lg">Химический завод</span>
+    <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs font-mulish-semibold">2023</span>
+    </div>
+    <p class="font-mulish-regular text-gray-300 text-base">
+    Простой производства и штрафы МЧС за нарушение требований
+    </p>
+    </div>
+    <div class="text-right">
+    <p class="font-mulish-extrabold text-2xl text-white">11,5 млн ₽</p>
+    <p class="font-mulish-regular text-sm text-gray-400">общие потери</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="relative pl-12">
+    <div class="absolute -left-6 top-0 w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+    <i class="ri-truck-line text-white text-xl"></i>
+    </div>
+    <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors duration-300">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
+    <div>
+    <div class="flex items-center gap-3 mb-2">
+    <span class="font-mulish-extrabold text-red-400 text-lg">Транспортная компания</span>
+    <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs font-mulish-semibold">2024</span>
+    </div>
+    <p class="font-mulish-regular text-gray-300 text-base">
+    Уголовное дело на директора и административный штраф
+    </p>
+    </div>
+    <div class="text-right">
+    <p class="font-mulish-extrabold text-2xl text-white">1,2 млн ₽</p>
+    <p class="font-mulish-regular text-sm text-gray-400">штраф + уголовное дело</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    -->
+    </div>
+    </div>
+    </section>
+    <section class="py-20 lg:py-32 bg-custom-gray">
+    <div class="w-full px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-black mb-4">
+    Готовые <span class="text-secondary">ЛАРН-решения</span>
+    </h2>
+    <p class="font-mulish-semibold text-xl text-gray-700 max-w-3xl mx-auto">
+    Полные комплекты для ликвидации разливов — от сорбентов до биопрепаратов
+    </p>
+    </div>
+    <div class="relative px-12 lg:px-16">
+    <div class="swiper solutions-swiper pb-12">
+    <div class="swiper-wrapper">
+    <div class="swiper-slide">
+    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
+    <div class="h-32 bg-white flex items-center justify-center relative">
+    <i class="ri-drop-line text-6xl text-gray-400"></i>
+    <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
+    </div>
+    <div class="p-6 bg-white flex-1 flex flex-col">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Сорбирующие салфетки и материалы</h3>
+    <div class="space-y-3 mb-4">
+    <p class="font-mulish-regular text-sm text-black">Салфетки, полотна, боны, подушки и маты для эффективного сбора нефтепродуктов и химических жидкостей.</p>
+    </div>
+    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    Получить спецификацию
+    </button>
+    </div>
+    </div>
+    </div>
+    <div class="swiper-slide">
+    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
+    <div class="h-32 bg-white flex items-center justify-center relative">
+    <i class="ri-stack-line text-6xl text-gray-400"></i>
+    <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
+    </div>
+    <div class="p-6 bg-white flex-1 flex flex-col">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Сорбенты</h3>
+    <div class="space-y-3 mb-4">
+    <p class="font-mulish-regular text-sm text-black">Сухие и гранулированные сорбенты для сбора нефти, топлива и химии на воде и твёрдых поверхностях.</p>
+    </div>
+    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    Получить спецификацию
+    </button>
+    </div>
+    </div>
+    </div>
+    <div class="swiper-slide">
+    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full shadow-lg flex flex-col">
+    <div class="h-32 bg-white flex items-center justify-center relative">
+    <i class="ri-tools-line text-6xl text-secondary"></i>
+    <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ПОПУЛЯРНО</div>
+    </div>
+    <div class="p-6 bg-white flex-1 flex flex-col">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Наборы для ликвидации разливов</h3>
+    <div class="space-y-3 mb-4">
+    <p class="font-mulish-regular text-sm text-black">Наборы для сбора нефти и химии: ЛАРН, комплекты для разливов ГСМ и реагентов на производстве, складе и транспорте.</p>
+    </div>
+    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    Получить спецификацию
+    </button>
+    </div>
+    </div>
+    </div>
+    <div class="swiper-slide">
+    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
+    <div class="h-32 bg-white flex items-center justify-center relative">
+    <i class="ri-database-2-line text-6xl text-gray-400"></i>
+    <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
+    </div>
+    <div class="p-6 bg-white flex-1 flex flex-col">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Тара для бочек</h3>
+    <div class="space-y-3 mb-4">
+    <p class="font-mulish-regular text-sm text-black">Поддоны для безопасного хранения и транспортировки бочек, еврокубов и бутылей — защита от проливов и утечек.</p>
+    </div>
+    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    Получить спецификацию
+    </button>
+    </div>
+    </div>
+    </div>
+    <div class="swiper-slide">
+    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
+    <div class="h-32 bg-white flex items-center justify-center relative">
+    <i class="ri-absorb-line text-6xl text-gray-400"></i>
+    <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
+    </div>
+    <div class="p-6 bg-white flex-1 flex flex-col">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Абсорбенты</h3>
+    <div class="space-y-3 mb-4">
+    <p class="font-mulish-regular text-sm text-black">Абсорбенты для оперативного сбора разливов нефти и нефтепродуктов на воде и суше.</p>
+    </div>
+    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    Получить спецификацию
+    </button>
+    </div>
+    </div>
+    </div>
+    <div class="swiper-slide">
+    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
+    <div class="h-32 bg-white flex items-center justify-center relative">
+    <i class="ri-settings-3-line text-6xl text-gray-400"></i>
+    <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
+    </div>
+    <div class="p-6 bg-white flex-1 flex flex-col">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Аксессуары для бочек нефтепродуктов</h3>
+    <div class="space-y-3 mb-4">
+    <p class="font-mulish-regular text-sm text-black">Блокираторы отверстий бочек — надёжная защита от проливов нефтепродуктов при хранении и транспортировке.</p>
+    </div>
+    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    Получить спецификацию
+    </button>
+    </div>
+    </div>
+    </div>
+    <div class="swiper-slide">
+    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
+    <div class="h-32 bg-white flex items-center justify-center relative">
+    <i class="ri-archive-line text-6xl text-gray-400"></i>
+    <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
+    </div>
+    <div class="p-6 bg-white flex-1 flex flex-col">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Тара для хранения</h3>
+    <div class="space-y-3 mb-4">
+    <p class="font-mulish-regular text-sm text-black">Контейнеры, баки, шкафы и аксессуары для надёжного и удобного хранения сорбентов, ЛАРН и промышленных материалов.</p>
+    </div>
+    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    Получить спецификацию
+    </button>
+    </div>
+    </div>
+    </div>
+    <div class="swiper-slide">
+    <div class="bg-white border border-black rounded-xl overflow-hidden card-hover h-full flex flex-col">
+    <div class="h-32 bg-white flex items-center justify-center relative">
+    <i class="ri-leaf-line text-6xl text-gray-400"></i>
+    <div class="absolute top-3 right-3 bg-secondary text-white px-2 py-1 rounded text-xs font-mulish-semibold">ЛАРН</div>
+    </div>
+    <div class="p-6 bg-white flex-1 flex flex-col">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-4 pb-2 border-b-2 border-secondary">Биопрепараты для ликвидации утечек</h3>
+    <div class="space-y-3 mb-4">
+    <p class="font-mulish-regular text-sm text-black">Биопрепараты для эффективной и экологичной ликвидации разливов нефти и нефтепродуктов на воде и суше.</p>
+    </div>
+    <button class="w-full bg-secondary text-white font-mulish-semibold text-sm px-6 py-3 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover mt-auto">
+    Получить спецификацию
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="swiper-pagination !relative !mt-8"></div>
+    </div>
+    <div class="swiper-button-prev !text-secondary !absolute !left-0 !top-1/2 !-translate-y-1/2"></div>
+    <div class="swiper-button-next !text-secondary !absolute !right-0 !top-1/2 !-translate-y-1/2"></div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const solutionsSwiper = new Swiper('.solutions-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    autoHeight: false,
+    pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    },
+    navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+    640: {
+    slidesPerView: 2,
+    },
+    1024: {
+    slidesPerView: 3,
+    },
+    1280: {
+    slidesPerView: 4,
+    },
+    },
+    });
+    
+    function equalizeCardHeights() {
+    const slides = document.querySelectorAll('.solutions-swiper .swiper-slide');
+    let maxHeight = 0;
+    slides.forEach(slide => {
+    const card = slide.querySelector('div[class*="bg-white"]');
+    if (card) {
+    card.style.height = 'auto';
+    const height = card.offsetHeight;
+    if (height > maxHeight) {
+    maxHeight = height;
+    }
+    }
+    });
+    slides.forEach(slide => {
+    const card = slide.querySelector('div[class*="bg-white"]');
+    if (card) {
+    card.style.height = maxHeight + 'px';
+    }
+    });
+    }
+    
+    setTimeout(equalizeCardHeights, 100);
+    window.addEventListener('resize', equalizeCardHeights);
+    solutionsSwiper.on('slideChange', equalizeCardHeights);
+    });
+    </script>
+    <section class="py-20 lg:py-32 bg-white">
+    <div class="w-full px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-black mb-4">
+    Решения под ваш <span class="text-secondary">тип объекта</span>
+    </h2>
+    <p class="font-mulish-semibold text-xl text-gray-700 max-w-3xl mx-auto">
+    Специализированные ЛАРН-комплекты для разных отраслей и задач
+    </p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="relative rounded-2xl overflow-hidden card-hover fade-in fade-in-delay-1 group">
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black opacity-85 group-hover:opacity-90 transition-opacity duration-300"></div>
+    <div class="absolute inset-0 bg-[url('images/cards/1card.jpg')] bg-cover bg-center opacity-25 group-hover:opacity-35 transition-opacity duration-300"></div>
+    <div class="relative z-10 p-8 min-h-[500px] flex flex-col justify-between">
+    <div>
+    <h3 class="font-mulish-extrabold text-2xl lg:text-3xl text-white mb-6">
+    ЛАРН-наборы для нефтегазовых и химических предприятий
+    </h3>
+    <ul class="space-y-4">
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Соответствие ГОСТ и МЧС</span>
+    </li>
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Химическая совместимость</span>
+    </li>
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Обучение персонала</span>
+    </li>
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Документы + интеграция в планы ЛАРН</span>
+    </li>
+    </ul>
+    </div>
+    <button class="mt-8 w-full bg-secondary text-white font-mulish-semibold text-base px-6 py-4 !rounded-button hover:bg-red-600 transition-colors duration-200 button-hover">
+    Подобрать решение
+    </button>
+    </div>
+    </div>
+    <div class="relative rounded-2xl overflow-hidden card-hover fade-in fade-in-delay-2 group">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-900 opacity-85 group-hover:opacity-90 transition-opacity duration-300"></div>
+    <div class="absolute inset-0 bg-[url('images/cards/2card.jpeg')] bg-cover bg-center opacity-25 group-hover:opacity-35 transition-opacity duration-300"></div>
+    <div class="relative z-10 p-8 min-h-[500px] flex flex-col justify-between">
+    <div>
+    <h3 class="font-mulish-extrabold text-2xl lg:text-3xl text-white mb-6">
+    Решения для МЧС, ГО и ЧС, муниципальных служб
+    </h3>
+    <ul class="space-y-4">
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Полный пакет под 44-ФЗ</span>
+    </li>
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Срок хранения и морозостойкость</span>
+    </li>
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Компактность для размещения в спецтехнике</span>
+    </li>
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Тендерная документация</span>
+    </li>
+    </ul>
+    </div>
+    <button class="mt-8 w-full bg-secondary text-white font-mulish-semibold text-base px-6 py-4 !rounded-button hover:bg-red-600 transition-colors duration-200 button-hover">
+    Подобрать решение
+    </button>
+    </div>
+    </div>
+    <div class="relative rounded-2xl overflow-hidden card-hover fade-in fade-in-delay-3 group">
+    <div class="absolute inset-0 bg-gradient-to-br from-amber-800 via-orange-900 to-yellow-900 opacity-85 group-hover:opacity-90 transition-opacity duration-300"></div>
+    <div class="absolute inset-0 bg-[url('images/cards/3card.png')] bg-cover bg-center opacity-25 group-hover:opacity-35 transition-opacity duration-300"></div>
+    <div class="relative z-10 p-8 min-h-[500px] flex flex-col justify-between">
+    <div>
+    <h3 class="font-mulish-extrabold text-2xl lg:text-3xl text-white mb-6">
+    ЛАРН-наборы для перевозки опасных грузов
+    </h3>
+    <ul class="space-y-4">
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Компактный размер</span>
+    </li>
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Простая инструкция для водителей</span>
+    </li>
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Соответствует требованиям перевозки ОГ</span>
+    </li>
+    <li class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <span class="font-mulish-semibold text-white text-lg">Спецпредложения для автопарков</span>
+    </li>
+    </ul>
+    </div>
+    <button class="mt-8 w-full bg-secondary text-white font-mulish-semibold text-base px-6 py-4 !rounded-button hover:bg-red-600 transition-colors duration-200 button-hover">
+    Подобрать решение
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="py-20 lg:py-32 bg-custom-gray">
+    <div class="w-full px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-black mb-4">
+    Документы и <span class="text-secondary">нормативы</span>
+    </h2>
+    <p class="font-mulish-semibold text-xl text-gray-700 max-w-3xl mx-auto">
+    Вся необходимая документация для прохождения проверок
+    </p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+    <div class="fade-in fade-in-delay-1 lg:order-2">
+    <div class="documents-sticky-container" style="position: relative;">
+    <div class="documents-sticky-block">
+    <div class="relative">
+    <div class="bg-white rounded-2xl p-8 shadow-2xl border-2 border-gray-200">
+    <div class="grid grid-cols-2 gap-6">
+    <div class="bg-custom-gray rounded-xl p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="flex items-center gap-3 mb-3">
+    <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+    <i class="ri-file-paper-2-line text-secondary text-2xl"></i>
+    </div>
+    <h4 class="font-mulish-extrabold text-lg text-black">ГОСТ</h4>
+    </div>
+    <p class="font-mulish-regular text-sm text-gray-600">Соответствие государственным стандартам</p>
+    </div>
+    <div class="bg-custom-gray rounded-xl p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="flex items-center gap-3 mb-3">
+    <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+    <i class="ri-file-shield-line text-secondary text-2xl"></i>
+    </div>
+    <h4 class="font-mulish-extrabold text-lg text-black">СГР</h4>
+    </div>
+    <p class="font-mulish-regular text-sm text-gray-600">Свидетельство о госрегистрации</p>
+    </div>
+    <div class="bg-custom-gray rounded-xl p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="flex items-center gap-3 mb-3">
+    <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+    <i class="ri-award-line text-secondary text-2xl"></i>
+    </div>
+    <h4 class="font-mulish-extrabold text-lg text-black">Сертификаты</h4>
+    </div>
+    <p class="font-mulish-regular text-sm text-gray-600">Сертификаты соответствия</p>
+    </div>
+    <div class="bg-custom-gray rounded-xl p-6 border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="flex items-center gap-3 mb-3">
+    <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+    <i class="ri-file-list-3-line text-secondary text-2xl"></i>
+    </div>
+    <h4 class="font-mulish-extrabold text-lg text-black">Паспорт безопасности</h4>
+    </div>
+    <p class="font-mulish-regular text-sm text-gray-600">Полный пакет документов</p>
+    </div>
+    </div>
+    <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-secondary/20 rounded-full blur-2xl"></div>
+    <div class="absolute -top-4 -left-4 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="fade-in fade-in-delay-2 lg:order-1">
+    <h3 class="font-mulish-extrabold text-2xl text-black mb-6">Соответствие нормативным требованиям</h3>
+    <div class="space-y-4 mb-8">
+    <div class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <div>
+    <p class="font-mulish-semibold text-lg text-black mb-1">ГОСТ 12.4.091-80</p>
+    <p class="font-mulish-regular text-gray-600">Средства индивидуальной защиты</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <div>
+    <p class="font-mulish-semibold text-lg text-black mb-1">ГОСТ Р 12.4.236-2021</p>
+    <p class="font-mulish-regular text-gray-600">Средства защиты от разливов нефти</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <div>
+    <p class="font-mulish-semibold text-lg text-black mb-1">Требования МЧС России</p>
+    <p class="font-mulish-regular text-gray-600">Правила оснащения объектов ЛАРН</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <div>
+    <p class="font-mulish-semibold text-lg text-black mb-1">Федеральный закон №116-ФЗ</p>
+    <p class="font-mulish-regular text-gray-600">О промышленной безопасности</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-3">
+    <i class="ri-checkbox-circle-fill text-secondary text-xl mt-1 flex-shrink-0"></i>
+    <div>
+    <p class="font-mulish-semibold text-lg text-black mb-1">ТР ТС 019/2011</p>
+    <p class="font-mulish-regular text-gray-600">О безопасности средств индивидуальной защиты</p>
+    </div>
+    </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <div class="bg-green-50 border-2 border-green-200 rounded-xl p-4 text-center">
+    <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+    <i class="ri-shield-check-line text-white text-2xl"></i>
+    </div>
+    <p class="font-mulish-extrabold text-sm text-green-700 mb-1">Готово к проверке</p>
+    <p class="font-mulish-semibold text-lg text-black">МЧС</p>
+    </div>
+    <div class="bg-green-50 border-2 border-green-200 rounded-xl p-4 text-center">
+    <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+    <i class="ri-shield-check-line text-white text-2xl"></i>
+    </div>
+    <p class="font-mulish-extrabold text-sm text-green-700 mb-1">Готово к проверке</p>
+    <p class="font-mulish-semibold text-lg text-black">РПН</p>
+    </div>
+    <div class="bg-green-50 border-2 border-green-200 rounded-xl p-4 text-center">
+    <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+    <i class="ri-shield-check-line text-white text-2xl"></i>
+    </div>
+    <p class="font-mulish-extrabold text-sm text-green-700 mb-1">Готово к проверке</p>
+    <p class="font-mulish-semibold text-lg text-black">Ростехнадзор</p>
+    </div>
+    </div>
+    <button id="download-docs-btn" class="w-full bg-secondary text-white font-mulish-semibold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover flex items-center justify-center gap-3">
+    <i class="ri-download-line text-xl"></i>
+    <span>Скачать пакет документов</span>
+    </button>
+    <p class="text-center text-sm text-gray-600 mt-3 font-mulish-regular">Полный комплект для прохождения проверок</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="py-20 lg:py-32 bg-white">
+      <div class="w-full px-6 lg:px-8">
+          <div class="max-w-7xl mx-auto">
+              <div class="text-center mb-16 fade-in">
+                  <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-black mb-4">
+                      Почему наши ЛАРН-решения <span class="text-secondary">эффективнее</span>
+                  </h2>
+              </div>
+              
+              <div class="objections-container">
+                  
+                  <!-- Блок 1 -->
+                  <div class="objection-card fade-in fade-in-delay-1 objection-item-1">
+                      <button class="objection-question-btn" onclick="toggleObjection(this)">
+                          <div class="objection-question-content">
+                              <div class="objection-question-icon-wrapper objection-question-icon-wrapper-red">
+                                  <i class="ri-question-line objection-arrow-icon"></i>
+                              </div>
+                              <span class="objection-question-text">«У нас уже есть ЛАРН-средства»</span>
+                          </div>
+                          <i class="ri-arrow-down-s-line objection-arrow-icon"></i>
+                      </button>
+                      <div class="objection-answer hidden">
+                          <div class="objection-answer-box">
+                              <div class="objection-answer-content">
+                                  <i class="ri-checkbox-circle-fill objection-answer-icon"></i>
+                                  <div>
+                                      <p class="objection-answer-title">Проверим ваши средства бесплатно</p>
+                                      <p class="objection-answer-text">Экспертная оценка соответствия ГОСТ и требованиям МЧС. Выявим несоответствия и предложим решение.</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Блок 2 -->
+                  <div class="objection-card fade-in fade-in-delay-2 objection-item-2">
+                      <button class="objection-question-btn" onclick="toggleObjection(this)">
+                          <div class="objection-question-content">
+                              <div class="objection-question-icon-wrapper objection-question-icon-wrapper-blue">
+                                  <i class="ri-flask-line objection-arrow-icon"></i>
+                              </div>
+                              <span class="objection-question-text">«Не подходит под наши вещества»</span>
+                          </div>
+                          <i class="ri-arrow-down-s-line objection-arrow-icon"></i>
+                      </button>
+                      <div class="objection-answer hidden">
+                          <div class="objection-table-wrapper">
+                              <p class="objection-table-title">Таблица совместимости веществ</p>
+                              <div class="objection-table-scroll">
+                                  <table class="objection-table">
+                                      <thead>
+                                          <tr class="objection-table-header">
+                                              <th>Вещество</th>
+                                              <th>Сорбенты</th>
+                                              <th>Абсорбенты</th>
+                                              <th>Биопрепараты</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr class="objection-table-row">
+                                              <td class="objection-table-cell-bold">Нефть, ГСМ</td>
+                                              <td><i class="ri-checkbox-circle-fill objection-icon-green"></i></td>
+                                              <td><i class="ri-checkbox-circle-fill objection-icon-green"></i></td>
+                                              <td><i class="ri-checkbox-circle-fill objection-icon-green"></i></td>
+                                          </tr>
+                                          <tr class="objection-table-row objection-table-row-alt">
+                                              <td class="objection-table-cell-bold">Кислоты, щёлочи</td>
+                                              <td><i class="ri-close-circle-fill objection-icon-red"></i></td>
+                                              <td><i class="ri-checkbox-circle-fill objection-icon-green"></i></td>
+                                              <td><i class="ri-close-circle-fill objection-icon-red"></i></td>
+                                          </tr>
+                                          <tr class="objection-table-row">
+                                              <td class="objection-table-cell-bold">Органические растворители</td>
+                                              <td><i class="ri-checkbox-circle-fill objection-icon-green"></i></td>
+                                              <td><i class="ri-checkbox-circle-fill objection-icon-green"></i></td>
+                                              <td><i class="ri-checkbox-circle-fill objection-icon-green"></i></td>
+                                          </tr>
+                                          <tr class="objection-table-row objection-table-row-alt">
+                                              <td class="objection-table-cell-bold">Масла, жиры</td>
+                                              <td><i class="ri-checkbox-circle-fill objection-icon-green"></i></td>
+                                              <td><i class="ri-checkbox-circle-fill objection-icon-green"></i></td>
+                                              <td><i class="ri-checkbox-circle-fill objection-icon-green"></i></td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                              <p class="objection-table-note">Подберём оптимальное решение под ваши вещества</p>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Блок 3 -->
+                  <div class="objection-card fade-in fade-in-delay-3 objection-item-3">
+                      <button class="objection-question-btn" onclick="toggleObjection(this)">
+                          <div class="objection-question-content">
+                              <div class="objection-question-icon-wrapper objection-question-icon-wrapper-yellow">
+                                  <i class="ri-money-dollar-circle-line objection-arrow-icon"></i>
+                              </div>
+                              <span class="objection-question-text">«Дорого»</span>
+                          </div>
+                          <i class="ri-arrow-down-s-line objection-arrow-icon"></i>
+                      </button>
+                      <div class="objection-answer hidden">
+                          <div class="objection-grid">
+                              <div class="objection-comparison-card objection-comparison-card-red">
+                                  <div class="objection-comparison-header">
+                                      <i class="ri-close-circle-fill objection-comparison-icon objection-comparison-icon-red"></i>
+                                      <h4 class="objection-comparison-title">Без ЛАРН-набора</h4>
+                                  </div>
+                                  <ul class="objection-comparison-list">
+                                      <li>
+                                          <i class="ri-arrow-right-line objection-comparison-list-icon objection-comparison-list-icon-red"></i>
+                                          <span class="objection-comparison-text">Простой производства: <span class="objection-comparison-text-bold objection-comparison-text-red">4–12 млн ₽</span></span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-arrow-right-line objection-comparison-list-icon objection-comparison-list-icon-red"></i>
+                                          <span class="objection-comparison-text">Штрафы МЧС/РПН: <span class="objection-comparison-text-bold objection-comparison-text-red">до 1,5 млн ₽</span></span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-arrow-right-line objection-comparison-list-icon objection-comparison-list-icon-red"></i>
+                                          <span class="objection-comparison-text">Репутационные потери</span>
+                                      </li>
+                                  </ul>
+                              </div>
+                              <div class="objection-comparison-card objection-comparison-card-green">
+                                  <div class="objection-comparison-header">
+                                      <i class="ri-checkbox-circle-fill objection-comparison-icon objection-comparison-icon-green"></i>
+                                      <h4 class="objection-comparison-title">С нашими ЛАРН-наборами</h4>
+                                  </div>
+                                  <ul class="objection-comparison-list">
+                                      <li>
+                                          <i class="ri-arrow-right-line objection-comparison-list-icon objection-comparison-list-icon-green"></i>
+                                          <span class="objection-comparison-text">Стоимость набора: <span class="objection-comparison-text-bold objection-comparison-text-green">от 50 000 ₽</span></span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-arrow-right-line objection-comparison-list-icon objection-comparison-list-icon-green"></i>
+                                          <span class="objection-comparison-text">Экономия на простоях: <span class="objection-comparison-text-bold objection-comparison-text-green">миллионы ₽</span></span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-arrow-right-line objection-comparison-list-icon objection-comparison-list-icon-green"></i>
+                                          <span class="objection-comparison-text"><span class="objection-comparison-text-bold objection-comparison-text-green">Эффективность вложений до 2000%</span> за первый год</span>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Блок 4 -->
+                  <div class="objection-card fade-in fade-in-delay-4 objection-item-4">
+                      <button class="objection-question-btn" onclick="toggleObjection(this)">
+                          <div class="objection-question-content">
+                              <div class="objection-question-icon-wrapper objection-question-icon-wrapper-red">
+                                  <i class="ri-settings-3-line objection-arrow-icon"></i>
+                              </div>
+                              <span class="objection-question-text">«Сложно внедрить»</span>
+                          </div>
+                          <i class="ri-arrow-down-s-line objection-arrow-icon"></i>
+                      </button>
+                      <div class="objection-answer hidden">
+                          <div class="objection-grid">
+                              <div class="objection-feature-card">
+                                  <div class="objection-feature-header">
+                                      <i class="ri-tools-line objection-feature-icon"></i>
+                                      <h4 class="objection-feature-title">Внедрение</h4>
+                                  </div>
+                                  <ul class="objection-feature-list">
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">Доставка за 1–3 дня</span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">Помощь в размещении</span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">Интеграция в планы ЛАРН</span>
+                                      </li>
+                                  </ul>
+                              </div>
+                              <div class="objection-feature-card">
+                                  <div class="objection-feature-header">
+                                      <i class="ri-graduation-cap-line objection-feature-icon"></i>
+                                      <h4 class="objection-feature-title">Обучение</h4>
+                                  </div>
+                                  <ul class="objection-feature-list">
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">Обучение персонала на объекте</span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">Инструкции и видеоматериалы</span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">Техподдержка 24/7</span>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Блок 5 -->
+                  <div class="objection-card fade-in fade-in-delay-5 objection-item-5">
+                      <button class="objection-question-btn" onclick="toggleObjection(this)">
+                          <div class="objection-question-content">
+                              <div class="objection-question-icon-wrapper objection-question-icon-wrapper-red">
+                                  <i class="ri-file-shield-line objection-arrow-icon"></i>
+                              </div>
+                              <span class="objection-question-text">«Не пройдут проверку»</span>
+                          </div>
+                          <i class="ri-arrow-down-s-line objection-arrow-icon"></i>
+                      </button>
+                      <div class="objection-answer hidden">
+                          <div class="objection-grid">
+                              <div class="objection-feature-card">
+                                  <div class="objection-feature-header">
+                                      <i class="ri-folder-line objection-feature-icon"></i>
+                                      <h4 class="objection-feature-title">Документы</h4>
+                                  </div>
+                                  <ul class="objection-feature-list">
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">ГОСТ, СГР, сертификаты</span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">Паспорт безопасности</span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">Готово к проверке</span>
+                                      </li>
+                                  </ul>
+                              </div>
+                              <div class="objection-feature-card">
+                                  <div class="objection-feature-header">
+                                      <i class="ri-star-line objection-feature-icon"></i>
+                                      <h4 class="objection-feature-title">Кейсы</h4>
+                                  </div>
+                                  <ul class="objection-feature-list">
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">500+ проверок</span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">НПЗ, заводы</span>
+                                      </li>
+                                      <li>
+                                          <i class="ri-checkbox-circle-fill objection-feature-list-icon"></i>
+                                          <span class="objection-feature-text">Госзаказчики</span>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+              </div>
+          </div>
+      </div>
+  </section>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const stickyBlock = document.querySelector('.documents-sticky-block');
+    const downloadBtn = document.getElementById('download-docs-btn');
+    
+    if (!stickyBlock || !downloadBtn) {
+        console.log('Sticky block or download button not found');
+        return;
+    }
+    
+    let originalTop = 0;
+    let blockHeight = 0;
+    
+    function init() {
+        // Сбрасываем transform для получения изначальной позиции
+        stickyBlock.style.transform = '';
+        
+        const blockRect = stickyBlock.getBoundingClientRect();
+        originalTop = blockRect.top + window.pageYOffset;
+        blockHeight = blockRect.height;
+        
+        console.log('Initialized:', { originalTop, blockHeight });
+    }
+    
+    function handleScroll() {
+        const scrollTop = window.pageYOffset;
+        const downloadRect = downloadBtn.getBoundingClientRect();
+        
+        // Позиция кнопки в документе
+        const downloadTop = downloadRect.top + scrollTop;
+        
+        // Расстояние от верха экрана до изначальной позиции блока
+        const distanceFromTop = originalTop - scrollTop - 96;
+        
+        // Максимальное расстояние, на которое блок может опуститься
+        // (до кнопки минус высота блока)
+        const maxDistance = downloadTop - originalTop - blockHeight;
+        
+        let translateY = 0;
+        
+        if (distanceFromTop <= 0) {
+            // Блок должен "прилипнуть" к верху
+            translateY = -distanceFromTop;
+            
+            // Ограничиваем движение до кнопки
+            if (translateY > maxDistance) {
+                translateY = maxDistance;
+            }
+        }
+        
+        // Применяем transform
+        stickyBlock.style.transform = `translateY(${translateY}px)`;
+        
+        console.log('Scroll:', { 
+            scrollTop, 
+            distanceFromTop, 
+            translateY, 
+            maxDistance,
+            downloadTop: downloadTop - originalTop
+        });
+    }
+    
+    // Инициализация
+    init();
+    
+    // Обработчики событий
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', function() {
+        setTimeout(function() {
+            init();
+            handleScroll();
+        }, 100);
+    });
+    
+    // Первоначальная проверка
+    handleScroll();
+    });
+    </script>
+    <script>
+    function toggleObjection(button) {
+    const answer = button.nextElementSibling;
+    const icon = button.querySelector('i:last-child');
+    const isOpen = !answer.classList.contains('hidden');
+    document.querySelectorAll('.objection-answer').forEach(item => {
+    if (item !== answer) {
+    item.classList.add('hidden');
+    item.previousElementSibling.querySelector('i:last-child').style.transform = 'rotate(0deg)';
+    }
+    });
+    if (isOpen) {
+    answer.classList.add('hidden');
+    icon.style.transform = 'rotate(0deg)';
+    } else {
+    answer.classList.remove('hidden');
+    icon.style.transform = 'rotate(180deg)';
+    }
+    }
+    </script>
+    <section class="py-20 lg:py-32 bg-gradient-to-b from-gray-50 to-white">
+    <div class="w-full px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-black mb-4">
+    Что входит в <span class="text-secondary">комплект</span>
+    </h2>
+    <p class="font-mulish-semibold text-xl text-gray-700 max-w-3xl mx-auto">
+    Визуальный разбор ЛАРН-набора — всё необходимое для ликвидации разливов
+    </p>
+    </div>
+    <div class="fade-in fade-in-delay-1 larn-image-container">
+    <div class="bg-white rounded-2xl p-8 shadow-2xl border-2 border-gray-200">
+    <div class="rounded-xl overflow-hidden">
+    <img src="images/products/larn1.png" alt="ЛАРН-комплект" class="w-full rounded-xl" style="max-height: 300px; object-fit: contain; object-position: center;">
+    </div>
+    </div>
+    </div>
+    <div class="fade-in fade-in-delay-2">
+
+    <div class="space-y-4 mb-8">
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">1</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Передвижной пластмассовый контейнер на 2-х колесах с крышкой - 1 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">2</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Сорбент нефтепродуктов (в упаковке 12 кг) - 1 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">3</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Сорбирующий бон - 2 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">4</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Сорбирующая подушка - 4 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">5</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Сорбирующая салфетка - 40 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">6</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Метла складная - 1 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">7</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Лопата-совок - 1 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">8</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Мешок для сбора использованного абсорбента - 5 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">9</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Защитные маслобензостойкие перчатки - 1 пар</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">10</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Респиратор - 1 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">11</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Совок насыпной - 1 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">12</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Наклейка «Набор ЛАРН» - 1 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">13</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Наклейка «Инструкция по эксплуатации» - 1 шт.</p>
+    </div>
+    </div>
+    <div class="flex items-start gap-4 p-4 bg-white rounded-xl border-2 border-gray-200 hover:border-secondary transition-colors duration-300">
+    <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-xl flex-shrink-0">14</div>
+    <div class="flex-1">
+    <p class="font-mulish-regular text-gray-800">Инструкция по эксплуатации - 1 шт.</p>
+    </div>
+    </div>
+    </div>
+    <button class="w-full bg-secondary text-white font-mulish-semibold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover flex items-center justify-center gap-3">
+    <i class="ri-file-list-3-line text-xl"></i>
+    <span>Получить полный состав комплекта</span>
+    </button>
+    <p class="text-center text-sm text-gray-600 mt-3 font-mulish-regular">Детальная спецификация с количеством и характеристиками</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="py-20 lg:py-32 bg-custom-gray">
+    <div class="w-full px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-black mb-4">
+    Экономический <span class="text-secondary">эффект</span>
+    </h2>
+    <p class="font-mulish-semibold text-xl text-gray-700 max-w-3xl mx-auto">
+    Рассчитайте эффективность вложений и убедитесь в выгоде инвестиций в ЛАРН-наборы
+    </p>
+    </div>
+    <div class="max-w-2xl mx-auto mb-12">
+    <div class="fade-in fade-in-delay-2">
+    <div class="bg-red-600 rounded-2xl p-8 border-2 border-red-700 shadow-lg">
+    <h3 class="font-mulish-extrabold text-2xl text-white mb-6">Калькулятор стоимости простоя</h3>
+    <div class="space-y-6">
+    <div>
+    <label class="font-mulish-semibold text-white mb-2 block">Выручка в день (₽)</label>
+    <input type="number" id="daily-revenue" placeholder="10000000" class="w-full px-4 py-3 border-2 border-white/30 bg-white/10 text-white rounded-lg focus:border-white focus:outline-none font-mulish-semibold text-lg placeholder:text-white/50">
+    </div>
+    <div>
+    <label class="font-mulish-semibold text-white mb-2 block">Количество рабочих дней в месяце</label>
+    <input type="number" id="working-days" value="22" class="w-full px-4 py-3 border-2 border-white/30 bg-white/10 text-white rounded-lg focus:border-white focus:outline-none font-mulish-semibold text-lg">
+    </div>
+    <div class="bg-white/20 rounded-xl p-6 border-2 border-white/30">
+    <div class="text-center mb-4">
+    <p class="font-mulish-semibold text-white mb-2">Стоимость одного часа простоя</p>
+    <p id="hourly-cost" class="font-mulish-extrabold text-4xl text-white">0 ₽</p>
+    </div>
+    <div class="text-center mb-4 pt-4 border-t-2 border-white/30">
+    <p class="font-mulish-semibold text-white mb-2">Эффективность вложений</p>
+    <p id="roi-value" class="font-mulish-extrabold text-4xl text-green-400">0%</p>
+    </div>
+    <div class="grid grid-cols-2 gap-4 mt-4">
+    <div class="text-center p-3 bg-white/20 rounded-lg border border-white/30">
+    <p class="font-mulish-regular text-xs text-white mb-1">За 1 час</p>
+    <p id="cost-1h" class="font-mulish-extrabold text-lg text-white">0 ₽</p>
+    </div>
+    <div class="text-center p-3 bg-white/20 rounded-lg border border-white/30">
+    <p class="font-mulish-regular text-xs text-white mb-1">За 8 часов</p>
+    <p id="cost-8h" class="font-mulish-extrabold text-lg text-white">0 ₽</p>
+    </div>
+    <div class="text-center p-3 bg-white/20 rounded-lg border border-white/30">
+    <p class="font-mulish-regular text-xs text-white mb-1">За 24 часа</p>
+    <p id="cost-24h" class="font-mulish-extrabold text-lg text-white">0 ₽</p>
+    </div>
+    <div class="text-center p-3 bg-white/20 rounded-lg border border-white/30">
+    <p class="font-mulish-regular text-xs text-white mb-1">За 7 дней</p>
+    <p id="cost-7d" class="font-mulish-extrabold text-lg text-white">0 ₽</p>
+    </div>
+    </div>
+    </div>
+    <button onclick="calculateDowntime()" class="w-full bg-white text-red-600 font-mulish-semibold text-lg px-8 py-4 !rounded-button hover:bg-gray-100 transition-colors duration-200 button-hover">
+    Рассчитать
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <script>
+    function formatNumber(num) {
+    return new Intl.NumberFormat('ru-RU').format(Math.round(num));
+    }
+    function calculateDowntime() {
+    const dailyRevenue = parseFloat(document.getElementById('daily-revenue').value) || 0;
+    const workingDays = parseFloat(document.getElementById('working-days').value) || 22;
+    const larnCost = 50000;
+    const monthlyRevenue = dailyRevenue * workingDays;
+    const hourlyCost = monthlyRevenue / (workingDays * 8);
+    const cost8h = hourlyCost * 8;
+    const roi = larnCost > 0 ? ((cost8h / larnCost) * 100) : 0;
+    document.getElementById('hourly-cost').textContent = formatNumber(hourlyCost) + ' ₽';
+    document.getElementById('cost-1h').textContent = formatNumber(hourlyCost) + ' ₽';
+    document.getElementById('cost-8h').textContent = formatNumber(cost8h) + ' ₽';
+    document.getElementById('cost-24h').textContent = formatNumber(hourlyCost * 24) + ' ₽';
+    document.getElementById('cost-7d').textContent = formatNumber(hourlyCost * 24 * 7) + ' ₽';
+    document.getElementById('roi-value').textContent = formatNumber(roi) + '%';
+    }
+    document.getElementById('daily-revenue').addEventListener('input', calculateDowntime);
+    document.getElementById('working-days').addEventListener('input', calculateDowntime);
+    </script>
+    <section class="py-20 lg:py-32 bg-white">
+    <div class="w-full px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-black mb-4">
+    Кейсы и <span class="text-secondary">доказательства</span>
+    </h2>
+    <p class="font-mulish-semibold text-xl text-gray-700 max-w-3xl mx-auto">
+    Реальные результаты наших клиентов
+    </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden card-hover fade-in fade-in-delay-1">
+    <div class="relative h-64 bg-gradient-to-br from-gray-800 to-gray-900">
+    <div class="absolute inset-0 bg-[url('images/cards/npzyan.webp')] bg-cover bg-center opacity-40"></div>
+    </div>
+    <div class="p-6">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-3">НПЗ в ЯНАО предотвратил ущерб</h3>
+    <p class="font-mulish-regular text-gray-600 mb-4">
+    При разливе нефтепродуктов на территории завода ЛАРН-набор позволил оперативно локализовать и ликвидировать разлив за 2 часа. Предотвращён ущерб более <span class="font-mulish-extrabold text-black">8 млн рублей</span>.
+    </p>
+    <div class="flex items-center gap-2 text-sm text-gray-500">
+    <i class="ri-map-pin-line text-secondary"></i>
+    <span class="font-mulish-semibold">Ямало-Ненецкий АО</span>
+    </div>
+    </div>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden card-hover fade-in fade-in-delay-2">
+    <div class="relative h-64 bg-gradient-to-br from-blue-800 to-blue-900">
+    <div class="absolute inset-0 bg-[url('images/cards/mun.jpg')] bg-cover bg-center opacity-40"></div>
+    </div>
+    <div class="p-6">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-3">Муниципальная служба Казани укомплектовала 3 точки</h3>
+    <p class="font-mulish-regular text-gray-600 mb-4">
+    МЧС Казани закупило ЛАРН-наборы для трёх пожарных частей. Все комплекты прошли проверку, персонал обучен. <span class="font-mulish-extrabold text-black">100% соответствие</span> требованиям 44-ФЗ.
+    </p>
+    <div class="flex items-center gap-2 text-sm text-gray-500">
+    <i class="ri-map-pin-line text-secondary"></i>
+    <span class="font-mulish-semibold">Казань, Республика Татарстан</span>
+    </div>
+    </div>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden card-hover fade-in fade-in-delay-3">
+    <div class="relative h-64 bg-gradient-to-br from-amber-800 to-orange-900">
+    <div class="absolute inset-0 bg-[url('images/cards/truck.png')] bg-cover bg-center opacity-40"></div>
+    </div>
+    <div class="p-6">
+    <h3 class="font-mulish-extrabold text-xl text-black mb-3">Транспортная компания устранила разлив за 15 минут</h3>
+    <p class="font-mulish-regular text-gray-600 mb-4">
+    При утечке ГСМ из автоцистерны водитель использовал компактный ЛАРН-набор из кабины. Разлив локализован и ликвидирован за <span class="font-mulish-extrabold text-black">15 минут</span>. Без простоя и штрафов.
+    </p>
+    <div class="flex items-center gap-2 text-sm text-gray-500">
+    <i class="ri-time-line text-secondary"></i>
+    <span class="font-mulish-semibold">Время ликвидации: 15 минут</span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="py-20 lg:py-32 relative" style="background-image: url('images/backgrounds/fon1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative z-10 w-full px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-white mb-4">
+    Как мы <span class="text-secondary">работаем</span>
+    </h2>
+    <p class="font-mulish-semibold text-xl text-white/90 max-w-3xl mx-auto">
+    Простой процесс внедрения — от консультации до поддержки
+    </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-white border-2 border-gray-200 rounded-2xl p-6 card-hover fade-in fade-in-delay-1">
+    <div class="flex items-center gap-4 mb-4">
+    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-2xl flex-shrink-0">1</div>
+    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-customer-service-2-line text-secondary text-2xl"></i>
+    </div>
+    </div>
+    <h3 class="font-mulish-extrabold text-xl text-black mb-3">Консультация и подбор</h3>
+    <p class="font-mulish-regular text-gray-600">
+    Анализ вашего объекта, подбор оптимального ЛАРН-набора под ваши вещества и требования
+    </p>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-2xl p-6 card-hover fade-in fade-in-delay-2">
+    <div class="flex items-center gap-4 mb-4">
+    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-2xl flex-shrink-0">2</div>
+    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-tools-line text-secondary text-2xl"></i>
+    </div>
+    </div>
+    <h3 class="font-mulish-extrabold text-xl text-black mb-3">Комплектация под ваш объект</h3>
+    <p class="font-mulish-regular text-gray-600">
+    Формирование индивидуальной комплектации с учётом специфики вашего производства
+    </p>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-2xl p-6 card-hover fade-in fade-in-delay-3">
+    <div class="flex items-center gap-4 mb-4">
+    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-2xl flex-shrink-0">3</div>
+    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-file-paper-2-line text-secondary text-2xl"></i>
+    </div>
+    </div>
+    <h3 class="font-mulish-extrabold text-xl text-black mb-3">Документы</h3>
+    <p class="font-mulish-regular text-gray-600">
+    Полный пакет документов: ГОСТ, СГР, сертификаты, паспорт безопасности — готово к проверке
+    </p>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-2xl p-6 card-hover fade-in fade-in-delay-4">
+    <div class="flex items-center gap-4 mb-4">
+    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-2xl flex-shrink-0">4</div>
+    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-graduation-cap-line text-secondary text-2xl"></i>
+    </div>
+    </div>
+    <h3 class="font-mulish-extrabold text-xl text-black mb-3">Обучение персонала</h3>
+    <p class="font-mulish-regular text-gray-600">
+    Обучение вашего персонала на объекте: инструктаж, практика, видеоматериалы
+    </p>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-2xl p-6 card-hover fade-in fade-in-delay-5">
+    <div class="flex items-center gap-4 mb-4">
+    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-2xl flex-shrink-0">5</div>
+    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-truck-line text-secondary text-2xl"></i>
+    </div>
+    </div>
+    <h3 class="font-mulish-extrabold text-xl text-black mb-3">Доставка</h3>
+    <p class="font-mulish-regular text-gray-600">
+    Быстрая доставка за 1–3 дня по всей России. Помощь в размещении на объекте
+    </p>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-2xl p-6 card-hover fade-in fade-in-delay-6">
+    <div class="flex items-center gap-4 mb-4">
+    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white font-mulish-extrabold text-2xl flex-shrink-0">6</div>
+    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-24-hours-line text-secondary text-2xl"></i>
+    </div>
+    </div>
+    <h3 class="font-mulish-extrabold text-xl text-black mb-3">Поддержка 24/7</h3>
+    <p class="font-mulish-regular text-gray-600">
+    Круглосуточная техническая поддержка, консультации, помощь в экстренных ситуациях
+    </p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="py-20 lg:py-32 bg-custom-gray">
+    <div class="w-full px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-black mb-4">
+    Часто задаваемые <span class="text-secondary">вопросы</span>
+    </h2>
+    <p class="font-mulish-semibold text-xl text-gray-700 max-w-3xl mx-auto">
+    Ответы на популярные вопросы о ЛАРН-наборах
+    </p>
+    </div>
+    <div class="space-y-4">
+    <div class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden fade-in fade-in-delay-1">
+    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-custom-gray transition-colors duration-200" onclick="toggleFaq(this)">
+    <span class="font-mulish-extrabold text-xl text-black">«Примет ли МЧС?»</span>
+    <i class="ri-arrow-down-s-line text-secondary text-2xl transition-transform duration-300"></i>
+    </button>
+    <div class="faq-answer hidden px-6 pb-6">
+    <p class="font-mulish-regular text-gray-700 leading-relaxed">
+    Да, наши ЛАРН-наборы полностью соответствуют требованиям МЧС России. Все комплекты имеют необходимые сертификаты, паспорта безопасности и документы. <span class="font-mulish-extrabold text-black">500+ успешных проверок МЧС</span> подтверждают соответствие требованиям.
+    </p>
+    </div>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden fade-in fade-in-delay-2">
+    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-custom-gray transition-colors duration-200" onclick="toggleFaq(this)">
+    <span class="font-mulish-extrabold text-xl text-black">«Можно ли под 44-ФЗ?»</span>
+    <i class="ri-arrow-down-s-line text-secondary text-2xl transition-transform duration-300"></i>
+    </button>
+    <div class="faq-answer hidden px-6 pb-6">
+    <p class="font-mulish-regular text-gray-700 leading-relaxed">
+    Да, мы работаем с госзаказчиками по 44-ФЗ. Предоставляем полный пакет тендерной документации, технические спецификации, сертификаты. <span class="font-mulish-extrabold text-black">МЧС Казани, муниципальные службы</span> — наши постоянные клиенты по госзакупкам.
+    </p>
+    </div>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden fade-in fade-in-delay-3">
+    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-custom-gray transition-colors duration-200" onclick="toggleFaq(this)">
+    <span class="font-mulish-extrabold text-xl text-black">«Подходит ли под кислоты?»</span>
+    <i class="ri-arrow-down-s-line text-secondary text-2xl transition-transform duration-300"></i>
+    </button>
+    <div class="faq-answer hidden px-6 pb-6">
+    <p class="font-mulish-regular text-gray-700 leading-relaxed">
+    Да, у нас есть специализированные абсорбенты для кислот и щелочей. В таблице совместимости вы можете увидеть, что для кислот подходят <span class="font-mulish-extrabold text-black">абсорбенты</span>. Подберём оптимальное решение под ваши вещества.
+    </p>
+    </div>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden fade-in fade-in-delay-4">
+    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-custom-gray transition-colors duration-200" onclick="toggleFaq(this)">
+    <span class="font-mulish-extrabold text-xl text-black">«Сколько хранится?»</span>
+    <i class="ri-arrow-down-s-line text-secondary text-2xl transition-transform duration-300"></i>
+    </button>
+    <div class="faq-answer hidden px-6 pb-6">
+    <p class="font-mulish-regular text-gray-700 leading-relaxed">
+    Срок хранения ЛАРН-наборов — <span class="font-mulish-extrabold text-black">5 лет</span> при соблюдении условий хранения (температура от -40°C до +50°C, защита от прямых солнечных лучей). Все материалы морозостойкие и готовы к использованию в любых климатических условиях.
+    </p>
+    </div>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden fade-in fade-in-delay-5">
+    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-custom-gray transition-colors duration-200" onclick="toggleFaq(this)">
+    <span class="font-mulish-extrabold text-xl text-black">«Можно ли разместить в автокабине?»</span>
+    <i class="ri-arrow-down-s-line text-secondary text-2xl transition-transform duration-300"></i>
+    </button>
+    <div class="faq-answer hidden px-6 pb-6">
+    <p class="font-mulish-regular text-gray-700 leading-relaxed">
+    Да, у нас есть <span class="font-mulish-extrabold text-black">компактные ЛАРН-наборы</span> специально для перевозки опасных грузов. Размеры позволяют разместить в кабине или багажнике. Водитель может оперативно использовать при утечке — как показал кейс транспортной компании, разлив ликвидируется за 15 минут.
+    </p>
+    </div>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden fade-in fade-in-delay-6">
+    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-custom-gray transition-colors duration-200" onclick="toggleFaq(this)">
+    <span class="font-mulish-extrabold text-xl text-black">«Есть ли обучение?»</span>
+    <i class="ri-arrow-down-s-line text-secondary text-2xl transition-transform duration-300"></i>
+    </button>
+    <div class="faq-answer hidden px-6 pb-6">
+    <p class="font-mulish-regular text-gray-700 leading-relaxed">
+    Да, мы проводим <span class="font-mulish-extrabold text-black">обучение персонала на вашем объекте</span>. Включает инструктаж, практические занятия, видеоматериалы. Также предоставляем подробные инструкции и техподдержку 24/7 для консультаций.
+    </p>
+    </div>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden fade-in fade-in-delay-7">
+    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-custom-gray transition-colors duration-200" onclick="toggleFaq(this)">
+    <span class="font-mulish-extrabold text-xl text-black">«Какие гарантии?»</span>
+    <i class="ri-arrow-down-s-line text-secondary text-2xl transition-transform duration-300"></i>
+    </button>
+    <div class="faq-answer hidden px-6 pb-6">
+    <p class="font-mulish-regular text-gray-700 leading-relaxed">
+    Мы гарантируем: <span class="font-mulish-extrabold text-black">соответствие ГОСТ и требованиям МЧС</span>, полный пакет документов, прохождение проверок, качество материалов. При выявлении несоответствий — бесплатная замена или возврат средств. Техподдержка 24/7.
+    </p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <script>
+    function toggleFaq(button) {
+    const answer = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    const isOpen = !answer.classList.contains('hidden');
+    document.querySelectorAll('.faq-answer').forEach(item => {
+    if (item !== answer) {
+    item.classList.add('hidden');
+    item.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+    });
+    if (isOpen) {
+    answer.classList.add('hidden');
+    icon.style.transform = 'rotate(0deg)';
+    } else {
+    answer.classList.remove('hidden');
+    icon.style.transform = 'rotate(180deg)';
+    }
+    }
+    </script>
+    <section class="py-20 lg:py-32 bg-secondary relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative z-10 w-full px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-white mb-6 fade-in">
+    Получите подбор ЛАРН-набора под ваш объект — <span class="text-black">бесплатно</span>
+    </h2>
+    <p class="font-mulish-semibold text-xl text-white/90 mb-10 fade-in fade-in-delay-1 max-w-2xl mx-auto">
+    Мы поможем пройти проверки, избежать штрафов и предотвратить простои.
+    </p>
+    <!-- Форма №1 - Главная форма -->
+    <div class="bg-white rounded-2xl p-8 lg:p-12 shadow-2xl fade-in fade-in-delay-2 max-w-3xl mx-auto">
+    <form id="main-form" class="space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+    <label for="company-name" class="block font-mulish-semibold text-gray-800 mb-2">Название компании *</label>
+    <input type="text" id="company-name" name="company-name" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
+    <label for="contact-person" class="block font-mulish-semibold text-gray-800 mb-2">Контактное лицо *</label>
+    <input type="text" id="contact-person" name="contact-person" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+    <label for="phone" class="block font-mulish-semibold text-gray-800 mb-2">Телефон *</label>
+    <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
+    <label for="email" class="block font-mulish-semibold text-gray-800 mb-2">Email *</label>
+    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+    <label for="region" class="block font-mulish-semibold text-gray-800 mb-2">Регион / город *</label>
+    <input type="text" id="region" name="region" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
+    <label for="object-type" class="block font-mulish-semibold text-gray-800 mb-2">Тип объекта *</label>
+    <select id="object-type" name="object-type" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    <option value="">Выберите тип объекта</option>
+    <option value="prom">Промпредприятие</option>
+    <option value="gov">Госслужба</option>
+    <option value="logistics">Логистика</option>
+    </select>
+    </div>
+    </div>
+    <div>
+    <label for="comment" class="block font-mulish-semibold text-gray-800 mb-2">Комментарий</label>
+    <textarea id="comment" name="comment" rows="4" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800"></textarea>
+    </div>
+    <button type="submit" class="w-full bg-secondary text-white font-mulish-extrabold text-xl px-12 py-5 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover shadow-xl inline-flex items-center justify-center gap-3">
+    <i class="ri-file-download-line text-2xl"></i>
+    <span>Получить подбор и комплект документов</span>
+    </button>
+    </form>
+    </div>
+    <p class="text-white/80 font-mulish-regular text-sm mt-6 fade-in fade-in-delay-3">
+    Без обязательств и спама. Ответим в течение 1 часа.
+    </p>
+    </div>
+    </div>
+    </section>
+    <footer class="bg-black text-white">
+    <div class="w-full px-6 lg:px-8 py-16">
+    <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+    <div>
+    <h3 class="font-mulish-extrabold text-lg text-white mb-4">Реквизиты</h3>
+    <div class="space-y-2 text-sm font-mulish-regular text-gray-300">
+    <p>ООО "ПКФ"</p>
+    <p>ИНН: 1234567890</p>
+    <p>КПП: 123456789</p>
+    <p>ОГРН: 1234567890123</p>
+    <p>р/с: 40702810123456789012</p>
+    <p>БИК: 044525225</p>
+    </div>
+    </div>
+    <div>
+    <h3 class="font-mulish-extrabold text-lg text-white mb-4">Лицензии</h3>
+    <div class="space-y-3">
+    <div class="flex items-start gap-2">
+    <i class="ri-checkbox-circle-fill text-secondary mt-1"></i>
+    <p class="font-mulish-regular text-sm text-gray-300">Лицензия на производство</p>
+    </div>
+    <div class="flex items-start gap-2">
+    <i class="ri-checkbox-circle-fill text-secondary mt-1"></i>
+    <p class="font-mulish-regular text-sm text-gray-300">Сертификат соответствия</p>
+    </div>
+    <div class="flex items-start gap-2">
+    <i class="ri-checkbox-circle-fill text-secondary mt-1"></i>
+    <p class="font-mulish-regular text-sm text-gray-300">СГР на продукцию</p>
+    </div>
+    </div>
+    </div>
+    <div>
+    <h3 class="font-mulish-extrabold text-lg text-white mb-4">Документы</h3>
+    <div class="space-y-3 mb-6">
+    <a href="#" data-download-docs class="flex items-center gap-2 text-sm font-mulish-regular text-gray-300 hover:text-secondary transition-colors duration-200">
+    <i class="ri-file-download-line"></i>
+    <span>Сертификаты</span>
+    </a>
+    <a href="#" data-download-docs class="flex items-center gap-2 text-sm font-mulish-regular text-gray-300 hover:text-secondary transition-colors duration-200">
+    <i class="ri-file-download-line"></i>
+    <span>Паспорт безопасности</span>
+    </a>
+    <a href="#" data-download-docs class="flex items-center gap-2 text-sm font-mulish-regular text-gray-300 hover:text-secondary transition-colors duration-200">
+    <i class="ri-file-download-line"></i>
+    <span>Инструкции</span>
+    </a>
+    <a href="#" data-download-docs class="flex items-center gap-2 text-sm font-mulish-regular text-gray-300 hover:text-secondary transition-colors duration-200">
+    <i class="ri-file-download-line"></i>
+    <span>Реквизиты (PDF)</span>
+    </a>
+    </div>
+    </div>
+    <div>
+    <h3 class="font-mulish-extrabold text-lg text-white mb-4">Контакты</h3>
+    <div class="space-y-3 text-sm font-mulish-regular text-gray-300">
+    <div class="flex items-start gap-2">
+    <i class="ri-phone-line text-secondary mt-1"></i>
+    <a href="tel:+74959027759" class="hover:text-secondary transition-colors duration-200">+7 (495) 902-77-59</a>
+    </div>
+    <div class="flex items-start gap-2">
+    <i class="ri-mail-line text-secondary mt-1"></i>
+    <a href="mailto:info@larn-kit.ru" class="hover:text-secondary transition-colors duration-200">info@larn-kit.ru</a>
+    </div>
+    <div class="flex items-start gap-2">
+    <i class="ri-time-line text-secondary mt-1"></i>
+    <span>24/7 поддержка</span>
+    </div>
+    <div class="flex items-start gap-2">
+    <i class="ri-map-pin-line text-secondary mt-1"></i>
+    <span>Москва, ул. Примерная, д. 1</span>
+    </div>
+    </div>
+    </div>
+    <div>
+    <h3 class="font-mulish-extrabold text-lg text-white mb-4">Юридические данные</h3>
+    <div class="space-y-2 text-sm font-mulish-regular text-gray-300">
+    <p>Юридический адрес:</p>
+    <p class="text-gray-400">123456, г. Москва,<br>ул. Примерная, д. 1</p>
+    <p class="mt-4">Фактический адрес:</p>
+    <p class="text-gray-400">123456, г. Москва,<br>ул. Примерная, д. 1</p>
+    </div>
+    </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+    <p class="font-mulish-regular text-sm text-gray-400">© 2024 ПКФ. Все права защищены.</p>
+    </div>
+    <div class="flex items-center gap-6 text-sm">
+    <a href="#" class="font-mulish-regular text-gray-400 hover:text-white transition-colors duration-200">Политика конфиденциальности</a>
+    <a href="#" class="font-mulish-regular text-gray-400 hover:text-white transition-colors duration-200">Пользовательское соглашение</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </footer>
+    </div>
+    <!-- Модальное окно "Быстрая заявка" (Форма №2) -->
+    <div id="quick-order-modal" class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl p-4 lg:p-8 max-w-md w-full mx-4 relative max-h-[90vh] overflow-y-auto">
+    <button id="quick-order-close" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors">
+    <i class="ri-close-line text-2xl text-gray-600"></i>
+    </button>
+    <h3 class="font-mulish-extrabold text-2xl lg:text-3xl text-black mb-6">Быстрая заявка</h3>
+    <form id="quick-order-form" class="space-y-5">
+    <div>
+    <label for="quick-phone" class="block font-mulish-semibold text-gray-800 mb-2">Телефон *</label>
+    <input type="tel" id="quick-phone" name="quick-phone" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
+    <label for="quick-name" class="block font-mulish-semibold text-gray-800 mb-2">Имя</label>
+    <input type="text" id="quick-name" name="quick-name" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
+    <label for="quick-company" class="block font-mulish-semibold text-gray-800 mb-2">Компания</label>
+    <input type="text" id="quick-company" name="quick-company" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
+    <label for="quick-comment" class="block font-mulish-semibold text-gray-800 mb-2">Комментарий</label>
+    <textarea id="quick-comment" name="quick-comment" rows="3" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800"></textarea>
+    </div>
+    <button type="submit" class="w-full bg-secondary text-white font-mulish-extrabold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover">
+    Отправить заявку
+    </button>
+    </form>
+    </div>
+    </div>
+    <!-- Модальное окно "Скачать документы" (Форма №3) -->
+    <div id="download-docs-modal" class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl p-4 lg:p-8 max-w-md w-full mx-4 relative">
+    <button id="download-docs-close" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors">
+    <i class="ri-close-line text-2xl text-gray-600"></i>
+    </button>
+    <h3 class="font-mulish-extrabold text-2xl lg:text-3xl text-black mb-6">Скачать документы</h3>
+    <form id="download-docs-form" class="space-y-5">
+    <div>
+    <label for="docs-email" class="block font-mulish-semibold text-gray-800 mb-2">Email *</label>
+    <input type="email" id="docs-email" name="docs-email" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
+    <label for="docs-company-position" class="block font-mulish-semibold text-gray-800 mb-2">Компания / должность</label>
+    <input type="text" id="docs-company-position" name="docs-company-position" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <button type="submit" class="w-full bg-secondary text-white font-mulish-extrabold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover">
+    Скачать документы
+    </button>
+    </form>
+    </div>
+    </div>
+    <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 lg:left-auto lg:right-6 lg:max-w-md bg-white shadow-2xl rounded-lg p-4 lg:p-6 z-50 transform transition-transform duration-300 translate-y-0 hidden">
+<div class="flex items-start gap-4">
+<i class="ri-cookie-line text-2xl text-primary flex-shrink-0"></i>
+<div class="flex-1">
+<h3 class="font-mulish-semibold text-lg text-black mb-2">Мы используем cookies</h3>
+<p class="font-mulish-regular text-sm text-gray-600 mb-4">Мы используем файлы cookie для улучшения работы сайта и персонализации вашего опыта. Продолжая использовать сайт, вы соглашаетесь с нашей политикой конфиденциальности.</p>
+<div class="flex flex-col sm:flex-row gap-3">
+<button id="cookie-accept" class="bg-secondary text-white font-mulish-semibold text-sm px-6 py-2 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover">
+Принять
+</button>
+<button id="cookie-decline" class="bg-gray-100 text-black font-mulish-semibold text-sm px-6 py-2 !rounded-button hover:bg-gray-200 transition-colors duration-200">
+Отклонить
+</button>
+</div>
+</div>
+<button id="cookie-close" class="flex-shrink-0 w-6 h-6 flex items-center justify-center hover:bg-gray-100 rounded-button transition-colors">
+<i class="ri-close-line text-lg"></i>
+</button>
+</div>
+</div>
+<script id="mobile-menu-toggle">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenuClose = document.getElementById('mobile-menu-close');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+const mainContent = document.getElementById('main-content');
+
+function openMenu() {
+mobileMenu.classList.remove('translate-x-full');
+mobileMenuOverlay.classList.remove('hidden');
+mainContent.classList.add('blur-sm');
+document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+mobileMenu.classList.add('translate-x-full');
+mobileMenuOverlay.classList.add('hidden');
+mainContent.classList.remove('blur-sm');
+document.body.style.overflow = '';
+}
+
+mobileMenuButton.addEventListener('click', openMenu);
+mobileMenuClose.addEventListener('click', closeMenu);
+mobileMenuOverlay.addEventListener('click', closeMenu);
+});
+</script>
+<script id="cookie-banner-script">
+document.addEventListener('DOMContentLoaded', function() {
+const cookieBanner = document.getElementById('cookie-banner');
+const cookieAccept = document.getElementById('cookie-accept');
+const cookieDecline = document.getElementById('cookie-decline');
+const cookieClose = document.getElementById('cookie-close');
+
+// Проверяем, было ли уже принято решение по cookies
+const cookieConsent = localStorage.getItem('cookieConsent');
+
+if (!cookieConsent) {
+// Показываем баннер через небольшую задержку для плавности
+setTimeout(() => {
+cookieBanner.classList.remove('hidden');
+}, 1000);
+}
+
+function hideBanner() {
+cookieBanner.classList.add('translate-y-full');
+setTimeout(() => {
+cookieBanner.classList.add('hidden');
+}, 300);
+}
+
+cookieAccept.addEventListener('click', function() {
+localStorage.setItem('cookieConsent', 'accepted');
+hideBanner();
+});
+
+cookieDecline.addEventListener('click', function() {
+localStorage.setItem('cookieConsent', 'declined');
+hideBanner();
+});
+
+cookieClose.addEventListener('click', function() {
+hideBanner();
+});
+});
+</script>
+<script>
+// Обработка модальных окон и форм
+document.addEventListener('DOMContentLoaded', function() {
+// Модальное окно "Быстрая заявка" (Форма №2)
+const quickOrderModal = document.getElementById('quick-order-modal');
+const quickOrderClose = document.getElementById('quick-order-close');
+const quickOrderForm = document.getElementById('quick-order-form');
+
+// Функции для открытия/закрытия модального окна "Быстрая заявка"
+function openQuickOrderModal() {
+quickOrderModal.classList.remove('hidden');
+quickOrderModal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+}
+
+function closeQuickOrderModal() {
+quickOrderModal.classList.add('hidden');
+quickOrderModal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+
+// Обработчики для модального окна "Быстрая заявка"
+quickOrderClose.addEventListener('click', closeQuickOrderModal);
+quickOrderModal.addEventListener('click', function(e) {
+if (e.target === quickOrderModal) {
+closeQuickOrderModal();
+}
+});
+
+// Обработка формы "Быстрая заявка"
+quickOrderForm.addEventListener('submit', function(e) {
+e.preventDefault();
+// Здесь можно добавить отправку данных на сервер
+const formData = new FormData(quickOrderForm);
+console.log('Быстрая заявка:', Object.fromEntries(formData));
+alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.');
+quickOrderForm.reset();
+closeQuickOrderModal();
+});
+
+// Модальное окно "Скачать документы" (Форма №3)
+const downloadDocsModal = document.getElementById('download-docs-modal');
+const downloadDocsClose = document.getElementById('download-docs-close');
+const downloadDocsForm = document.getElementById('download-docs-form');
+
+// Функции для открытия/закрытия модального окна "Скачать документы"
+function openDownloadDocsModal() {
+downloadDocsModal.classList.remove('hidden');
+downloadDocsModal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+}
+
+function closeDownloadDocsModal() {
+downloadDocsModal.classList.add('hidden');
+downloadDocsModal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+
+// Обработчики для модального окна "Скачать документы"
+downloadDocsClose.addEventListener('click', closeDownloadDocsModal);
+downloadDocsModal.addEventListener('click', function(e) {
+if (e.target === downloadDocsModal) {
+closeDownloadDocsModal();
+}
+});
+
+// Обработка формы "Скачать документы" (модальное окно)
+downloadDocsForm.addEventListener('submit', function(e) {
+e.preventDefault();
+const formData = new FormData(downloadDocsForm);
+console.log('Скачать документы (модальное):', Object.fromEntries(formData));
+alert('Спасибо! Документы будут отправлены на указанный email.');
+downloadDocsForm.reset();
+closeDownloadDocsModal();
+});
+
+// Обработка главной формы (Форма №1)
+const mainForm = document.getElementById('main-form');
+if (mainForm) {
+mainForm.addEventListener('submit', function(e) {
+e.preventDefault();
+const formData = new FormData(mainForm);
+console.log('Главная форма:', Object.fromEntries(formData));
+alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 1 часа.');
+mainForm.reset();
+});
+}
+
+// Добавляем классы для открытия модального окна "Быстрая заявка" к кнопкам
+// Находим все кнопки, которые должны открывать модальное окно
+const quickOrderButtons = document.querySelectorAll('[data-quick-order]');
+quickOrderButtons.forEach(button => {
+button.addEventListener('click', function(e) {
+e.preventDefault();
+openQuickOrderModal();
+});
+});
+
+// Добавляем классы для открытия модального окна "Скачать документы" к ссылкам в футере
+const downloadLinks = document.querySelectorAll('[data-download-docs]');
+downloadLinks.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+openDownloadDocsModal();
+});
+});
+
+// Закрытие модальных окон по Escape
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') {
+if (!quickOrderModal.classList.contains('hidden')) {
+closeQuickOrderModal();
+}
+if (!downloadDocsModal.classList.contains('hidden')) {
+closeDownloadDocsModal();
+}
+}
+});
+});
+</script>
+</body>
+</html>
