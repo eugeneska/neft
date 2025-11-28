@@ -255,6 +255,17 @@ section {
 overflow-x: hidden;
 }
 
+.swiper-button-prev,.swiper-rtl .swiper-button-next {
+    left: -20px;
+    right: auto
+}
+
+.swiper-button-next,.swiper-rtl .swiper-button-prev {
+    right: -20px;
+    left: auto
+}
+
+
 /* Fix mobile buttons */
 button {
 word-wrap: break-word;
@@ -587,6 +598,79 @@ box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 .card-hover:hover {
 transform: translateY(-12px);
 box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Отключение анимаций карточек на мобильных устройствах */
+@media (max-width: 768px) {
+.fade-in,
+.fade-in-delay-1,
+.fade-in-delay-2,
+.fade-in-delay-3,
+.fade-in-delay-4,
+.fade-in-delay-5,
+.fade-in-delay-6 {
+opacity: 1 !important;
+transform: none !important;
+animation: none !important;
+}
+
+.card-hover {
+transition: none !important;
+transform: none !important;
+}
+
+.card-hover:hover {
+transform: none !important;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.solutions-swiper .swiper-slide .card-hover,
+.solutions-swiper .swiper-slide .card-hover * {
+transition: none !important;
+}
+
+.solutions-swiper .swiper-slide:hover img {
+transform: none !important;
+}
+
+/* Отключение красной подсветки на мобильных */
+.solutions-swiper .swiper-slide .card-hover::before {
+display: none !important;
+opacity: 0 !important;
+}
+
+.solutions-swiper .swiper-slide .card-hover:hover::before {
+display: none !important;
+opacity: 0 !important;
+}
+
+/* Стили для модального окна изображения ЛАРН-комплекта */
+#larn-image-modal {
+backdrop-filter: blur(4px);
+}
+
+#larn-image-modal img {
+animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+from {
+opacity: 0;
+transform: scale(0.9);
+}
+to {
+opacity: 1;
+transform: scale(1);
+}
+}
+
+.shadow-2xl {
+    --tw-shadow: 0 25px 50px -1px rgb(0 0 0 / 0.25);
+    --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    margin-bottom: 17px;
+}
+
 }
 .button-hover {
 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1945,7 +2029,7 @@ display: flex !important;
     Вся необходимая документация для прохождения проверок
     </p>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12 mb-8 sm:mb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-14 mb-12 sm:mb-12">
     <div class="fade-in fade-in-delay-1 lg:order-2">
     <div class="documents-sticky-container" style="position: relative;">
     <div class="documents-sticky-block">
@@ -2474,7 +2558,7 @@ display: flex !important;
     <div class="fade-in fade-in-delay-1 larn-image-container">
     <div class="bg-white rounded-2xl p-6 lg:p-12 shadow-2xl border-4 border-secondary">
     <div class="rounded-xl overflow-hidden bg-gray-50 p-4">
-    <img src="images/products/larn1.png" alt="ЛАРН-комплект" class="w-full rounded-xl" style="max-height: 600px; object-fit: contain; object-position: center;">
+    <img id="larn-image" src="images/products/larn1.png" alt="ЛАРН-комплект" class="w-full rounded-xl cursor-pointer md:cursor-default" style="max-height: 600px; object-fit: contain; object-position: center;">
     </div>
     </div>
     </div>
@@ -2916,6 +3000,12 @@ display: flex !important;
     <label for="comment" class="block font-mulish-semibold text-gray-800 mb-2">Комментарий</label>
     <textarea id="comment" name="comment" rows="4" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800"></textarea>
     </div>
+    <div class="flex items-start gap-3">
+    <input type="checkbox" id="main-consent" name="consent" required class="mt-1 w-5 h-5 border-2 border-gray-300 rounded focus:ring-2 focus:ring-secondary text-secondary cursor-pointer">
+    <label for="main-consent" class="font-mulish-regular text-sm text-gray-700 cursor-pointer">
+    Я согласен(а) на <a href="https://oilspill-solutions.ru/politika-v-otnoshenii-obrabotki-personalnykh-dannykh" target="_blank" class="text-secondary hover:underline">обработку персональных данных</a> и принимаю условия <a href="https://oilspill-solutions.ru/polzovatelskoe-soglashenie" target="_blank" class="text-secondary hover:underline">пользовательского соглашения</a> *
+    </label>
+    </div>
     <button type="submit" class="w-full bg-secondary text-white font-mulish-extrabold text-xl px-12 py-5 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover shadow-xl inline-flex items-center justify-center gap-3">
     <i class="ri-file-download-line text-2xl"></i>
     <span>Получить подбор и комплект документов</span>
@@ -3005,8 +3095,8 @@ display: flex !important;
     <p class="font-mulish-regular text-sm text-gray-400">© 2024 ПКБ. Все права защищены.</p>
     </div>
     <div class="flex items-center gap-6 text-sm">
-    <a href="#" class="font-mulish-regular text-gray-400 hover:text-white transition-colors duration-200">Политика конфиденциальности</a>
-    <a href="#" class="font-mulish-regular text-gray-400 hover:text-white transition-colors duration-200">Пользовательское соглашение</a>
+    <a href="https://oilspill-solutions.ru/politika-v-otnoshenii-obrabotki-personalnykh-dannykh" target="_blank" class="font-mulish-regular text-gray-400 hover:text-white transition-colors duration-200">Политика конфиденциальности</a>
+    <a href="https://oilspill-solutions.ru/polzovatelskoe-soglashenie" target="_blank" class="font-mulish-regular text-gray-400 hover:text-white transition-colors duration-200">Пользовательское соглашение</a>
     </div>
     </div>
     </div>
@@ -3038,6 +3128,12 @@ display: flex !important;
     <label for="quick-comment" class="block font-mulish-semibold text-gray-800 mb-2">Комментарий</label>
     <textarea id="quick-comment" name="quick-comment" rows="3" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800"></textarea>
     </div>
+    <div class="flex items-start gap-3">
+    <input type="checkbox" id="quick-consent" name="consent" required class="mt-1 w-5 h-5 border-2 border-gray-300 rounded focus:ring-2 focus:ring-secondary text-secondary cursor-pointer">
+    <label for="quick-consent" class="font-mulish-regular text-sm text-gray-700 cursor-pointer">
+    Я согласен(а) на <a href="https://oilspill-solutions.ru/politika-v-otnoshenii-obrabotki-personalnykh-dannykh" target="_blank" class="text-secondary hover:underline">обработку персональных данных</a> и принимаю условия <a href="https://oilspill-solutions.ru/polzovatelskoe-soglashenie" target="_blank" class="text-secondary hover:underline">пользовательского соглашения</a> *
+    </label>
+    </div>
     <button type="submit" class="w-full bg-secondary text-white font-mulish-extrabold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover">
     Отправить заявку
     </button>
@@ -3060,10 +3156,25 @@ display: flex !important;
     <label for="docs-company-position" class="block font-mulish-semibold text-gray-800 mb-2">Компания / должность</label>
     <input type="text" id="docs-company-position" name="docs-company-position" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
     </div>
+    <div class="flex items-start gap-3">
+    <input type="checkbox" id="docs-consent" name="consent" required class="mt-1 w-5 h-5 border-2 border-gray-300 rounded focus:ring-2 focus:ring-secondary text-secondary cursor-pointer">
+    <label for="docs-consent" class="font-mulish-regular text-sm text-gray-700 cursor-pointer">
+    Я согласен(а) на <a href="https://oilspill-solutions.ru/politika-v-otnoshenii-obrabotki-personalnykh-dannykh" target="_blank" class="text-secondary hover:underline">обработку персональных данных</a> и принимаю условия <a href="https://oilspill-solutions.ru/polzovatelskoe-soglashenie" target="_blank" class="text-secondary hover:underline">пользовательского соглашения</a> *
+    </label>
+    </div>
     <button type="submit" class="w-full bg-secondary text-white font-mulish-extrabold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover">
     Скачать документы
     </button>
     </form>
+    </div>
+    </div>
+    <!-- Модальное окно для просмотра изображения ЛАРН-комплекта (только мобильная версия) -->
+    <div id="larn-image-modal" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4 md:hidden">
+    <div class="relative w-full h-full flex items-center justify-center">
+    <button id="larn-image-close" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-colors z-10">
+    <i class="ri-close-line text-2xl text-white"></i>
+    </button>
+    <img src="images/products/larn1.png" alt="ЛАРН-комплект" class="max-w-full max-h-full object-contain rounded-lg">
     </div>
     </div>
     <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 lg:left-auto lg:right-6 lg:max-w-md bg-white shadow-2xl rounded-lg p-4 lg:p-6 z-50 transform transition-transform duration-300 translate-y-0 hidden">
@@ -3190,6 +3301,12 @@ closeQuickOrderModal();
 // Обработка формы "Быстрая заявка"
 quickOrderForm.addEventListener('submit', function(e) {
 e.preventDefault();
+const consentCheckbox = document.getElementById('quick-consent');
+if (!consentCheckbox.checked) {
+alert('Необходимо согласиться на обработку персональных данных');
+consentCheckbox.focus();
+return;
+}
 // Здесь можно добавить отправку данных на сервер
 const formData = new FormData(quickOrderForm);
 console.log('Быстрая заявка:', Object.fromEntries(formData));
@@ -3227,6 +3344,12 @@ closeDownloadDocsModal();
 // Обработка формы "Скачать документы" (модальное окно)
 downloadDocsForm.addEventListener('submit', function(e) {
 e.preventDefault();
+const consentCheckbox = document.getElementById('docs-consent');
+if (!consentCheckbox.checked) {
+alert('Необходимо согласиться на обработку персональных данных');
+consentCheckbox.focus();
+return;
+}
 const formData = new FormData(downloadDocsForm);
 console.log('Скачать документы (модальное):', Object.fromEntries(formData));
 
@@ -3257,11 +3380,62 @@ if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeDownloadDocs
 if (closeFinalBtn) closeFinalBtn.addEventListener('click', closeDownloadDocsModal);
 });
 
+// Модальное окно для просмотра изображения ЛАРН-комплекта (только мобильная версия)
+const larnImageModal = document.getElementById('larn-image-modal');
+const larnImageClose = document.getElementById('larn-image-close');
+const larnImage = document.getElementById('larn-image');
+
+// Функции для открытия/закрытия модального окна изображения
+function openLarnImageModal() {
+// Проверяем, что это мобильное устройство
+if (window.innerWidth <= 768) {
+larnImageModal.classList.remove('hidden');
+larnImageModal.classList.add('flex');
+document.body.style.overflow = 'hidden';
+}
+}
+
+function closeLarnImageModal() {
+larnImageModal.classList.add('hidden');
+larnImageModal.classList.remove('flex');
+document.body.style.overflow = '';
+}
+
+// Обработчик клика на изображение (только для мобильных)
+if (larnImage) {
+larnImage.addEventListener('click', function(e) {
+// Открываем модальное окно только на мобильных устройствах
+if (window.innerWidth <= 768) {
+e.preventDefault();
+openLarnImageModal();
+}
+});
+}
+
+// Обработчики для закрытия модального окна
+if (larnImageClose) {
+larnImageClose.addEventListener('click', closeLarnImageModal);
+}
+
+if (larnImageModal) {
+larnImageModal.addEventListener('click', function(e) {
+if (e.target === larnImageModal) {
+closeLarnImageModal();
+}
+});
+}
+
 // Обработка главной формы (Форма №1)
 const mainForm = document.getElementById('main-form');
 if (mainForm) {
 mainForm.addEventListener('submit', function(e) {
 e.preventDefault();
+const consentCheckbox = document.getElementById('main-consent');
+if (!consentCheckbox.checked) {
+alert('Необходимо согласиться на обработку персональных данных');
+consentCheckbox.focus();
+return;
+}
 const formData = new FormData(mainForm);
 console.log('Главная форма:', Object.fromEntries(formData));
 alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 1 часа.');
