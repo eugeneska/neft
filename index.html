@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>ЛАРН Комплекты - Остановите разлив нефти</title>
+<link rel="icon" type="image/png" href="fav.png">
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +29,7 @@ document.head.appendChild(link);
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
 tailwind.config = {
 theme: {
@@ -1331,6 +1333,7 @@ display: flex !important;
 <a href="#documents" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Документы и сертификация</a>
 <a href="#cases" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Кейсы и клиенты</a>
 <a href="#delivery" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">Доставка и обучение</a>
+<a href="#about" class="font-mulish-regular text-x text-black hover:text-primary transition-colors duration-200">О нас</a>
 </nav>
 <div class="hidden-until-1440 items-center gap-6">
 <div class="flex flex-col items-end">
@@ -1386,6 +1389,7 @@ display: flex !important;
 <a href="#documents" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Документы и сертификация</a>
 <a href="#cases" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Кейсы и клиенты</a>
 <a href="#delivery" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">Доставка и обучение</a>
+<a href="#about" class="block font-mulish-semibold text-lg text-black hover:text-primary transition-colors duration-200 py-2">О нас</a>
 </nav>
 </div>
 </div>
@@ -2660,6 +2664,46 @@ display: flex !important;
     document.getElementById('daily-revenue').addEventListener('input', calculateDowntime);
     document.getElementById('working-days').addEventListener('input', calculateDowntime);
     </script>
+    <section id="about" class="py-20 lg:py-32 relative" style="background-image: url('images/backgrounds/hero-bg2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 w-full px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-white mb-4">
+    О <span class="text-secondary">нас</span>
+    </h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center fade-in fade-in-delay-1">
+    <!-- Левая часть: Фотография -->
+    <div class="flex justify-center lg:justify-start">
+    <div class="relative">
+    <img src="images/backgrounds/inv1.jpg" alt="О нас" class="max-w-full h-auto" style="max-height: 600px; object-fit: contain;">
+    </div>
+    </div>
+    
+    <!-- Правая часть: Текст и кнопка -->
+    <div class="flex flex-col justify-center">
+    <div class="space-y-6 mb-8">
+    <p class="font-mulish-regular text-white text-lg leading-relaxed">
+    Мы стремимся к миру, где компании осознают экологические риски и действуют честно. Наш бизнес — это вклад в экологическую ответственность, где честность, технологии и забота о чистом и безопасном будущем стоят на первом месте.
+    </p>
+    <p class="font-mulish-regular text-white text-lg leading-relaxed">
+    Мы предоставляем эффективные решения для локализации и ликвидации разливов и утечек вредных веществ. Для нас важнее спокойствие клиентов и позитивные изменения, чем прибыль. Присоединяйтесь! Вместе мы сможем сохранить нашу планету для будущих поколений.
+    </p>
+    </div>
+    <div class="text-white mb-8">
+    <p class="font-mulish-extrabold text-xl mb-1">Сергей Ушаков</p>
+    <p class="font-mulish-regular text-gray-300">Генеральный директор</p>
+    </div>
+    <a href="#products" class="inline-block bg-secondary text-white font-mulish-semibold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover text-center">
+    Посмотреть всю продукцию
+    </a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
     <section id="cases" class="py-20 lg:py-32 bg-custom-gray">
     <div class="w-full px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
@@ -3006,6 +3050,7 @@ display: flex !important;
     Я согласен(а) на <a href="https://oilspill-solutions.ru/politika-v-otnoshenii-obrabotki-personalnykh-dannykh" target="_blank" class="text-secondary hover:underline">обработку персональных данных</a> и принимаю условия <a href="https://oilspill-solutions.ru/polzovatelskoe-soglashenie" target="_blank" class="text-secondary hover:underline">пользовательского соглашения</a> *
     </label>
     </div>
+    <div id="main-recaptcha" class="g-recaptcha" data-sitekey="6Lex5x4sAAAAAJBSuOvyEocueGgdRiyiO22BO3tR"></div>
     <button type="submit" class="w-full bg-secondary text-white font-mulish-extrabold text-xl px-12 py-5 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover shadow-xl inline-flex items-center justify-center gap-3">
     <i class="ri-file-download-line text-2xl"></i>
     <span>Получить подбор и комплект документов</span>
@@ -3015,6 +3060,45 @@ display: flex !important;
     <p class="text-white/80 font-mulish-regular text-sm mt-6 fade-in fade-in-delay-3">
     Без обязательств и спама. Ответим в течение 1 часа.
     </p>
+    </div>
+    </div>
+    </section>
+    <footer id="contacts" class="bg-black text-white">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 w-full px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+    <h2 class="font-mulish-extrabold text-4xl lg:text-5xl text-white mb-4">
+    О <span class="text-secondary">нас</span>
+    </h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center fade-in fade-in-delay-1">
+    <!-- Левая часть: Фотография -->
+    <div class="flex justify-center lg:justify-start">
+    <div class="relative">
+    <img src="images/backgrounds/inv1.jpg" alt="О нас" class="max-w-full h-auto" style="max-height: 600px; object-fit: contain;">
+    </div>
+    </div>
+    
+    <!-- Правая часть: Текст и кнопка -->
+    <div class="flex flex-col justify-center">
+    <div class="space-y-6 mb-8">
+    <p class="font-mulish-regular text-white text-lg leading-relaxed">
+    Мы стремимся к миру, где компании осознают экологические риски и действуют честно. Наш бизнес — это вклад в экологическую ответственность, где честность, технологии и забота о чистом и безопасном будущем стоят на первом месте.
+    </p>
+    <p class="font-mulish-regular text-white text-lg leading-relaxed">
+    Мы предоставляем эффективные решения для локализации и ликвидации разливов и утечек вредных веществ. Для нас важнее спокойствие клиентов и позитивные изменения, чем прибыль. Присоединяйтесь! Вместе мы сможем сохранить нашу планету для будущих поколений.
+    </p>
+    </div>
+    <div class="text-white mb-8">
+    <p class="font-mulish-extrabold text-xl mb-1">Сергей Ушаков</p>
+    <p class="font-mulish-regular text-gray-300">Генеральный директор</p>
+    </div>
+    <a href="#products" class="inline-block bg-secondary text-white font-mulish-semibold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover text-center">
+    Посмотреть всю продукцию
+    </a>
+    </div>
+    </div>
     </div>
     </div>
     </section>
@@ -3134,6 +3218,7 @@ display: flex !important;
     Я согласен(а) на <a href="https://oilspill-solutions.ru/politika-v-otnoshenii-obrabotki-personalnykh-dannykh" target="_blank" class="text-secondary hover:underline">обработку персональных данных</a> и принимаю условия <a href="https://oilspill-solutions.ru/polzovatelskoe-soglashenie" target="_blank" class="text-secondary hover:underline">пользовательского соглашения</a> *
     </label>
     </div>
+    <div id="quick-recaptcha"></div>
     <button type="submit" class="w-full bg-secondary text-white font-mulish-extrabold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover">
     Отправить заявку
     </button>
@@ -3162,6 +3247,7 @@ display: flex !important;
     Я согласен(а) на <a href="https://oilspill-solutions.ru/politika-v-otnoshenii-obrabotki-personalnykh-dannykh" target="_blank" class="text-secondary hover:underline">обработку персональных данных</a> и принимаю условия <a href="https://oilspill-solutions.ru/polzovatelskoe-soglashenie" target="_blank" class="text-secondary hover:underline">пользовательского соглашения</a> *
     </label>
     </div>
+    <div id="docs-recaptcha"></div>
     <button type="submit" class="w-full bg-secondary text-white font-mulish-extrabold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-all duration-200 button-hover">
     Скачать документы
     </button>
@@ -3282,6 +3368,16 @@ function openQuickOrderModal() {
 quickOrderModal.classList.remove('hidden');
 quickOrderModal.classList.add('flex');
 document.body.style.overflow = 'hidden';
+// Рендерим reCAPTCHA при открытии модального окна
+setTimeout(() => {
+const recaptchaContainer = document.getElementById('quick-recaptcha');
+if (recaptchaContainer && !recaptchaContainer.hasAttribute('data-widget-id') && typeof grecaptcha !== 'undefined') {
+const widgetId = grecaptcha.render(recaptchaContainer, {
+'sitekey': '6Lex5x4sAAAAAJBSuOvyEocueGgdRiyiO22BO3tR'
+});
+recaptchaContainer.setAttribute('data-widget-id', widgetId);
+}
+}, 100);
 }
 
 function closeQuickOrderModal() {
@@ -3307,12 +3403,71 @@ alert('Необходимо согласиться на обработку пе�
 consentCheckbox.focus();
 return;
 }
-// Здесь можно добавить отправку данных на сервер
+
+// Проверка reCAPTCHA
+let recaptchaWidgetId = null;
+const recaptchaContainer = document.getElementById('quick-recaptcha');
+if (recaptchaContainer) {
+recaptchaWidgetId = recaptchaContainer.getAttribute('data-widget-id');
+}
+const recaptchaResponse = recaptchaWidgetId !== null ? grecaptcha.getResponse(recaptchaWidgetId) : grecaptcha.getResponse();
+if (!recaptchaResponse) {
+alert('Пожалуйста, подтвердите, что вы не робот');
+return;
+}
+
+// Получение данных формы
 const formData = new FormData(quickOrderForm);
-console.log('Быстрая заявка:', Object.fromEntries(formData));
+const data = Object.fromEntries(formData);
+data.form_type = 'quick';
+data.recaptcha_token = recaptchaResponse;
+
+// Отправка на сервер
+const submitButton = quickOrderForm.querySelector('button[type="submit"]');
+const originalButtonText = submitButton.innerHTML;
+submitButton.disabled = true;
+submitButton.innerHTML = 'Отправка...';
+
+fetch('send_email.php', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(result => {
+if (result.success) {
 alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.');
 quickOrderForm.reset();
+if (recaptchaWidgetId !== null) {
+grecaptcha.reset(recaptchaWidgetId);
+} else {
+grecaptcha.reset();
+}
 closeQuickOrderModal();
+} else {
+alert(result.message || 'Произошла ошибка при отправке заявки. Попробуйте позже.');
+if (recaptchaWidgetId !== null) {
+grecaptcha.reset(recaptchaWidgetId);
+} else {
+grecaptcha.reset();
+}
+}
+})
+.catch(error => {
+console.error('Ошибка:', error);
+alert('Произошла ошибка при отправке заявки. Попробуйте позже.');
+if (recaptchaWidgetId !== null) {
+grecaptcha.reset(recaptchaWidgetId);
+} else {
+grecaptcha.reset();
+}
+})
+.finally(() => {
+submitButton.disabled = false;
+submitButton.innerHTML = originalButtonText;
+});
 });
 
 // Модальное окно "Скачать документы" (Форма №3)
@@ -3325,6 +3480,16 @@ function openDownloadDocsModal() {
 downloadDocsModal.classList.remove('hidden');
 downloadDocsModal.classList.add('flex');
 document.body.style.overflow = 'hidden';
+// Рендерим reCAPTCHA при открытии модального окна
+setTimeout(() => {
+const recaptchaContainer = document.getElementById('docs-recaptcha');
+if (recaptchaContainer && !recaptchaContainer.hasAttribute('data-widget-id') && typeof grecaptcha !== 'undefined') {
+const widgetId = grecaptcha.render(recaptchaContainer, {
+'sitekey': '6Lex5x4sAAAAAJBSuOvyEocueGgdRiyiO22BO3tR'
+});
+recaptchaContainer.setAttribute('data-widget-id', widgetId);
+}
+}, 100);
 }
 
 function closeDownloadDocsModal() {
@@ -3350,9 +3515,41 @@ alert('Необходимо согласиться на обработку пе�
 consentCheckbox.focus();
 return;
 }
-const formData = new FormData(downloadDocsForm);
-console.log('Скачать документы (модальное):', Object.fromEntries(formData));
 
+// Проверка reCAPTCHA
+let recaptchaWidgetId = null;
+const recaptchaContainer = document.getElementById('docs-recaptcha');
+if (recaptchaContainer) {
+recaptchaWidgetId = recaptchaContainer.getAttribute('data-widget-id');
+}
+const recaptchaResponse = recaptchaWidgetId !== null ? grecaptcha.getResponse(recaptchaWidgetId) : grecaptcha.getResponse();
+if (!recaptchaResponse) {
+alert('Пожалуйста, подтвердите, что вы не робот');
+return;
+}
+
+// Получение данных формы
+const formData = new FormData(downloadDocsForm);
+const data = Object.fromEntries(formData);
+data.form_type = 'docs';
+data.recaptcha_token = recaptchaResponse;
+
+// Отправка на сервер
+const submitButton = downloadDocsForm.querySelector('button[type="submit"]');
+const originalButtonText = submitButton.innerHTML;
+submitButton.disabled = true;
+submitButton.innerHTML = 'Отправка...';
+
+fetch('send_email.php', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(result => {
+if (result.success) {
 // Показываем благодарность и кнопку скачивания
 const modalContent = downloadDocsForm.parentElement;
 modalContent.innerHTML = `
@@ -3378,6 +3575,28 @@ const closeSuccessBtn = document.getElementById('download-docs-close-success');
 const closeFinalBtn = document.getElementById('download-docs-close-final');
 if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeDownloadDocsModal);
 if (closeFinalBtn) closeFinalBtn.addEventListener('click', closeDownloadDocsModal);
+} else {
+alert(result.message || 'Произошла ошибка при отправке заявки. Попробуйте позже.');
+if (recaptchaWidgetId !== null) {
+grecaptcha.reset(recaptchaWidgetId);
+} else {
+grecaptcha.reset();
+}
+}
+})
+.catch(error => {
+console.error('Ошибка:', error);
+alert('Произошла ошибка при отправке заявки. Попробуйте позже.');
+if (recaptchaWidgetId !== null) {
+grecaptcha.reset(recaptchaWidgetId);
+} else {
+grecaptcha.reset();
+}
+})
+.finally(() => {
+submitButton.disabled = false;
+submitButton.innerHTML = originalButtonText;
+});
 });
 
 // Модальное окно для просмотра изображения ЛАРН-комплекта (только мобильная версия)
@@ -3436,10 +3655,70 @@ alert('Необходимо согласиться на обработку пе�
 consentCheckbox.focus();
 return;
 }
+
+// Проверка reCAPTCHA
+let recaptchaWidgetId = null;
+const recaptchaContainer = document.getElementById('main-recaptcha');
+if (recaptchaContainer) {
+recaptchaWidgetId = recaptchaContainer.getAttribute('data-widget-id');
+}
+const recaptchaResponse = recaptchaWidgetId !== null ? grecaptcha.getResponse(recaptchaWidgetId) : grecaptcha.getResponse();
+if (!recaptchaResponse) {
+alert('Пожалуйста, подтвердите, что вы не робот');
+return;
+}
+
+// Получение данных формы
 const formData = new FormData(mainForm);
-console.log('Главная форма:', Object.fromEntries(formData));
+const data = Object.fromEntries(formData);
+data.form_type = 'main';
+data.recaptcha_token = recaptchaResponse;
+
+// Отправка на сервер
+const submitButton = mainForm.querySelector('button[type="submit"]');
+const originalButtonText = submitButton.innerHTML;
+submitButton.disabled = true;
+submitButton.innerHTML = 'Отправка...';
+
+fetch('send_email.php', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(result => {
+if (result.success) {
 alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 1 часа.');
 mainForm.reset();
+if (recaptchaWidgetId !== null) {
+grecaptcha.reset(recaptchaWidgetId);
+} else {
+grecaptcha.reset();
+}
+} else {
+alert(result.message || 'Произошла ошибка при отправке заявки. Попробуйте позже.');
+if (recaptchaWidgetId !== null) {
+grecaptcha.reset(recaptchaWidgetId);
+} else {
+grecaptcha.reset();
+}
+}
+})
+.catch(error => {
+console.error('Ошибка:', error);
+alert('Произошла ошибка при отправке заявки. Попробуйте позже.');
+if (recaptchaWidgetId !== null) {
+grecaptcha.reset(recaptchaWidgetId);
+} else {
+grecaptcha.reset();
+}
+})
+.finally(() => {
+submitButton.disabled = false;
+submitButton.innerHTML = originalButtonText;
+});
 });
 }
 
