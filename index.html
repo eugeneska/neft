@@ -2645,7 +2645,7 @@ display: flex !important;
     </div>
     </div>
     </div>
-    <button onclick="calculateDowntime()" class="w-full bg-white text-red-600 font-mulish-semibold text-base px-6 py-3 !rounded-button hover:bg-gray-100 transition-colors duration-200 button-hover">
+    <button onclick="calculateDowntime();" class="w-full bg-white text-red-600 font-mulish-semibold text-base px-6 py-3 !rounded-button hover:bg-gray-100 transition-colors duration-200 button-hover">
     Рассчитать
     </button>
     </div>
@@ -2658,23 +2658,29 @@ display: flex !important;
     function formatNumber(num) {
     return new Intl.NumberFormat('ru-RU').format(Math.round(num));
     }
-    function calculateDowntime() {
-    const dailyRevenue = parseFloat(document.getElementById('daily-revenue').value) || 0;
-    const workingDays = parseFloat(document.getElementById('working-days').value) || 22;
-    const larnCost = 50000;
-    const monthlyRevenue = dailyRevenue * workingDays;
-    const hourlyCost = monthlyRevenue / (workingDays * 8);
-    const cost8h = hourlyCost * 8;
-    const roi = larnCost > 0 ? ((cost8h / larnCost) * 100) : 0;
-    document.getElementById('hourly-cost').textContent = formatNumber(hourlyCost) + ' ₽';
-    document.getElementById('cost-1h').textContent = formatNumber(hourlyCost) + ' ₽';
-    document.getElementById('cost-8h').textContent = formatNumber(cost8h) + ' ₽';
-    document.getElementById('cost-24h').textContent = formatNumber(hourlyCost * 24) + ' ₽';
-    document.getElementById('cost-7d').textContent = formatNumber(hourlyCost * 24 * 7) + ' ₽';
-    document.getElementById('roi-value').textContent = formatNumber(roi) + '%';
-    }
-    document.getElementById('daily-revenue').addEventListener('input', calculateDowntime);
-    document.getElementById('working-days').addEventListener('input', calculateDowntime);
+let calculatorGoalSent = false;
+function calculateDowntime() {
+const dailyRevenue = parseFloat(document.getElementById('daily-revenue').value) || 0;
+const workingDays = parseFloat(document.getElementById('working-days').value) || 22;
+const larnCost = 50000;
+const monthlyRevenue = dailyRevenue * workingDays;
+const hourlyCost = monthlyRevenue / (workingDays * 8);
+const cost8h = hourlyCost * 8;
+const roi = larnCost > 0 ? ((cost8h / larnCost) * 100) : 0;
+document.getElementById('hourly-cost').textContent = formatNumber(hourlyCost) + ' ₽';
+document.getElementById('cost-1h').textContent = formatNumber(hourlyCost) + ' ₽';
+document.getElementById('cost-8h').textContent = formatNumber(cost8h) + ' ₽';
+document.getElementById('cost-24h').textContent = formatNumber(hourlyCost * 24) + ' ₽';
+document.getElementById('cost-7d').textContent = formatNumber(hourlyCost * 24 * 7) + ' ₽';
+document.getElementById('roi-value').textContent = formatNumber(roi) + '%';
+// Отправка цели Яндекс.Метрики при первом взаимодействии с калькулятором
+if (typeof ym !== 'undefined' && dailyRevenue > 0 && !calculatorGoalSent) {
+ym(105638591, 'reachGoal', 'calculator_interaction');
+calculatorGoalSent = true;
+}
+}
+document.getElementById('daily-revenue').addEventListener('input', calculateDowntime);
+document.getElementById('working-days').addEventListener('input', calculateDowntime);
     </script>
     <section id="cases" class="py-20 lg:py-32 bg-custom-gray">
     <div class="w-full px-6 lg:px-8">
@@ -3410,6 +3416,10 @@ body: JSON.stringify(data)
 .then(response => response.json())
 .then(result => {
 if (result.success) {
+// Отправка цели Яндекс.Метрики
+if (typeof ym !== 'undefined') {
+ym(105638591, 'reachGoal', 'lead_modal_form');
+}
 alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.');
 quickOrderForm.reset();
 if (recaptchaWidgetId !== null) {
@@ -3522,6 +3532,10 @@ body: JSON.stringify(data)
 .then(response => response.json())
 .then(result => {
 if (result.success) {
+// Отправка цели Яндекс.Метрики
+if (typeof ym !== 'undefined') {
+ym(105638591, 'reachGoal', 'lead_download_form');
+}
 // Показываем благодарность и кнопку скачивания
 const modalContent = downloadDocsForm.parentElement;
 modalContent.innerHTML = `
@@ -3662,6 +3676,10 @@ body: JSON.stringify(data)
 .then(response => response.json())
 .then(result => {
 if (result.success) {
+// Отправка цели Яндекс.Метрики
+if (typeof ym !== 'undefined') {
+ym(105638591, 'reachGoal', 'lead_main_form');
+}
 alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 1 часа.');
 mainForm.reset();
 if (recaptchaWidgetId !== null) {
@@ -3700,6 +3718,29 @@ const quickOrderButtons = document.querySelectorAll('[data-quick-order]');
 quickOrderButtons.forEach(button => {
 button.addEventListener('click', function(e) {
 e.preventDefault();
+// Определяем тип цели по тексту кнопки
+const buttonText = button.textContent.trim();
+if (buttonText.includes('Получить подбор ЛАРН-набора')) {
+// Отправка цели Яндекс.Метрики для главной кнопки
+if (typeof ym !== 'undefined') {
+ym(105638591, 'reachGoal', 'cta_modal_main');
+}
+} else if (buttonText.includes('Получить спецификацию')) {
+// Отправка цели Яндекс.Метрики для кнопок спецификации
+if (typeof ym !== 'undefined') {
+ym(105638591, 'reachGoal', 'cta_modal_spec');
+}
+} else if (buttonText.includes('Получить полный состав комплекта')) {
+// Отправка цели Яндекс.Метрики для кнопки состава комплекта
+if (typeof ym !== 'undefined') {
+ym(105638591, 'reachGoal', 'cta_modal_kit');
+}
+} else if (buttonText.includes('Получить решение')) {
+// Отправка цели Яндекс.Метрики для кнопки решения
+if (typeof ym !== 'undefined') {
+ym(105638591, 'reachGoal', 'cta_modal_solution');
+}
+}
 openQuickOrderModal();
 });
 });
@@ -3709,6 +3750,10 @@ const downloadDocsBtn = document.getElementById('download-docs-btn');
 if (downloadDocsBtn) {
 downloadDocsBtn.addEventListener('click', function(e) {
 e.preventDefault();
+// Отправка цели Яндекс.Метрики
+if (typeof ym !== 'undefined') {
+ym(105638591, 'reachGoal', 'cta_download_docs');
+}
 openDownloadDocsModal();
 });
 }
@@ -3718,6 +3763,10 @@ const downloadLinks = document.querySelectorAll('[data-download-docs]');
 downloadLinks.forEach(link => {
 link.addEventListener('click', function(e) {
 e.preventDefault();
+// Отправка цели Яндекс.Метрики
+if (typeof ym !== 'undefined') {
+ym(105638591, 'reachGoal', 'cta_download_docs');
+}
 openDownloadDocsModal();
 });
 });
@@ -3732,6 +3781,17 @@ if (!downloadDocsModal.classList.contains('hidden')) {
 closeDownloadDocsModal();
 }
 }
+});
+
+// Обработчик кликов по телефонам
+const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+phoneLinks.forEach(link => {
+link.addEventListener('click', function(e) {
+// Отправка цели Яндекс.Метрики
+if (typeof ym !== 'undefined') {
+ym(105638591, 'reachGoal', 'phone_call_click');
+}
+});
 });
 });
 </script>
