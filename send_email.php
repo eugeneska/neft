@@ -1,17 +1,26 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
+// Всегда устанавливаем CORS заголовки в начале
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
-// Включаем отображение ошибок только для отладки (в продакшене закомментировать)
-// error_reporting(E_ALL);
-// ini_set('display_errors', 0);
+// Обработка preflight OPTIONS запроса для CORS (обязательно!)
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('Access-Control-Max-Age: 86400');
+    http_response_code(200);
+    exit;
+}
+
+header('Content-Type: application/json; charset=utf-8');
 
 // Проверка метода запроса
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+$request_method = $_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN';
+if ($request_method !== 'POST') {
     http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'Метод не разрешен']);
+    echo json_encode([
+        'success' => false, 
+        'message' => 'Метод не разрешен. Ожидается POST, получен: ' . $request_method
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 

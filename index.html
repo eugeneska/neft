@@ -3406,7 +3406,10 @@ const originalButtonText = submitButton.innerHTML;
 submitButton.disabled = true;
 submitButton.innerHTML = 'Отправка...';
 
-fetch('send_email.php', {
+// Определяем правильный путь к PHP файлу
+const phpUrl = new URL('send_email.php', window.location.href).href;
+
+fetch(phpUrl, {
 method: 'POST',
 headers: {
 'Content-Type': 'application/json',
@@ -3534,7 +3537,10 @@ const originalButtonText = submitButton.innerHTML;
 submitButton.disabled = true;
 submitButton.innerHTML = 'Отправка...';
 
-fetch('send_email.php', {
+// Определяем правильный путь к PHP файлу
+const phpUrl = new URL('send_email.php', window.location.href).href;
+
+fetch(phpUrl, {
 method: 'POST',
 headers: {
 'Content-Type': 'application/json',
@@ -3706,7 +3712,10 @@ const originalButtonText = submitButton.innerHTML;
 submitButton.disabled = true;
 submitButton.innerHTML = 'Отправка...';
 
-fetch('send_email.php', {
+// Определяем правильный путь к PHP файлу
+const phpUrl = new URL('send_email.php', window.location.href).href;
+
+fetch(phpUrl, {
 method: 'POST',
 headers: {
 'Content-Type': 'application/json',
