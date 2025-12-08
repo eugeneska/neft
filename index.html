@@ -3413,7 +3413,19 @@ headers: {
 },
 body: JSON.stringify(data)
 })
-.then(response => response.json())
+.then(response => {
+if (!response.ok) {
+return response.text().then(text => {
+try {
+const json = JSON.parse(text);
+return Promise.reject(new Error(json.message || 'Ошибка сервера'));
+} catch (e) {
+return Promise.reject(new Error('Ошибка сервера: ' + response.status));
+}
+});
+}
+return response.json();
+})
 .then(result => {
 if (result.success) {
 // Отправка цели Яндекс.Метрики
@@ -3439,7 +3451,7 @@ grecaptcha.reset();
 })
 .catch(error => {
 console.error('Ошибка:', error);
-alert('Произошла ошибка при отправке заявки. Попробуйте позже.');
+alert(error.message || 'Произошла ошибка при отправке заявки. Попробуйте позже.');
 if (recaptchaWidgetId !== null) {
 grecaptcha.reset(recaptchaWidgetId);
 } else {
@@ -3529,7 +3541,19 @@ headers: {
 },
 body: JSON.stringify(data)
 })
-.then(response => response.json())
+.then(response => {
+if (!response.ok) {
+return response.text().then(text => {
+try {
+const json = JSON.parse(text);
+return Promise.reject(new Error(json.message || 'Ошибка сервера'));
+} catch (e) {
+return Promise.reject(new Error('Ошибка сервера: ' + response.status));
+}
+});
+}
+return response.json();
+})
 .then(result => {
 if (result.success) {
 // Отправка цели Яндекс.Метрики
@@ -3572,7 +3596,7 @@ grecaptcha.reset();
 })
 .catch(error => {
 console.error('Ошибка:', error);
-alert('Произошла ошибка при отправке заявки. Попробуйте позже.');
+alert(error.message || 'Произошла ошибка при отправке заявки. Попробуйте позже.');
 if (recaptchaWidgetId !== null) {
 grecaptcha.reset(recaptchaWidgetId);
 } else {
@@ -3648,9 +3672,25 @@ const recaptchaContainer = document.getElementById('main-recaptcha');
 if (recaptchaContainer) {
 recaptchaWidgetId = recaptchaContainer.getAttribute('data-widget-id');
 }
-const recaptchaResponse = recaptchaWidgetId !== null ? grecaptcha.getResponse(recaptchaWidgetId) : grecaptcha.getResponse();
-if (!recaptchaResponse) {
-alert('Пожалуйста, подтвердите, что вы не робот');
+// Проверяем наличие grecaptcha
+if (typeof grecaptcha === 'undefined') {
+alert('reCAPTCHA не загружена. Обновите страницу и попробуйте снова.');
+return;
+}
+// Получаем ответ reCAPTCHA (для HTML-атрибута подхода widget ID может быть не нужен)
+let recaptchaResponse = '';
+try {
+if (recaptchaWidgetId !== null && recaptchaWidgetId !== '') {
+recaptchaResponse = grecaptcha.getResponse(parseInt(recaptchaWidgetId));
+} else {
+// Для автоматически инициализированной reCAPTCHA через HTML атрибуты
+recaptchaResponse = grecaptcha.getResponse();
+}
+} catch (e) {
+console.error('Ошибка получения reCAPTCHA:', e);
+}
+if (!recaptchaResponse || recaptchaResponse === '') {
+alert('Пожалуйста, подтвердите действие на ' + window.location.hostname + '. Выполните проверку reCAPTCHA.');
 return;
 }
 
@@ -3673,7 +3713,19 @@ headers: {
 },
 body: JSON.stringify(data)
 })
-.then(response => response.json())
+.then(response => {
+if (!response.ok) {
+return response.text().then(text => {
+try {
+const json = JSON.parse(text);
+return Promise.reject(new Error(json.message || 'Ошибка сервера'));
+} catch (e) {
+return Promise.reject(new Error('Ошибка сервера: ' + response.status));
+}
+});
+}
+return response.json();
+})
 .then(result => {
 if (result.success) {
 // Отправка цели Яндекс.Метрики
@@ -3682,27 +3734,42 @@ ym(105638591, 'reachGoal', 'lead_main_form');
 }
 alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 1 часа.');
 mainForm.reset();
-if (recaptchaWidgetId !== null) {
-grecaptcha.reset(recaptchaWidgetId);
+// Сброс reCAPTCHA
+try {
+if (recaptchaWidgetId !== null && recaptchaWidgetId !== '') {
+grecaptcha.reset(parseInt(recaptchaWidgetId));
 } else {
 grecaptcha.reset();
 }
+} catch (e) {
+console.error('Ошибка сброса reCAPTCHA:', e);
+}
 } else {
 alert(result.message || 'Произошла ошибка при отправке заявки. Попробуйте позже.');
-if (recaptchaWidgetId !== null) {
-grecaptcha.reset(recaptchaWidgetId);
+// Сброс reCAPTCHA
+try {
+if (recaptchaWidgetId !== null && recaptchaWidgetId !== '') {
+grecaptcha.reset(parseInt(recaptchaWidgetId));
 } else {
 grecaptcha.reset();
+}
+} catch (e) {
+console.error('Ошибка сброса reCAPTCHA:', e);
 }
 }
 })
 .catch(error => {
 console.error('Ошибка:', error);
-alert('Произошла ошибка при отправке заявки. Попробуйте позже.');
-if (recaptchaWidgetId !== null) {
-grecaptcha.reset(recaptchaWidgetId);
+alert(error.message || 'Произошла ошибка при отправке заявки. Попробуйте позже.');
+// Сброс reCAPTCHA
+try {
+if (recaptchaWidgetId !== null && recaptchaWidgetId !== '') {
+grecaptcha.reset(parseInt(recaptchaWidgetId));
 } else {
 grecaptcha.reset();
+}
+} catch (e) {
+console.error('Ошибка сброса reCAPTCHA:', e);
 }
 })
 .finally(() => {

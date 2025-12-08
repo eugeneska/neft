@@ -4,6 +4,10 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
+// Включаем отображение ошибок только для отладки (в продакшене закомментировать)
+// error_reporting(E_ALL);
+// ini_set('display_errors', 0);
+
 // Проверка метода запроса
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -12,7 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Получение данных из запроса
-$data = json_decode(file_get_contents('php://input'), true);
+$input = file_get_contents('php://input');
+if ($input === false) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Ошибка чтения данных запроса']);
+    exit;
+}
+
+$data = json_decode($input, true);
+if (json_last_error() !== JSON_ERROR_NONE) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Ошибка декодирования JSON: ' . json_last_error_msg()]);
+    exit;
+}
 
 // Проверка reCAPTCHA
 $recaptcha_secret = '6Lex5x4sAAAAAHNjkjgnekB4rdX-yt_LjvYPNWQ7'; // Секретный ключ reCAPTCHA
@@ -40,12 +56,29 @@ $recaptcha_options = [
 ];
 
 $recaptcha_context = stream_context_create($recaptcha_options);
-$recaptcha_result = file_get_contents($recaptcha_url, false, $recaptcha_context);
+$recaptcha_result = @file_get_contents($recaptcha_url, false, $recaptcha_context);
+
+if ($recaptcha_result === false) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Не удалось связаться с сервером reCAPTCHA. Попробуйте позже.']);
+    exit;
+}
+
 $recaptcha_json = json_decode($recaptcha_result, true);
 
-if (!$recaptcha_json || !isset($recaptcha_json['success']) || !$recaptcha_json['success']) {
+if (json_last_error() !== JSON_ERROR_NONE || !$recaptcha_json || !isset($recaptcha_json['success']) || !$recaptcha_json['success']) {
+    $error_message = 'Ошибка проверки reCAPTCHA';
+    if (isset($recaptcha_json['error-codes']) && is_array($recaptcha_json['error-codes'])) {
+        $error_codes = implode(', ', $recaptcha_json['error-codes']);
+        // Более понятные сообщения для пользователя
+        if (strpos($error_codes, 'invalid-input-secret') !== false || strpos($error_codes, 'missing-input-secret') !== false) {
+            $error_message = 'Ошибка конфигурации. Обратитесь к администратору.';
+        } elseif (strpos($error_codes, 'timeout-or-duplicate') !== false) {
+            $error_message = 'Срок действия проверки истёк. Пожалуйста, подтвердите действие ещё раз.';
+        }
+    }
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Ошибка проверки reCAPTCHA']);
+    echo json_encode(['success' => false, 'message' => $error_message]);
     exit;
 }
 
@@ -103,19 +136,21 @@ $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
 // Отправка письма
-$mail_sent = mail($to_email, $subject, $message_body, $headers);
+$mail_sent = @mail($to_email, $subject, $message_body, $headers);
 
 if ($mail_sent) {
     echo json_encode([
         'success' => true,
         'message' => 'Заявка успешно отправлена!'
-    ]);
+    ], JSON_UNESCAPED_UNICODE);
 } else {
+    // Логирование ошибки (в реальном проекте лучше использовать error_log)
+    $error = error_get_last();
     http_response_code(500);
     echo json_encode([
         'success' => false,
         'message' => 'Ошибка при отправке письма. Попробуйте позже.'
-    ]);
+    ], JSON_UNESCAPED_UNICODE);
 }
 ?>
 
