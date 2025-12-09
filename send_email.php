@@ -11,7 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
+// Устанавливаем правильные заголовки для JSON ответа
+// Важно: сначала Content-Type, затем другие заголовки
 header('Content-Type: application/json; charset=utf-8');
+header('Content-Encoding: identity'); // Явно указываем, что сжатие не используется
+header('X-Content-Type-Options: nosniff'); // Защита от MIME-sniffing
 
 // Проверка метода запроса
 $request_method = $_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN';
@@ -28,14 +32,28 @@ if ($request_method !== 'POST') {
 $input = file_get_contents('php://input');
 if ($input === false) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Ошибка чтения данных запроса']);
+    echo json_encode(['success' => false, 'message' => 'Ошибка чтения данных запроса'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+// Проверяем, что данные не пустые
+if (empty($input)) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Пустой запрос'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+// Проверяем, что данные действительно текстовые (не бинарные)
+if (!mb_check_encoding($input, 'UTF-8')) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Неподдерживаемая кодировка данных'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     exit;
 }
 
 $data = json_decode($input, true);
 if (json_last_error() !== JSON_ERROR_NONE) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Ошибка декодирования JSON: ' . json_last_error_msg()]);
+    echo json_encode(['success' => false, 'message' => 'Ошибка декодирования JSON: ' . json_last_error_msg()], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     exit;
 }
 
