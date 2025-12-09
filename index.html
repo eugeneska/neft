@@ -3349,16 +3349,16 @@ function applyPhoneMask(input) {
   if (!input) return;
   const mask = '+7 (___) ___-__-__';
   input.addEventListener('input', onInput);
-  input.addEventListener('focus', onInput);
+  input.addEventListener('focus', onFocus);
   input.addEventListener('blur', onBlur);
-  input.addEventListener('keydown', onKeyDown);
 
-  function onKeyDown(e) {
-    // запретить ввод до кода страны
-    const pos = input.selectionStart || 0;
-    if (pos < 4 && e.key !== 'Tab' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
-      e.preventDefault();
+  function onFocus() {
+    if (!input.value) {
+      input.value = '+7 (';
     }
+    onInput();
+    // курсор в конец
+    setTimeout(() => input.setSelectionRange(input.value.length, input.value.length), 0);
   }
 
   function onInput(e) {
