@@ -116,16 +116,20 @@ switch ($form_type) {
         $subject = 'Новая быстрая заявка';
         $message_body = "Новая быстрая заявка\n\n";
         $message_body .= "Телефон: " . (isset($data['quick-phone']) ? htmlspecialchars($data['quick-phone']) : 'Не указано') . "\n";
+        $message_body .= "Email: " . (isset($data['quick-email']) ? htmlspecialchars($data['quick-email']) : 'Не указано') . "\n";
         $message_body .= "Имя: " . (isset($data['quick-name']) ? htmlspecialchars($data['quick-name']) : 'Не указано') . "\n";
         $message_body .= "Компания: " . (isset($data['quick-company']) ? htmlspecialchars($data['quick-company']) : 'Не указано') . "\n";
-        $message_body .= "Комментарий: " . (isset($data['quick-comment']) ? htmlspecialchars($data['quick-comment']) : 'Не указано') . "\n";
+        $message_body .= "Должность: " . (isset($data['quick-position']) ? htmlspecialchars($data['quick-position']) : 'Не указано') . "\n";
         break;
         
     case 'docs':
         $subject = 'Запрос на скачивание документов';
         $message_body = "Запрос на скачивание документов\n\n";
+        $message_body .= "Телефон: " . (isset($data['docs-phone']) ? htmlspecialchars($data['docs-phone']) : 'Не указано') . "\n";
         $message_body .= "Email: " . (isset($data['docs-email']) ? htmlspecialchars($data['docs-email']) : 'Не указано') . "\n";
-        $message_body .= "Компания / должность: " . (isset($data['docs-company-position']) ? htmlspecialchars($data['docs-company-position']) : 'Не указано') . "\n";
+        $message_body .= "ФИО: " . (isset($data['docs-name']) ? htmlspecialchars($data['docs-name']) : 'Не указано') . "\n";
+        $message_body .= "Компания: " . (isset($data['docs-company']) ? htmlspecialchars($data['docs-company']) : 'Не указано') . "\n";
+        $message_body .= "Должность: " . (isset($data['docs-position']) ? htmlspecialchars($data['docs-position']) : 'Не указано') . "\n";
         break;
         
     default:

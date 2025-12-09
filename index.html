@@ -3115,19 +3115,11 @@ document.getElementById('working-days').addEventListener('input', calculateDownt
     <div>
     <h3 class="font-mulish-extrabold text-lg text-white mb-4">Документы</h3>
     <div class="space-y-3 mb-6">
-    <a href="#" data-download-docs class="flex items-center gap-2 text-sm font-mulish-regular text-gray-300 hover:text-secondary transition-colors duration-200">
+    <a href="#" data-download-docs data-doc-type="certs" class="flex items-center gap-2 text-sm font-mulish-regular text-gray-300 hover:text-secondary transition-colors duration-200">
     <i class="ri-file-download-line"></i>
     <span>Сертификаты</span>
     </a>
-    <a href="#" data-download-docs class="flex items-center gap-2 text-sm font-mulish-regular text-gray-300 hover:text-secondary transition-colors duration-200">
-    <i class="ri-file-download-line"></i>
-    <span>Паспорт безопасности</span>
-    </a>
-    <a href="#" data-download-docs class="flex items-center gap-2 text-sm font-mulish-regular text-gray-300 hover:text-secondary transition-colors duration-200">
-    <i class="ri-file-download-line"></i>
-    <span>Инструкции</span>
-    </a>
-    <a href="#" data-download-docs class="flex items-center gap-2 text-sm font-mulish-regular text-gray-300 hover:text-secondary transition-colors duration-200">
+    <a href="#" data-download-docs data-doc-type="reqs" class="flex items-center gap-2 text-sm font-mulish-regular text-gray-300 hover:text-secondary transition-colors duration-200">
     <i class="ri-file-download-line"></i>
     <span>Реквизиты (PDF)</span>
     </a>
@@ -3179,6 +3171,10 @@ document.getElementById('working-days').addEventListener('input', calculateDownt
     <input type="tel" id="quick-phone" name="quick-phone" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
     </div>
     <div>
+    <label for="quick-email" class="block font-mulish-semibold text-gray-800 mb-2">Email *</label>
+    <input type="email" id="quick-email" name="quick-email" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
     <label for="quick-name" class="block font-mulish-semibold text-gray-800 mb-2">Имя</label>
     <input type="text" id="quick-name" name="quick-name" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
     </div>
@@ -3187,8 +3183,8 @@ document.getElementById('working-days').addEventListener('input', calculateDownt
     <input type="text" id="quick-company" name="quick-company" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
     </div>
     <div>
-    <label for="quick-comment" class="block font-mulish-semibold text-gray-800 mb-2">Комментарий</label>
-    <textarea id="quick-comment" name="quick-comment" rows="3" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800"></textarea>
+    <label for="quick-position" class="block font-mulish-semibold text-gray-800 mb-2">Должность</label>
+    <input type="text" id="quick-position" name="quick-position" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
     </div>
     <div class="flex items-start gap-3">
     <input type="checkbox" id="quick-consent" name="consent" required class="mt-1 w-5 h-5 border-2 border-gray-300 rounded focus:ring-2 focus:ring-secondary text-secondary cursor-pointer">
@@ -3212,12 +3208,24 @@ document.getElementById('working-days').addEventListener('input', calculateDownt
     <h3 class="font-mulish-extrabold text-2xl lg:text-3xl text-black mb-6">Скачать документы</h3>
     <form id="download-docs-form" class="space-y-5">
     <div>
+    <label for="docs-phone" class="block font-mulish-semibold text-gray-800 mb-2">Телефон *</label>
+    <input type="tel" id="docs-phone" name="docs-phone" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
     <label for="docs-email" class="block font-mulish-semibold text-gray-800 mb-2">Email *</label>
     <input type="email" id="docs-email" name="docs-email" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
     </div>
     <div>
-    <label for="docs-company-position" class="block font-mulish-semibold text-gray-800 mb-2">Компания / должность</label>
-    <input type="text" id="docs-company-position" name="docs-company-position" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    <label for="docs-name" class="block font-mulish-semibold text-gray-800 mb-2">ФИО</label>
+    <input type="text" id="docs-name" name="docs-name" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
+    <label for="docs-company" class="block font-mulish-semibold text-gray-800 mb-2">Компания</label>
+    <input type="text" id="docs-company" name="docs-company" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
+    </div>
+    <div>
+    <label for="docs-position" class="block font-mulish-semibold text-gray-800 mb-2">Должность</label>
+    <input type="text" id="docs-position" name="docs-position" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-secondary focus:outline-none font-mulish-regular text-gray-800">
     </div>
     <div class="flex items-start gap-3">
     <input type="checkbox" id="docs-consent" name="consent" required class="mt-1 w-5 h-5 border-2 border-gray-300 rounded focus:ring-2 focus:ring-secondary text-secondary cursor-pointer">
@@ -3336,6 +3344,46 @@ hideBanner();
 <script>
 // Обработка модальных окон и форм
 document.addEventListener('DOMContentLoaded', function() {
+// Маска телефона для всех полей type="tel"
+function applyPhoneMask(input) {
+  if (!input) return;
+  const mask = '+7 (___) ___-__-__';
+  input.addEventListener('input', onInput);
+  input.addEventListener('focus', onInput);
+  input.addEventListener('blur', onBlur);
+  input.addEventListener('keydown', onKeyDown);
+
+  function onKeyDown(e) {
+    // запретить ввод до кода страны
+    const pos = input.selectionStart || 0;
+    if (pos < 4 && e.key !== 'Tab' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+      e.preventDefault();
+    }
+  }
+
+  function onInput(e) {
+    let i = 0;
+    const digits = input.value.replace(/\D/g, '');
+    input.value = mask.replace(/./g, (char) => {
+      if (/[_\d]/.test(char) && i < digits.length) {
+        return digits.charAt(i++);
+      }
+      return i >= digits.length ? '' : char;
+    });
+  }
+
+  function onBlur() {
+    // если ввели меньше 11 цифр, очищаем
+    if (input.value.replace(/\D/g, '').length < 11) {
+      input.value = '';
+    }
+  }
+}
+
+applyPhoneMask(document.getElementById('phone'));
+applyPhoneMask(document.getElementById('quick-phone'));
+applyPhoneMask(document.getElementById('docs-phone'));
+
 // Модальное окно "Быстрая заявка" (Форма №2)
 const quickOrderModal = document.getElementById('quick-order-modal');
 const quickOrderClose = document.getElementById('quick-order-close');
@@ -3471,6 +3519,17 @@ submitButton.innerHTML = originalButtonText;
 const downloadDocsModal = document.getElementById('download-docs-modal');
 const downloadDocsClose = document.getElementById('download-docs-close');
 const downloadDocsForm = document.getElementById('download-docs-form');
+// Карта доступных файлов по типу ссылки
+const docsFiles = {
+  certs: [
+    { label: 'Отказное письмо — Сорбирующие изделия, салфетки, поддоны', path: 'docs/Отказное_письмо_—_Сорбирующие_изделия,салфетки,_поддоны.pdf' },
+    { label: 'Отказное письмо ООО ПКБ — Наборы ЛАРН', path: 'docs/Отказное_письмо_ООО_ПКБ_—_Наборы_ЛАРН.pdf' },
+  ],
+  reqs: [
+    { label: 'Реквизиты ООО ПКБ с 05.09.2025', path: 'docs/Реквизиты ООО ПКБ с 05.09.2025.pdf' },
+  ],
+};
+let selectedDocType = 'certs';
 
 // Функции для открытия/закрытия модального окна "Скачать документы"
 function openDownloadDocsModal() {
@@ -3566,25 +3625,30 @@ if (result.success) {
 if (typeof ym !== 'undefined') {
 ym(105638591, 'reachGoal', 'lead_download_form');
 }
-// Показываем благодарность и кнопку скачивания
+        // Показываем благодарность и кнопки скачивания
 const modalContent = downloadDocsForm.parentElement;
-modalContent.innerHTML = `
-<button id="download-docs-close-success" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors">
-<i class="ri-close-line text-2xl text-gray-600"></i>
-</button>
-<div class="text-center">
-<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-<i class="ri-check-line text-3xl text-green-600"></i>
-</div>
-<h3 class="font-mulish-extrabold text-2xl text-black mb-4">Спасибо!</h3>
-<p class="font-mulish-regular text-gray-600 mb-6">Ссылку на документы отправили на ваш email</p>
-<button onclick="window.open('#', '_blank')" class="w-full bg-secondary text-white font-mulish-semibold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover flex items-center justify-center gap-3 mb-4">
-<i class="ri-download-line text-xl"></i>
-<span>Скачать архив документов</span>
-</button>
-<button id="download-docs-close-final" class="text-gray-500 hover:text-gray-700 font-mulish-regular">Закрыть</button>
-</div>
-`;
+        const docList = docsFiles[selectedDocType] || docsFiles.certs;
+        const downloadsHtml = docList.map(doc => `
+          <button onclick="window.open('${doc.path}', '_blank')" class="w-full bg-secondary text-white font-mulish-semibold text-lg px-8 py-4 !rounded-button hover:bg-gray-800 transition-colors duration-200 button-hover flex items-center justify-center gap-3 mb-3">
+            <i class="ri-download-line text-xl"></i>
+            <span>${doc.label}</span>
+          </button>
+        `).join('');
+
+        modalContent.innerHTML = `
+        <button id="download-docs-close-success" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors">
+        <i class="ri-close-line text-2xl text-gray-600"></i>
+        </button>
+        <div class="text-center">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <i class="ri-check-line text-3xl text-green-600"></i>
+        </div>
+        <h3 class="font-mulish-extrabold text-2xl text-black mb-4">Спасибо!</h3>
+        <p class="font-mulish-regular text-gray-600 mb-6">Документы готовы к скачиванию и отправлены на email</p>
+        ${downloadsHtml}
+        <button id="download-docs-close-final" class="text-gray-500 hover:text-gray-700 font-mulish-regular">Закрыть</button>
+        </div>
+        `;
 
 // Добавляем обработчики для новых кнопок закрытия
 const closeSuccessBtn = document.getElementById('download-docs-close-success');
@@ -3826,6 +3890,7 @@ const downloadDocsBtn = document.getElementById('download-docs-btn');
 if (downloadDocsBtn) {
 downloadDocsBtn.addEventListener('click', function(e) {
 e.preventDefault();
+selectedDocType = downloadDocsBtn.dataset.docType || 'certs';
 // Отправка цели Яндекс.Метрики
 if (typeof ym !== 'undefined') {
 ym(105638591, 'reachGoal', 'cta_download_docs');
@@ -3839,6 +3904,7 @@ const downloadLinks = document.querySelectorAll('[data-download-docs]');
 downloadLinks.forEach(link => {
 link.addEventListener('click', function(e) {
 e.preventDefault();
+selectedDocType = link.dataset.docType || 'certs';
 // Отправка цели Яндекс.Метрики
 if (typeof ym !== 'undefined') {
 ym(105638591, 'reachGoal', 'cta_download_docs');
