@@ -11,11 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// Устанавливаем правильные заголовки для JSON ответа
-// Важно: сначала Content-Type, затем другие заголовки
 header('Content-Type: application/json; charset=utf-8');
-header('Content-Encoding: identity'); // Явно указываем, что сжатие не используется
-header('X-Content-Type-Options: nosniff'); // Защита от MIME-sniffing
 
 // Проверка метода запроса
 $request_method = $_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN';
@@ -32,28 +28,14 @@ if ($request_method !== 'POST') {
 $input = file_get_contents('php://input');
 if ($input === false) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Ошибка чтения данных запроса'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    exit;
-}
-
-// Проверяем, что данные не пустые
-if (empty($input)) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Пустой запрос'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    exit;
-}
-
-// Проверяем, что данные действительно текстовые (не бинарные)
-if (!mb_check_encoding($input, 'UTF-8')) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Неподдерживаемая кодировка данных'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    echo json_encode(['success' => false, 'message' => 'Ошибка чтения данных запроса']);
     exit;
 }
 
 $data = json_decode($input, true);
 if (json_last_error() !== JSON_ERROR_NONE) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Ошибка декодирования JSON: ' . json_last_error_msg()], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    echo json_encode(['success' => false, 'message' => 'Ошибка декодирования JSON: ' . json_last_error_msg()]);
     exit;
 }
 
@@ -111,7 +93,7 @@ if (json_last_error() !== JSON_ERROR_NONE || !$recaptcha_json || !isset($recaptc
 
 // Получение данных формы
 $form_type = isset($data['form_type']) ? $data['form_type'] : 'unknown';
-$to_email = 'salelockoutsystem@gmail.com';
+$to_email = 'zhenya.brest1@gmail.com';
 
 // Формирование темы письма
 $subject = '';
@@ -157,10 +139,19 @@ $message_body .= "Дата отправки: " . date('d.m.Y H:i:s') . "\n";
 $message_body .= "IP адрес: " . ($_SERVER['REMOTE_ADDR'] ?? 'Неизвестно') . "\n";
 
 // Настройки для отправки письма
-$headers = "From: info@larn.oilspill-solutions.ru\r\n";
+$fromEmail = 'no-reply@oilspill-solutions.ru';
+$fromName  = 'ЛАРН Oilspill Solutions';
+
+$subject = 'Новая быстрая заявка';
+$encodedSubject = '=?UTF-8?B?'.base64_encode($subject).'?=';
+
+$headers  = "From: ".$fromName." <".$fromEmail.">\r\n";
+$headers .= "Reply-To: ".$fromEmail."\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
 // Отправка письма
-$mail_sent = @mail($to_email, $subject, $message_body, $headers);
+$mail_sent = mail($to_email, $subject, $message_body, $headers);
 
 if ($mail_sent) {
     echo json_encode([
