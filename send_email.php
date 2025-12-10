@@ -93,7 +93,7 @@ if (json_last_error() !== JSON_ERROR_NONE || !$recaptcha_json || !isset($recaptc
 
 // Получение данных формы
 $form_type = isset($data['form_type']) ? $data['form_type'] : 'unknown';
-$to_email = 'zhenya.brest1@gmail.com';
+$to_email = 'salelockoutsystem@gmail.com';
 
 // Формирование темы письма
 $subject = '';
