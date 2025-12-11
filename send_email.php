@@ -128,8 +128,11 @@ switch ($form_type) {
     case 'docs':
         $subject = 'Запрос на скачивание документов';
         $message_body = "Запрос на скачивание документов\n\n";
+        $message_body .= "Телефон: " . (isset($data['docs-phone']) ? htmlspecialchars($data['docs-phone']) : 'Не указано') . "\n";
         $message_body .= "Email: " . (isset($data['docs-email']) ? htmlspecialchars($data['docs-email']) : 'Не указано') . "\n";
-        $message_body .= "Компания / должность: " . (isset($data['docs-company-position']) ? htmlspecialchars($data['docs-company-position']) : 'Не указано') . "\n";
+        $message_body .= "ФИО: " . (isset($data['docs-name']) ? htmlspecialchars($data['docs-name']) : 'Не указано') . "\n";
+        $message_body .= "Компания: " . (isset($data['docs-company']) ? htmlspecialchars($data['docs-company']) : 'Не указано') . "\n";
+        $message_body .= "Должность: " . (isset($data['docs-position']) ? htmlspecialchars($data['docs-position']) : 'Не указано') . "\n";
         break;
         
     default:
