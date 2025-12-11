@@ -113,11 +113,15 @@ switch ($form_type) {
         break;
         
     case 'quick':
-        $subject = 'Новая быстрая заявка';
-        $message_body = "Новая быстрая заявка\n\n";
+        $quick_subject = isset($data['quick-subject']) ? trim($data['quick-subject']) : '';
+        // Тема письма теперь без префикса "Новая быстрая заявка"
+        $subject = $quick_subject !== '' ? htmlspecialchars($quick_subject) : 'Заявка с сайта';
+        $message_body = '';
+        $message_body .= "Тема заявки: " . ($quick_subject !== '' ? htmlspecialchars($quick_subject) : 'Не указано') . "\n";
         $message_body .= "Телефон: " . (isset($data['quick-phone']) ? htmlspecialchars($data['quick-phone']) : 'Не указано') . "\n";
         $message_body .= "Имя: " . (isset($data['quick-name']) ? htmlspecialchars($data['quick-name']) : 'Не указано') . "\n";
         $message_body .= "Компания: " . (isset($data['quick-company']) ? htmlspecialchars($data['quick-company']) : 'Не указано') . "\n";
+        $message_body .= "Email: " . (isset($data['quick-email']) ? htmlspecialchars($data['quick-email']) : 'Не указано') . "\n";
         $message_body .= "Комментарий: " . (isset($data['quick-comment']) ? htmlspecialchars($data['quick-comment']) : 'Не указано') . "\n";
         break;
         
@@ -141,9 +145,6 @@ $message_body .= "IP адрес: " . ($_SERVER['REMOTE_ADDR'] ?? 'Неизвес
 // Настройки для отправки письма
 $fromEmail = 'no-reply@oilspill-solutions.ru';
 $fromName  = 'ЛАРН Oilspill Solutions';
-
-$subject = 'Новая быстрая заявка';
-$encodedSubject = '=?UTF-8?B?'.base64_encode($subject).'?=';
 
 $headers  = "From: ".$fromName." <".$fromEmail.">\r\n";
 $headers .= "Reply-To: ".$fromEmail."\r\n";
